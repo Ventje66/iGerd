@@ -6,6 +6,11 @@
       "sourceType": "github",
       "computedHash": "8df9b47092524833138b58682d03f2e153a242e550d1693657afdbee0cc9cdb0"
     },
+    "business-analyst": {
+      "source": "aj-geddes/claude-code-bmad-skills",
+      "sourceType": "github",
+      "computedHash": "d9520001b077121b9817bb9e0b273ea6d4a5a1b0c4a557b3b2f875cf2ac0b08f"
+    },
     "competitive-analysis": {
       "source": "refoundai/lenny-skills",
       "sourceType": "github",
