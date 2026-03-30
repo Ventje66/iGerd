@@ -6,6 +6,11 @@
       "sourceType": "github",
       "computedHash": "8df9b47092524833138b58682d03f2e153a242e550d1693657afdbee0cc9cdb0"
     },
+    "content-gap-analysis": {
+      "source": "aaron-he-zhu/seo-geo-claude-skills",
+      "sourceType": "github",
+      "computedHash": "bf974a030a3eadc57f009e580a9fad8998dd0bcd5e79378485c595f4da929b4c"
+    },
     "data-analyst": {
       "source": "shubhamsaboo/awesome-llm-apps",
       "sourceType": "github",
