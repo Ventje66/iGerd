@@ -41,6 +41,11 @@
       "sourceType": "github",
       "computedHash": "e3dcbe091bacd9f1afdac53319dea01aace1e50a9d8e64c21c859ab0a89765f5"
     },
+    "exploratory-data-analysis": {
+      "source": "davila7/claude-code-templates",
+      "sourceType": "github",
+      "computedHash": "0567655b147076fe3d85429c081bd2a06b427c01a6ae72f0606a2586b940d381"
+    },
     "market-sizing-analysis": {
       "source": "wshobson/agents",
       "sourceType": "github",
