@@ -6,6 +6,11 @@
       "sourceType": "github",
       "computedHash": "8df9b47092524833138b58682d03f2e153a242e550d1693657afdbee0cc9cdb0"
     },
+    "competitive-analysis": {
+      "source": "refoundai/lenny-skills",
+      "sourceType": "github",
+      "computedHash": "30201340b5dcbf23757fec29b281055d94093bded07117d418b073873341cfcc"
+    },
     "constant-time-analysis": {
       "source": "trailofbits/skills",
       "sourceType": "github",
