@@ -71,6 +71,11 @@
       "sourceType": "github",
       "computedHash": "eb9d89b9f00415503b096ab3c92ebd8046c91764ca611b85193886b15dfccdc2"
     },
+    "trading-analysis": {
+      "source": "gracefullight/stock-checker",
+      "sourceType": "github",
+      "computedHash": "886bdbb07be29864ef396e06c3cc2b0931d767c93e46487a2f26594c5b09c9f2"
+    },
     "us-stock-analysis": {
       "source": "tradermonty/claude-trading-skills",
       "sourceType": "github",
