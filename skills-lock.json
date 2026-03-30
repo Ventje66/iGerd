@@ -21,6 +21,11 @@
       "sourceType": "github",
       "computedHash": "bcd3abe47bd81a2c39b77fd3f116f98ff1f30ffe2604fc4189fd5d717581ff00"
     },
+    "team-composition-analysis": {
+      "source": "wshobson/agents",
+      "sourceType": "github",
+      "computedHash": "eb9d89b9f00415503b096ab3c92ebd8046c91764ca611b85193886b15dfccdc2"
+    },
     "using-superpowers": {
       "source": "obra/superpowers",
       "sourceType": "github",
