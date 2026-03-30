@@ -81,6 +81,11 @@
       "sourceType": "github",
       "computedHash": "eb9d89b9f00415503b096ab3c92ebd8046c91764ca611b85193886b15dfccdc2"
     },
+    "technical-analysis": {
+      "source": "omer-metin/skills-for-antigravity",
+      "sourceType": "github",
+      "computedHash": "648e00fcf4b1da1689fa1df1bad5249c5f04625e6264475369d51a3a50a7eb0d"
+    },
     "trading-analysis": {
       "source": "gracefullight/stock-checker",
       "sourceType": "github",
