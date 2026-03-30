@@ -46,6 +46,11 @@
       "sourceType": "github",
       "computedHash": "3d55c341daf416e131919657ef92616619bfa52b6caea81029b79a64e4f958a3"
     },
+    "requirements-analysis": {
+      "source": "jwynia/agent-skills",
+      "sourceType": "github",
+      "computedHash": "7f84e4803f4f94264c8019c2343e83ef78e8ea6c66eabca21305c817a704ef33"
+    },
     "serp-analysis": {
       "source": "aaron-he-zhu/seo-geo-claude-skills",
       "sourceType": "github",
