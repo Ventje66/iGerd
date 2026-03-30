@@ -6,6 +6,11 @@
       "sourceType": "github",
       "computedHash": "8df9b47092524833138b58682d03f2e153a242e550d1693657afdbee0cc9cdb0"
     },
+    "project-workflow-analysis-blueprint-generator": {
+      "source": "github/awesome-copilot",
+      "sourceType": "github",
+      "computedHash": "3d55c341daf416e131919657ef92616619bfa52b6caea81029b79a64e4f958a3"
+    },
     "stock-analysis": {
       "source": "gracefullight/stock-checker",
       "sourceType": "github",
