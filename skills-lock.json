@@ -71,6 +71,11 @@
       "sourceType": "github",
       "computedHash": "2af7705d48dc114ab2914f631ba2083328489f94a972242a4caba2b2ca361215"
     },
+    "statistical-analysis": {
+      "source": "anthropics/knowledge-work-plugins",
+      "sourceType": "github",
+      "computedHash": "6dba9b6a31e7ffc7205120700151a3522df91c19a6dba3d13bb9b4835e768feb"
+    },
     "stock-analysis": {
       "source": "gracefullight/stock-checker",
       "sourceType": "github",
