@@ -26,6 +26,11 @@
       "sourceType": "github",
       "computedHash": "3d55c341daf416e131919657ef92616619bfa52b6caea81029b79a64e4f958a3"
     },
+    "serp-analysis": {
+      "source": "aaron-he-zhu/seo-geo-claude-skills",
+      "sourceType": "github",
+      "computedHash": "2af7705d48dc114ab2914f631ba2083328489f94a972242a4caba2b2ca361215"
+    },
     "stock-analysis": {
       "source": "gracefullight/stock-checker",
       "sourceType": "github",
