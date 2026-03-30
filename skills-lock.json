@@ -6,6 +6,11 @@
       "sourceType": "github",
       "computedHash": "8df9b47092524833138b58682d03f2e153a242e550d1693657afdbee0cc9cdb0"
     },
+    "stock-analysis": {
+      "source": "gracefullight/stock-checker",
+      "sourceType": "github",
+      "computedHash": "bcd3abe47bd81a2c39b77fd3f116f98ff1f30ffe2604fc4189fd5d717581ff00"
+    },
     "using-superpowers": {
       "source": "obra/superpowers",
       "sourceType": "github",
