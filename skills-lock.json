@@ -105,6 +105,11 @@
       "source": "trailofbits/skills",
       "sourceType": "github",
       "computedHash": "d431f297a8c53ff2daec5ab23c32a1868d54f8661b5d3b1909ec6d983ef1a2fa"
+    },
+    "youtube-video-analyst": {
+      "source": "shipshitdev/library",
+      "sourceType": "github",
+      "computedHash": "378e3caacef44fa6aff711530ec4d356d0345c6f9b8513b34dd5136b7b8c803b"
     }
   }
 }
