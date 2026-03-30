@@ -51,6 +51,11 @@
       "sourceType": "github",
       "computedHash": "3d55c341daf416e131919657ef92616619bfa52b6caea81029b79a64e4f958a3"
     },
+    "quant-analyst": {
+      "source": "404kidwiz/claude-supercode-skills",
+      "sourceType": "github",
+      "computedHash": "99ada7f2ca8d29ba2c74ef7a5e82383a5a9c0797eda657a4c85200b947b58d8a"
+    },
     "requirements-analysis": {
       "source": "jwynia/agent-skills",
       "sourceType": "github",
