@@ -46,6 +46,11 @@
       "sourceType": "github",
       "computedHash": "0567655b147076fe3d85429c081bd2a06b427c01a6ae72f0606a2586b940d381"
     },
+    "market-news-analyst": {
+      "source": "tradermonty/claude-trading-skills",
+      "sourceType": "github",
+      "computedHash": "3e61a6a96b874f63223aa787b76878ec02094eaf237bc63c29d500d7d1857ad8"
+    },
     "market-sizing-analysis": {
       "source": "wshobson/agents",
       "sourceType": "github",
