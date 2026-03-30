@@ -11,6 +11,11 @@
       "sourceType": "github",
       "computedHash": "bf974a030a3eadc57f009e580a9fad8998dd0bcd5e79378485c595f4da929b4c"
     },
+    "coverage-analysis": {
+      "source": "trailofbits/skills",
+      "sourceType": "github",
+      "computedHash": "ea5b9a4adb286bc7698dd7aa115897ac259211544afeeef29e85c3e86feda5e6"
+    },
     "data-analyst": {
       "source": "shubhamsaboo/awesome-llm-apps",
       "sourceType": "github",
