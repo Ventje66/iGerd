@@ -5,6 +5,11 @@
       "source": "obra/superpowers",
       "sourceType": "github",
       "computedHash": "8df9b47092524833138b58682d03f2e153a242e550d1693657afdbee0cc9cdb0"
+    },
+    "using-superpowers": {
+      "source": "obra/superpowers",
+      "sourceType": "github",
+      "computedHash": "af9db85109491dbe11f36b13724835f0f03583a5e026bf496b3b257e27a3f753"
     }
   }
 }
