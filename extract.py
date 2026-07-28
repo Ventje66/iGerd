@@ -6,6 +6,7 @@ edges. The system prompt is a frozen cache prefix — see CACHING below.
 
 import json
 import os
+import time
 
 import anthropic
 
@@ -161,19 +162,19 @@ class ExtractionError(RuntimeError):
     """The model did not return a usable graph for this episode."""
 
 
-def extract(episode_text, occurred_at):
-    """Extract a knowledge graph from one episode.
+def _request_params(episode_text, occurred_at):
+    """The one place a request is described.
 
-    Returns {"entities": [...], "edges": [...]}. Raises ExtractionError if
-    the model refused or ran out of output budget.
+    Both the live and batch paths build from this, so the cached prefix is
+    byte-identical across them and they cannot drift apart.
     """
-    response = client.messages.create(
-        model=MODEL,
+    return {
+        "model": MODEL,
         # Thinking is on by default on Opus 5, and max_tokens caps thinking
         # plus response text together. Size this for both, or the JSON gets
         # truncated mid-object.
-        max_tokens=8000,
-        system=[
+        "max_tokens": 8000,
+        "system": [
             {
                 "type": "text",
                 "text": EXTRACTION_SYSTEM,
@@ -183,31 +184,96 @@ def extract(episode_text, occurred_at):
         # effort is a request parameter, not a header. Low effort is the
         # right lever for mechanical work — it shortens thinking without
         # turning it off, which on Opus 5 is the failure-prone setting.
-        output_config={
+        "output_config": {
             "effort": "low",
             "format": {"type": "json_schema", "schema": GRAPH_SCHEMA},
         },
         # Volatile content lives here, after the cache breakpoint.
-        messages=[
+        "messages": [
             {
                 "role": "user",
                 "content": f"reference_time: {occurred_at}\n\n{episode_text}",
             }
         ],
-    )
+    }
 
-    if response.stop_reason == "refusal":
-        category = getattr(response.stop_details, "category", None)
+
+def _parse(message):
+    """Turn a completed message into a graph, or say why we can't."""
+    if message.stop_reason == "refusal":
+        category = getattr(message.stop_details, "category", None)
         raise ExtractionError(f"refused (category={category})")
 
-    if response.stop_reason == "max_tokens":
+    if message.stop_reason == "max_tokens":
         raise ExtractionError(
             "hit max_tokens; output is truncated. Raise max_tokens or split "
             "the episode."
         )
 
-    text = next(b.text for b in response.content if b.type == "text")
+    text = next(b.text for b in message.content if b.type == "text")
     return json.loads(text)
+
+
+def extract(episode_text, occurred_at):
+    """Extract a knowledge graph from one live episode.
+
+    Returns {"entities": [...], "edges": [...]}. Raises ExtractionError if
+    the model refused or ran out of output budget.
+
+    For a backlog, use submit_backfill instead — routing policy is that
+    historical work never runs synchronously.
+    """
+    return _parse(client.messages.create(**_request_params(episode_text, occurred_at)))
+
+
+def submit_backfill(episodes):
+    """Queue a historical backlog on the Batches API. Returns a batch id.
+
+    `episodes` is an iterable of (episode_id, text, occurred_at). Batched
+    tokens bill at half rate, and the frozen prefix still caches across
+    requests within the batch.
+
+    episode_id becomes the custom_id, so it must be unique and is how you
+    map results back — batch results come back in arbitrary order.
+    """
+    from anthropic.types.message_create_params import MessageCreateParamsNonStreaming
+    from anthropic.types.messages.batch_create_params import Request
+
+    requests = [
+        Request(
+            custom_id=str(episode_id),
+            params=MessageCreateParamsNonStreaming(
+                **_request_params(text, occurred_at)
+            ),
+        )
+        for episode_id, text, occurred_at in episodes
+    ]
+    if not requests:
+        raise ValueError("no episodes to backfill")
+
+    return client.messages.batches.create(requests=requests).id
+
+
+def collect_backfill(batch_id):
+    """Read a finished batch. Returns (graphs, failures), both keyed by id.
+
+    Does not poll — call it once processing_status is "ended". A per-episode
+    failure is returned rather than raised, so one bad episode doesn't cost
+    you the rest of the backlog.
+    """
+    graphs, failures = {}, {}
+
+    for result in client.messages.batches.results(batch_id):
+        key = result.custom_id
+        if result.result.type != "succeeded":
+            failures[key] = result.result.type
+            continue
+        try:
+            graphs[key] = _parse(result.result.message)
+        except ExtractionError as exc:
+            failures[key] = str(exc)
+
+    return graphs, failures
 
 
 def check_cache_prefix():
@@ -236,13 +302,29 @@ if __name__ == "__main__":
 
     print(f"cache prefix: {check_cache_prefix()} tokens")
 
-    episodes = [
-        ("Ada Lovelace began corresponding with Charles Babbage about the "
-         "Analytical Engine.", "1833-06-05"),
-        ("She published her notes on the engine, including what is now "
-         "considered the first algorithm.", "1843-10-01"),
-    ]
+    # Live path: one episode as it arrives.
+    graph = extract(
+        "Ada Lovelace began corresponding with Charles Babbage about the "
+        "Analytical Engine.",
+        "1833-06-05",
+    )
+    print(json.dumps(graph, indent=2))
 
-    for text, occurred_at in episodes:
-        graph = extract(text, occurred_at)
-        print(json.dumps(graph, indent=2))
+    # Backfill path: a backlog goes to Batches, then you poll and collect.
+    batch_id = submit_backfill(
+        [
+            ("ep-1", "She published her notes on the engine, including what "
+                     "is now considered the first algorithm.", "1843-10-01"),
+            ("ep-2", "Babbage designed the Analytical Engine but never "
+                     "completed a working machine.", "1871-10-18"),
+        ]
+    )
+    print(f"batch queued: {batch_id}")
+
+    while client.messages.batches.retrieve(batch_id).processing_status != "ended":
+        time.sleep(30)
+
+    graphs, failures = collect_backfill(batch_id)
+    print(json.dumps(graphs, indent=2))
+    if failures:
+        print(f"failed: {failures}")
