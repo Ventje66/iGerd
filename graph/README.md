@@ -25,10 +25,11 @@ No server required — the default engine is embedded. `docker compose up -d` an
 `GRAPH_BACKEND=neo4j` runs the identical code and the identical test suite against
 Neo4j.
 
-> The 134 tests below are green against the embedded engine. The Neo4j path is
-> written and wired but has not been run against a live server — it was built in an
-> environment without a Docker daemon. Expect to shake something out on first
-> contact; that is what `make test-neo4j` is for.
+CI runs both: the suite on Python 3.10–3.12 against the embedded engine, and the
+same suite against a real Neo4j service container
+([`.github/workflows/graph-tests.yml`](../.github/workflows/graph-tests.yml)). The
+scaffold claims to run on two engines, and a claim nobody executes is a guess — the
+Neo4j job is there so the portability story is tested rather than asserted.
 
 ---
 

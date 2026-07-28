@@ -1,0 +1,141 @@
+name: graph tests
+
+# Two jobs, because the scaffold claims to run on two engines and a claim nobody
+# executes is a guess. `embedded` is the fast feedback loop; `neo4j` is the one that
+# actually tests the portability story, using a service container so no reviewer
+# needs Docker on their laptop to find out.
+
+on:
+  push:
+    # The repository default branch.
+    branches: [claude/setup-plugin-testing-wSQsU]
+    paths:
+      - "graph/**"
+      - ".github/workflows/graph-tests.yml"
+  pull_request:
+    paths:
+      - "graph/**"
+      - ".github/workflows/graph-tests.yml"
+
+# A superseded run tells you nothing you want to know.
+concurrency:
+  group: graph-tests-${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    working-directory: graph
+
+jobs:
+  embedded:
+    name: embedded (python ${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+          cache-dependency-path: graph/pyproject.toml
+
+      - name: Install
+        run: pip install -e ".[dev]"
+
+      - name: Test
+        run: pytest -q
+
+      - name: Smoke-test the CLI
+        # The suite drives the library directly, so nothing above would notice the
+        # entry point being broken.
+        run: |
+          python -m gerdgraph migrate
+          python -m gerdgraph status
+          python -m gerdgraph ingest
+          python -m gerdgraph ingest
+          python -m gerdgraph run revenue_by_customer --limit 3
+          python -m gerdgraph --json run supplier_revenue_exposure
+
+  neo4j:
+    name: neo4j (service container)
+    runs-on: ubuntu-latest
+
+    services:
+      neo4j:
+        image: neo4j:5-community
+        env:
+          NEO4J_AUTH: neo4j/gerdgraph
+          NEO4J_server_memory_heap_max__size: 512M
+        ports:
+          - 7687:7687
+          - 7474:7474
+        options: >-
+          --health-cmd "cypher-shell -u neo4j -p gerdgraph 'RETURN 1'"
+          --health-interval 10s
+          --health-timeout 10s
+          --health-retries 30
+          --health-start-period 30s
+
+    env:
+      GRAPH_BACKEND: neo4j
+      NEO4J_URI: bolt://localhost:7687
+      NEO4J_USER: neo4j
+      NEO4J_PASSWORD: gerdgraph
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: graph/pyproject.toml
+
+      - name: Install
+        run: pip install -e ".[dev,neo4j]"
+
+      - name: Wait for Neo4j to accept Bolt connections
+        # The service health check gates the job, but Bolt readiness and container
+        # health are not the same instant. Failing here with a clear message beats
+        # a pytest error that looks like a code bug.
+        timeout-minutes: 3
+        run: |
+          python - <<'PY'
+          import time
+          from neo4j import GraphDatabase
+
+          for attempt in range(60):
+              try:
+                  driver = GraphDatabase.driver(
+                      "bolt://localhost:7687", auth=("neo4j", "gerdgraph")
+                  )
+                  driver.verify_connectivity()
+                  driver.close()
+                  print(f"Bolt ready after {attempt + 1} attempt(s)")
+                  break
+              except Exception as exc:
+                  print(f"attempt {attempt + 1}: {type(exc).__name__}: {exc}")
+                  time.sleep(2)
+          else:
+              raise SystemExit("Neo4j never accepted a Bolt connection")
+          PY
+
+      - name: Test against Neo4j
+        run: pytest -q
+
+      - name: Smoke-test the CLI against Neo4j
+        run: |
+          python -m gerdgraph migrate
+          python -m gerdgraph status
+          python -m gerdgraph ingest
+          python -m gerdgraph ingest
+          python -m gerdgraph run revenue_by_customer --limit 3
+
+      - name: Neo4j container logs
+        if: failure()
+        run: docker logs "${{ job.services.neo4j.id }}" 2>&1 | tail -100
