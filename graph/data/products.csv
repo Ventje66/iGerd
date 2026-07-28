@@ -1,0 +1,9 @@
+sku,name,unit,category,supplier_id,lead_time_days,hazard_class
+P001,Portland cement CEM I 42.5,bag,Binders,S01,7,none
+P002,Snelbouwsteen 14cm,pallet,Masonry,S02,14,none
+P003,Gevelsteen rood,pallet,Masonry,S02,21,none
+P004,Rockwool plaat 100mm,pack,Insulation,S03,10,none
+P005,Betonmortel C25/30,m3,Binders,S01,2,none
+P006,Voegmortel grijs,bag,Binders,S01,5,none
+P007,Sika PU constructielijm,cartridge,Chemicals,S04,3,flammable
+P008,Betonstaal diameter 10,bundle,Steel,,,none
