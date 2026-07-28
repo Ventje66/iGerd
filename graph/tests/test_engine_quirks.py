@@ -10,12 +10,30 @@ a dashboard telling you six weeks later.
 
 from __future__ import annotations
 
+import os
 import re
 
 import pytest
 
 from gerdgraph.backend import Backend
 from gerdgraph.queries import QUERIES
+
+
+def test_backend_is_the_one_that_was_asked_for(graph: Backend) -> None:
+    """The suite must fail, not pass, if it is talking to the wrong engine.
+
+    Without this, a typo'd or dropped GRAPH_BACKEND in CI means the "neo4j" job
+    quietly runs on the embedded engine and reports green — a passing check that
+    proves nothing, which is worse than a failing one. The dialect is asserted
+    rather than assumed for the same reason every aggregate here is checked against
+    a reference: a result you did not verify is not a result.
+    """
+    requested = os.environ.get("GRAPH_BACKEND", "kuzu")
+    assert graph.dialect == requested, (
+        f"GRAPH_BACKEND={requested!r} but the tests are running against "
+        f"{graph.dialect!r}"
+    )
+
 
 MIXED_AGGREGATE = """
 MATCH (c:Customer)-[:PLACED]->(o:SalesOrder)-[line:CONTAINS]->(:Product)
