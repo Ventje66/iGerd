@@ -21,6 +21,19 @@ Two call sites, two profiles. Never one shared configuration.
   first, then reason only over those facts.
 - Every answer cites the specific edges it used.
 
+### Known gap: graphiti cannot honour the effort rule
+
+The graphiti MCP server exposes no effort setting — there is no
+`MODEL_EFFORT` variable, and unrecognised keys in an `env` block are inert.
+Extraction routed through it therefore runs at Opus 5's default `high`
+effort, which the Never list below forbids. It also does no prompt caching
+and no batching.
+
+Until that changes upstream, graphiti is the live-ingest and storage path
+only. Historical backfill goes through `extract.py:submit_backfill`, which
+is where the cached prefix, low effort, and batch rate actually exist. See
+`docs/ingestion-costs.md`.
+
 ## Never
 
 - Extraction at high effort. Canonicalization and date normalization are
