@@ -47,11 +47,23 @@ brutomarge van 25–30 % het volgende nodig om alleen al break-even te draaien:
 De raming zat er een factor twee tot tien naast. Uitgevoerd zoals beschreven, kost dat
 advies brutowinst.
 
+### Bronmateriaal
+
+Twee Grok-documenten van augustus 2026: het `Prijsvergelijkingsrapport` en het
+`Uitgebreid Prijs- & Concurrentierapport`. Het tweede is beduidend rijker — het brengt
+de offline concurrentie in beeld (Mado, Cosymax, Renbow), noemt Belgische
+contractproducenten en identificeert de juiste groeiniches — maar draagt dezelfde
+rekenfout, dezelfde staffelpercentages en dezelfde tegenstrijdigheid rond de oxycreme
+mee. De correctie hierboven geldt voor beide.
+
 ### Beperkingen
 
 - `hairstuff.be` was niet rechtstreeks te raadplegen: de site is geblokkeerd door het
-  netwerkbeleid van de omgeving waarin dit rapport is opgesteld. Assortimentsgegevens
-  komen daarom uit het Grok-rapport en uit openbare vermeldingen.
+  netwerkbeleid van de omgeving waarin dit rapport is opgesteld — de site zelf is
+  normaal gewoon bereikbaar. Assortimentsgegevens komen daarom uit de twee
+  Grok-documenten en uit openbare vermeldingen.
+- Bedrijfsnamen van kandidaat-leveranciers uit het uitgebreide Grok-rapport zijn
+  overgenomen maar niet zelfstandig geverifieerd.
 - Er waren geen inkoopprijzen, omzetcijfers of orderdata beschikbaar. Alle marge- en
   omzetberekeningen zijn daarom parametrisch opgezet: vul de eigen cijfers in en de
   uitkomsten worden exact. Zie § 13 voor de benodigde datapunten.
