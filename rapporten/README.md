@@ -1,74 +1,64 @@
 # Rapporten
 
-## Hairstuff.be — Strategisch marktrapport, augustus 2026
+## Hairstuff.be — Marktanalyse en groeiplan 2026
 
-`hairstuff-strategisch-marktrapport-2026-08.html`
-
-Volledige herziening van het summiere Grok-prijsvergelijkingsrapport voor The HairStuff
-Company (Malle). Open het bestand in een browser; het bevat een eigen print-stylesheet,
-dus het laat zich netjes opslaan als PDF.
-
-### Wat erin staat
-
-| § | Onderwerp |
+| Bestand | Wat |
 |---|---|
-| 0 | Managementsamenvatting en prioriteitenlijst van twaalf acties |
-| 1 | Kritische review van het Grok-rapport, inclusief het break-evenmodel |
-| 2 | Strategische diagnose: waarom de prijsslag op A-merken niet te winnen is |
-| 3 | Marktcijfers België, Nederland en Europa |
-| 4 | Herzien prijsbeleid op basis van vier prijsrollen |
-| 5 | Assortimentsstrategie |
-| 6 | Nieuwe leveranciers — shortlist per categorie |
-| 7 | Nieuwe markten: geografisch, per klantsegment en per kanaal |
-| 8 | Twintig trendy productkansen, gerangschikt |
-| 9 | Private label: twee merken, twee rollen |
-| 10 | Digitale en operationele agenda |
-| 11 | Compliance-kalender 2026 |
-| 12 | Roadmap en illustratief financieel effect |
-| 13 | Data die nog moet worden aangeleverd |
+| `hairstuff-marktanalyse-2026.html` | Het rapport. Zelfstandige HTML, licht/donker-thema, eigen print-stylesheet |
+| `Hairstuff-Marktanalyse-2026.pdf` | 30 pagina's A4 |
+| `build-pdf.sh` | Rendert de PDF opnieuw na een wijziging in de HTML |
+| `analyse/` | Scripts waarmee alle Mplus-cijfers narekenbaar zijn |
 
-### De kernbevinding
+### Opzet
 
-Het Grok-rapport adviseerde prijsverlagingen op Majirel en Koleston met een verwacht
-effect van "+10–18 % volume bij behoud van marge". Nagerekend met
+Drie delen, elk met een eigen functie.
 
-```
-benodigde volumegroei = m / (m − d) − 1
-```
+**Deel A — Diagnose.** Wat de eigen cijfers zeggen: omzet en marge, waar winst weglekt,
+en welk onderscheidend vermogen er al is.
 
-waarbij `m` de brutomarge is en `d` de prijsverlaging, blijkt bij een realistische
-brutomarge van 25–30 % het volgende nodig om alleen al break-even te draaien:
+**Deel B — Kansen.** Europese markttrends, prijspositie tegenover concurrenten, de vier
+talen op de webshop, uitbreiding van het eigen merk, een Bol-winkel onder de naam
+Hairstation, en nieuwe artikelen voor het assortiment.
 
-| Ingreep | Korting | bij marge 25 % | bij marge 30 % |
-|---|---|---|---|
-| Majirel € 11,40 → € 10,50 | −7,9 % | +46 % | +36 % |
-| Koleston € 14,20 → € 12,00 | −15,5 % | +163 % | +107 % |
+**Deel C — Uitvoering.** Korte, middellange en lange termijn, elk met de kosten van de
+aanpassing, de opbrengst per jaar en een prioritering van het werk dat ervoor nodig is.
 
-De raming zat er een factor twee tot tien naast. Uitgevoerd zoals beschreven, kost dat
-advies brutowinst.
+### Kerncijfers
 
-### Bronmateriaal
+Uit de Mplus-exports van 9 augustus 2026, periode januari 2020 tot augustus 2026:
 
-Twee Grok-documenten van augustus 2026: het `Prijsvergelijkingsrapport` en het
-`Uitgebreid Prijs- & Concurrentierapport`. Het tweede is beduidend rijker — het brengt
-de offline concurrentie in beeld (Mado, Cosymax, Renbow), noemt Belgische
-contractproducenten en identificeert de juiste groeiniches — maar draagt dezelfde
-rekenfout, dezelfde staffelpercentages en dezelfde tegenstrijdigheid rond de oxycreme
-mee. De correctie hierboven geldt voor beide.
+| | |
+|---|---|
+| Handelsomzet | € 386.354 per jaar |
+| Brutowinst | € 174.257 per jaar (45,1 %) |
+| Grootste leverancier | Sens.ùs, 31,0 % van de omzet en 28,4 % van de brutowinst |
+| Eigen label | 7,0 % van de omzet, marge 59,2 % tegen 44,0 % op de rest |
+| Catalogus | 11.371 artikelkaarten, waarvan 5.634 zonder één verkoop in 6,5 jaar |
 
-### Beperkingen
+Het opruimwerk in Deel C levert € 16.120 per jaar op tegen vrijwel geen kosten — meer dan
+de eigen-labelambitie waar € 20.000 tot € 40.000 in moet.
 
-- `hairstuff.be` was niet rechtstreeks te raadplegen: de site is geblokkeerd door het
-  netwerkbeleid van de omgeving waarin dit rapport is opgesteld — de site zelf is
-  normaal gewoon bereikbaar. Assortimentsgegevens komen daarom uit de twee
-  Grok-documenten en uit openbare vermeldingen.
-- Bedrijfsnamen van kandidaat-leveranciers uit het uitgebreide Grok-rapport zijn
-  overgenomen maar niet zelfstandig geverifieerd.
-- Er waren geen inkoopprijzen, omzetcijfers of orderdata beschikbaar. Alle marge- en
-  omzetberekeningen zijn daarom parametrisch opgezet: vul de eigen cijfers in en de
-  uitkomsten worden exact. Zie § 13 voor de benodigde datapunten.
-- Marktramingen komen van verschillende onderzoeksbureaus met verschillende definities
-  en zijn niet onderling optelbaar. Gebruik ze voor richting, niet voor precisie.
-- De leverancierslijst in § 6 is een shortlist om te benaderen en te toetsen, geen
-  afgeronde due diligence. Verifieer per merk of het territorium vrij is, wat de
-  minimumafname is en welke online- en marketplacerechten gelden.
+### Huisstijl
+
+Bovenin de HTML staat een blok `HUISSTIJL` met drie merkkleuren en een logoslot. Vervang
+de hexcodes door die uit het WooCommerce-thema en zet het logo in de masthead; de rest van
+het rapport neemt dat automatisch over. Tot die tijd staat er een neutrale koperkleur en
+een tijdelijk `HS`-blokje.
+
+### Bronnen en verificatie
+
+Alle bedrijfscijfers komen uit de Mplus-exports en zijn na te rekenen met de scripts in
+`analyse/`. De CSV-exports zelf staan bewust niet in deze repo: ze bevatten inkoopprijzen
+en marges per artikel. Alle marktgegevens hebben een genummerde bronvermelding met URL
+onderaan het rapport.
+
+Waar een aanname is gedaan — bijvoorbeeld 15 % commissie in de Bol-berekeningen — staat
+dat er expliciet bij, zodat de som met eigen tarieven te herhalen is.
+
+### Wat nog ontbreekt
+
+- Logo en huisstijlkleuren
+- Actuele concurrentprijzen per artikel, met onderscheid tussen basis- en actieprijs
+- Orderregels uit Mplus, voor staffeldrempels en de aanhechtingsgraad van eigen oxydant
+- Leveranciersovereenkomsten, voor rebatestaffels en marktplaatsbepalingen
+- Voorraadwaarde per artikel, om te bepalen of de dode artikelkaarten ook dood kapitaal zijn

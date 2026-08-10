@@ -9,8 +9,8 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
-SRC="rapporten/hairstuff-strategisch-marktrapport-2026-08.html"
-OUT="rapporten/Hairstuff-Strategisch-Marktrapport-2026-08.pdf"
+SRC="rapporten/hairstuff-marktanalyse-2026.html"
+OUT="rapporten/Hairstuff-Marktanalyse-2026.pdf"
 TMP="$(mktemp -d)"
 trap 'rm -rf "$TMP"' EXIT
 
