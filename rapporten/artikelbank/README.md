@@ -2,24 +2,41 @@
 
 54 regels in negen categorieën, klaar om in de online Artikelbank te laden.
 
-| Bestand | Regels |
-|---|---|
-| `01-kleur.csv` | 10 |
-| `02-scalp-en-bond.csv` | 7 |
-| `03-verzorging.csv` | 8 |
-| `04-barber.csv` | 7 |
-| `05-getextureerd-haar.csv` | 7 |
-| `06-apparatuur.csv` | 8 |
-| `07-verbruik-en-duurzaam.csv` | 3 |
-| `08-private-label.csv` | 3 |
-| `09-inkoopkanaal.csv` | 1 |
+| Bestand | Regels | Wat |
+|---|---|---|
+| `01-kleur.csv` | 10 | Italiaanse kleurhuizen als margealternatief |
+| `02-scalp-en-bond.csv` | 7 | K18, epres, Neofollics, System 4, Cutrin |
+| `03-verzorging.csv` | 8 | Vegan, Scandinavisch en indie |
+| `04-barber.csv` | 7 | Reuzel, Morfose, Proraso en verder |
+| `05-getextureerd-haar.csv` | 7 | Krul en kroes, plus twee distributeurs |
+| `06-apparatuur.csv` | 8 | Head spa, scharen, drogers, tondeuses |
+| `07-verbruik-en-duurzaam.csv` | 3 | Plantaardig verbruik, Belgische productie |
+| `08-private-label.csv` | 3 | Contractproducenten BE en PL |
+| `09-inkoopkanaal.csv` | 1 | Sinelco, voor de inkoopprijs op basisartikelen |
+| `10-nicheproducten-bol.csv` | 18 | Nicheproducten met uitgerekende Bol-marge |
+| `11-concepten-en-diensten.csv` | 33 | Concepten, klantgroepen en diensten |
+
+Samen 105 regels. De leveranciers staan ook in één bestand:
+`../artikelbank-nieuwe-leveranciers.csv` (54 regels).
 
 Alles staat ook samen in `../artikelbank-nieuwe-leveranciers.csv`.
 
 Formaat: puntkomma-gescheiden, UTF-8 met BOM, komma als decimaalteken.
-Kolommen: Categorie, Leverancier, Land, Website, Voorbeeldproduct, Inhoud,
-Indicatieve inkoop excl, Indicatieve salonprijs excl, Marge %, Bol geschikt,
-Opmerking.
+
+**Leveranciersbestanden (01 t/m 09)** — Categorie, Leverancier, Land, Website,
+Voorbeeldproduct, Inhoud, Indicatieve inkoop excl, Indicatieve salonprijs excl,
+Marge %, Bol geschikt, Opmerking, Marktbron.
+
+**Nicheproducten (10)** — Categorie, Product, Indicatieve inkoop excl, Bol prijs
+incl, Commissie %, Verzendkosten, Bol omzet excl, Netto per verkoop, Marge %,
+Verkopen voor EUR 1000, Bol geschikt, Leverancier-URL, Marktbron.
+
+**Concepten en diensten (11)** — Groep, Nr, Concept, Wat het is, Kleinste test,
+Kosten test, Uitsluitsel na, Marktbron.
+
+Elke regel draagt waar mogelijk een `Marktbron`: de URL van het onderzoek of de
+publicatie die de keuze onderbouwt. `Website` en `Leverancier-URL` wijzen naar de
+site van de leverancier zelf.
 
 ## Inladen
 
