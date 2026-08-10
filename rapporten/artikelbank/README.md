@@ -1,6 +1,7 @@
 # Artikelbank — nieuwe leveranciers en producten
 
-54 regels in negen categorieën, klaar om in de online Artikelbank te laden.
+105 regels in elf categorieën, klaar om in de online Artikelbank te laden:
+leveranciers, nicheproducten met Bol-marge, en concepten met klantgroepen en diensten.
 
 | Bestand | Regels | Wat |
 |---|---|---|
@@ -18,8 +19,6 @@
 
 Samen 105 regels. De leveranciers staan ook in één bestand:
 `../artikelbank-nieuwe-leveranciers.csv` (54 regels).
-
-Alles staat ook samen in `../artikelbank-nieuwe-leveranciers.csv`.
 
 Formaat: puntkomma-gescheiden, UTF-8 met BOM, komma als decimaalteken.
 
