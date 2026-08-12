@@ -117,3 +117,18 @@ as `text/plain`, over HTTPS. A redirect to
 
 The installer is POSIX `sh`, so it also runs under `dash`, `zsh` and `ash`,
 not just `bash`.
+
+## Development
+
+This repository has no dependency manifest or linter. Node.js (v22+) is required
+only for the brainstorming visual-companion server (built-in modules only).
+
+Verify the environment from a checkout:
+
+```sh
+./scripts/verify-environment.sh      # companion server HTTP smoke test
+./scripts/verify-plugin-install.sh   # install.sh local install cycle
+```
+
+Cloud agents and contributors should also read [`AGENTS.md`](AGENTS.md) for
+non-obvious run notes (tmux/foreground server, session directories).
