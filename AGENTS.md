@@ -51,3 +51,13 @@ No linter or automated test suite is configured. To smoke-test the runnable serv
 
 Starts a temporary companion server on port 59999 (override with `VERIFY_PORT`),
 pushes a screen, checks HTTP serving and 404 handling, then tears down.
+
+### Verify plugin install (`install.sh`)
+After merging the installer, smoke-test the local install path:
+
+```
+./scripts/verify-plugin-install.sh
+```
+
+Runs `sh -n` / `bash -n`, `--list`, `--dry-run`, a real install into a temp
+directory, and `--uninstall`. Human install docs live in `README.md`.
