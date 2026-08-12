@@ -41,3 +41,13 @@ Non-obvious notes:
   `/workspace/.superpowers/brainstorm/<id>/` (gitignored) and persist after the
   server stops; without `--project-dir` they go to `/tmp` and are deleted on stop.
 - Stop it: `.agents/skills/brainstorming/scripts/stop-server.sh <session_dir>`.
+
+### Verify the environment
+No linter or automated test suite is configured. To smoke-test the runnable server:
+
+```
+./scripts/verify-environment.sh
+```
+
+Starts a temporary companion server on port 59999 (override with `VERIFY_PORT`),
+pushes a screen, checks HTTP serving and 404 handling, then tears down.
