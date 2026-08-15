@@ -9,6 +9,7 @@ skill. Their provenance is tracked in [`skills-lock.json`](skills-lock.json).
 | Skill | What it does |
 | --- | --- |
 | `brainstorming` | Explores intent, requirements and design before any creative or implementation work. |
+| `humanizer` | Removes common AI writing tells so text reads more natural and human. |
 | `using-superpowers` | Establishes how to find and use skills at the start of a conversation. |
 
 ## macOS &amp; Linux
