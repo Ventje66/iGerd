@@ -47,4 +47,13 @@ if node "$VALIDATOR" "$BAD" >/dev/null 2>&1; then
   exit 1
 fi
 
-echo "OK: Cursor plugin validates, local-install layout works, invalid name is rejected"
+# Empty skills directory must fail.
+EMPTY="$STAGING/empty-skills"
+mkdir -p "$EMPTY/.cursor-plugin" "$EMPTY/.agents/skills/placeholder"
+cp "$LOCAL_PLUGIN/.cursor-plugin/plugin.json" "$EMPTY/.cursor-plugin/plugin.json"
+if node "$VALIDATOR" "$EMPTY" >/dev/null 2>&1; then
+  echo "FAIL: validator accepted a plugin with no SKILL.md files"
+  exit 1
+fi
+
+echo "OK: Cursor plugin validates, local-install layout works, invalid name and empty skills are rejected"
