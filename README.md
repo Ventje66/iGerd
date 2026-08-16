@@ -9,6 +9,7 @@ skill. Their provenance is tracked in [`skills-lock.json`](skills-lock.json).
 | Skill | What it does |
 | --- | --- |
 | `brainstorming` | Explores intent, requirements and design before any creative or implementation work. |
+| `dag-task-runner` | Decomposes a task into a DAG of Cursor SDK subagents and streams live status to a canvas. |
 | `using-superpowers` | Establishes how to find and use skills at the start of a conversation. |
 
 ## macOS &amp; Linux
