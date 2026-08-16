@@ -1,0 +1,25 @@
+{
+  "name": "igerd",
+  "displayName": "iGerd",
+  "version": "0.1.0",
+  "description": "Superpowers-style agent skills: brainstorm before building, and look up skills at the start of every conversation.",
+  "author": {
+    "name": "Gerd Heinrichs",
+    "email": "igerd@telenet.be"
+  },
+  "homepage": "https://github.com/Ventje66/iGerd",
+  "repository": "https://github.com/Ventje66/iGerd",
+  "license": "MIT",
+  "keywords": [
+    "brainstorming",
+    "skills",
+    "superpowers",
+    "agent-skills"
+  ],
+  "category": "developer-tools",
+  "tags": [
+    "skills",
+    "workflow"
+  ],
+  "skills": "./.agents/skills/"
+}

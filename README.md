@@ -1,7 +1,9 @@
 # iGerd
 
-A collection of [Claude Code](https://claude.com/claude-code) skills, plus a
-one-line installer that drops them into your skills directory.
+A collection of [Claude Code](https://claude.com/claude-code) skills, packaged
+as a [Cursor plugin](https://github.com/cursor/plugins) so the same skills load
+in Cursor. A one-line installer also drops them into a Claude Code skills
+directory.
 
 The skills live in [`.agents/skills/`](.agents/skills), one directory per
 skill. Their provenance is tracked in [`skills-lock.json`](skills-lock.json).
@@ -10,6 +12,34 @@ skill. Their provenance is tracked in [`skills-lock.json`](skills-lock.json).
 | --- | --- |
 | `brainstorming` | Explores intent, requirements and design before any creative or implementation work. |
 | `using-superpowers` | Establishes how to find and use skills at the start of a conversation. |
+
+## Cursor plugin
+
+This repository is a **single-plugin** Cursor plugin (manifest at
+[`.cursor-plugin/plugin.json`](.cursor-plugin/plugin.json)), following the
+layout in [cursor/plugins](https://github.com/cursor/plugins). Skills stay in
+[`.agents/skills/`](.agents/skills); the manifest points Cursor at that path.
+
+### Test locally
+
+```sh
+ln -s "$(pwd)" ~/.cursor/plugins/local/igerd
+```
+
+Then restart Cursor, or run **Developer: Reload Window**. The `brainstorming`
+and `using-superpowers` skills should appear under Customize.
+
+Copy instead of symlink if you prefer:
+
+```sh
+mkdir -p ~/.cursor/plugins/local/igerd
+rsync -a --exclude .git . ~/.cursor/plugins/local/igerd/
+```
+
+### Claude Code
+
+The installer below is unchanged: it copies `.agents/skills/*` into
+`~/.claude/skills/`.
 
 ## macOS &amp; Linux
 
@@ -121,13 +151,15 @@ not just `bash`.
 ## Development
 
 This repository has no dependency manifest or linter. Node.js (v22+) is required
-only for the brainstorming visual-companion server (built-in modules only).
+only for the brainstorming visual-companion server and the Cursor plugin
+validator (built-in modules only).
 
 Verify the environment from a checkout:
 
 ```sh
 ./scripts/verify-environment.sh      # companion server HTTP smoke test
 ./scripts/verify-plugin-install.sh   # install.sh local install cycle
+./scripts/verify-cursor-plugin.sh    # Cursor plugin.json + skill frontmatter
 ```
 
 Cloud agents and contributors should also read [`AGENTS.md`](AGENTS.md) for

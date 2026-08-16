@@ -61,3 +61,16 @@ After merging the installer, smoke-test the local install path:
 
 Runs `sh -n` / `bash -n`, `--list`, `--dry-run`, a real install into a temp
 directory, and `--uninstall`. Human install docs live in `README.md`.
+
+### Verify Cursor plugin (cursor/plugins spec)
+This repo is a single Cursor plugin. Manifest:
+`.cursor-plugin/plugin.json`. Skills stay under `.agents/skills/` (the
+manifest `skills` field points there). Smoke-test:
+
+```
+./scripts/verify-cursor-plugin.sh
+```
+
+Runs `scripts/validate-cursor-plugin.cjs` against the checkout, a staged
+`~/.cursor/plugins/local/igerd`-style copy, and a deliberately invalid
+manifest (must fail). Zero npm dependencies.
