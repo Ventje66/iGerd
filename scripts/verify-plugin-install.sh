@@ -34,12 +34,17 @@ if ! grep -q "using-superpowers" <<<"$LIST_OUT"; then
   echo "$LIST_OUT"
   exit 1
 fi
+if ! grep -q "dag-task-runner" <<<"$LIST_OUT"; then
+  echo "FAIL: --list did not mention dag-task-runner"
+  echo "$LIST_OUT"
+  exit 1
+fi
 
 sh "$INSTALLER" --local "$ROOT" --dry-run --dir "$DEST" >/dev/null
 
 sh "$INSTALLER" --local "$ROOT" --dir "$DEST" --quiet
 
-for skill in brainstorming using-superpowers; do
+for skill in brainstorming dag-task-runner using-superpowers; do
   if [[ ! -f "$DEST/$skill/SKILL.md" ]]; then
     echo "FAIL: expected $DEST/$skill/SKILL.md after install"
     exit 1
@@ -51,9 +56,14 @@ if [[ ! -f "$DEST/brainstorming/scripts/server.cjs" ]]; then
   exit 1
 fi
 
+if [[ ! -f "$DEST/dag-task-runner/scripts/run_dag.ts" ]]; then
+  echo "FAIL: dag-task-runner runner scripts not installed"
+  exit 1
+fi
+
 sh "$INSTALLER" --local "$ROOT" --dir "$DEST" --uninstall --quiet
 
-for skill in brainstorming using-superpowers; do
+for skill in brainstorming dag-task-runner using-superpowers; do
   if [[ -d "$DEST/$skill" ]]; then
     echo "FAIL: $skill still present after uninstall"
     exit 1

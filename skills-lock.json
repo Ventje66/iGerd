@@ -6,6 +6,12 @@
       "sourceType": "github",
       "computedHash": "8df9b47092524833138b58682d03f2e153a242e550d1693657afdbee0cc9cdb0"
     },
+    "dag-task-runner": {
+      "source": "cursor/cookbook",
+      "sourceType": "github",
+      "skillPath": ".cursor/skills/dag-task-runner/SKILL.md",
+      "computedHash": "180bd03dc2d3dc26bed3d23b4d39c1c00263605d2997564542115e51e72223b6"
+    },
     "using-superpowers": {
       "source": "obra/superpowers",
       "sourceType": "github",
