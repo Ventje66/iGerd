@@ -1,0 +1,1468 @@
+<title>Hairstuff.be — Marktanalyse en groeiplan 2026</title>
+<style>
+/* ═══════════════════════════════════════════════════════════════
+   HUISSTIJL — pas alleen dit blok aan zodra logo en kleuren er zijn.
+   Vervang de drie merkkleuren hieronder door de hexcodes uit het
+   WooCommerce-thema, en zet het logo in de <img> in de masthead.
+   De rest van het rapport neemt die kleuren automatisch over.
+   ═══════════════════════════════════════════════════════════════ */
+:root{
+  --merk:        #A85A2E;   /* primaire merkkleur — nu koper */
+  --merk-diep:   #7D3F1D;   /* donkerder variant voor tekst op licht */
+  --merk-zacht:  #F7EDE5;   /* lichte tint voor vlakken */
+  --tweede:      #14524E;   /* tweede accent — nu diep groenblauw */
+  --tweede-zacht:#E4EFED;
+
+  /* ── overige tokens: doorgaans niet aanpassen ── */
+  --inkt:#15161A; --inkt-2:#41444C; --inkt-3:#6C707A;
+  --grond:#FAF9F7; --vlak:#FFFFFF; --vlak-2:#F2F0EC;
+  --lijn:#E3DFD8; --lijn-sterk:#CBC5BA;
+  --risico:#96302C; --risico-zacht:#FAEAE8;
+  --winst:#256149; --winst-zacht:#E5F0EA;
+  --sans:'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;
+  --serif:'Charter','Bitstream Charter','Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;
+  --mono:ui-monospace,'SF Mono','Cascadia Mono','Roboto Mono',Menlo,Consolas,monospace;
+  --meet:66ch;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --merk:#E39A6B; --merk-diep:#F0B990; --merk-zacht:#2E2018;
+    --tweede:#6FBDB4; --tweede-zacht:#152A28;
+    --inkt:#F0EDE8; --inkt-2:#C3BEB5; --inkt-3:#928C82;
+    --grond:#131316; --vlak:#1B1B1F; --vlak-2:#232328;
+    --lijn:#33333A; --lijn-sterk:#4A4A53;
+    --risico:#E89189; --risico-zacht:#3A2220;
+    --winst:#7FC7A4; --winst-zacht:#152C22;
+  }
+}
+:root[data-theme="dark"]{
+  --merk:#E39A6B; --merk-diep:#F0B990; --merk-zacht:#2E2018;
+  --tweede:#6FBDB4; --tweede-zacht:#152A28;
+  --inkt:#F0EDE8; --inkt-2:#C3BEB5; --inkt-3:#928C82;
+  --grond:#131316; --vlak:#1B1B1F; --vlak-2:#232328;
+  --lijn:#33333A; --lijn-sterk:#4A4A53;
+  --risico:#E89189; --risico-zacht:#3A2220;
+  --winst:#7FC7A4; --winst-zacht:#152C22;
+}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--grond);color:var(--inkt);font-family:var(--serif);
+  font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{display:grid;grid-template-columns:minmax(0,1fr);max-width:1340px;margin:0 auto;padding:0 22px}
+@media (min-width:1100px){.wrap{grid-template-columns:236px minmax(0,1fr);gap:54px;padding:0 38px}}
+
+/* masthead */
+.masthead{padding:36px 0 22px;border-bottom:3px solid var(--merk);margin-bottom:32px}
+.logoslot{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+.logoslot .mark{width:44px;height:44px;border-radius:7px;background:var(--merk);color:#fff;
+  display:grid;place-items:center;font-family:var(--sans);font-weight:800;font-size:19px;letter-spacing:-.04em;flex:none}
+.logoslot .wm{font-family:var(--sans);font-weight:750;font-size:19px;letter-spacing:-.025em;line-height:1.15}
+.logoslot .wm span{display:block;font-size:11px;font-weight:600;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--inkt-3);margin-top:2px}
+.masthead h1{font-family:var(--sans);font-size:clamp(31px,5vw,52px);line-height:1.02;font-weight:800;
+  letter-spacing:-.035em;margin:0 0 14px;text-wrap:balance;max-width:17ch}
+.masthead .sub{font-size:clamp(17px,2vw,20px);color:var(--inkt-2);max-width:54ch;margin:0 0 22px;line-height:1.45}
+.meta{font-family:var(--sans);font-size:12.5px;color:var(--inkt-3);display:flex;flex-wrap:wrap;gap:7px 24px}
+.meta b{color:var(--inkt-2);font-weight:650}
+
+/* toc */
+.toc{display:none}
+@media (min-width:1100px){
+  .toc{display:block;position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+    padding:36px 0 56px;font-family:var(--sans);font-size:12.5px;line-height:1.4}
+  .toc .kop{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--merk);
+    font-weight:750;margin:18px 0 9px}
+  .toc .kop:first-child{margin-top:0}
+  .toc ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px}
+  .toc a{display:grid;grid-template-columns:20px 1fr;gap:5px;color:var(--inkt-2);text-decoration:none;padding:1px 0}
+  .toc a .n{font-family:var(--mono);font-size:10.5px;color:var(--inkt-3)}
+  .toc a:hover,.toc a:hover .n{color:var(--merk)}
+  .toc a:focus-visible{outline:2px solid var(--merk);outline-offset:2px;border-radius:2px}
+}
+.toc-m{margin:0 0 30px;padding:16px 18px;background:var(--vlak-2);border:1px solid var(--lijn);border-radius:4px}
+@media (min-width:1100px){.toc-m{display:none}}
+.toc-m summary{font-family:var(--sans);font-size:12px;letter-spacing:.11em;text-transform:uppercase;
+  font-weight:750;color:var(--merk);cursor:pointer}
+.toc-m ol{font-family:var(--sans);font-size:13.5px;margin:14px 0 2px;padding-left:20px;display:flex;flex-direction:column;gap:6px}
+.toc-m a{color:var(--inkt-2);text-decoration:none}
+
+main{padding-bottom:90px;min-width:0}
+.deel{font-family:var(--sans);font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  font-weight:800;color:var(--merk);padding:34px 0 0;margin-bottom:-6px}
+section{padding-top:12px;margin-bottom:50px;scroll-margin-top:14px}
+h2{font-family:var(--sans);font-size:clamp(22px,2.7vw,30px);line-height:1.12;font-weight:780;
+  letter-spacing:-.024em;margin:0 0 6px;text-wrap:balance;max-width:25ch}
+h2 .n{font-family:var(--mono);font-size:.5em;color:var(--merk);font-weight:400;display:block;
+  letter-spacing:.06em;margin-bottom:8px}
+.rule{height:2px;background:var(--lijn-sterk);margin:0 0 20px}
+h3{font-family:var(--sans);font-size:15.5px;font-weight:720;letter-spacing:-.006em;margin:30px 0 9px;text-wrap:balance}
+h4{font-family:var(--sans);font-size:11.5px;font-weight:750;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--inkt-3);margin:24px 0 7px}
+p{margin:0 0 14px;max-width:var(--meet)}
+.lead{font-size:19px;line-height:1.5;color:var(--inkt-2);max-width:58ch;margin-bottom:20px}
+ul,ol{max-width:var(--meet);margin:0 0 15px;padding-left:21px;display:flex;flex-direction:column;gap:6px}
+li::marker{color:var(--merk)}
+strong{font-weight:680}
+a{color:var(--merk-diep);text-underline-offset:2px}
+code{font-family:var(--mono);font-size:.86em;background:var(--vlak-2);padding:1px 5px;border-radius:3px}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:.94em}
+sup a{font-family:var(--sans);font-size:10px;font-weight:700;text-decoration:none;
+  background:var(--merk-zacht);color:var(--merk-diep);padding:1px 4px;border-radius:3px;margin-left:2px}
+
+.wide{max-width:none}
+.scr{overflow-x:auto;margin:18px 0 22px;border:1px solid var(--lijn);border-radius:4px;background:var(--vlak)}
+table{border-collapse:collapse;width:100%;font-family:var(--sans);font-size:13px;line-height:1.4}
+th,td{text-align:left;padding:9px 13px;border-bottom:1px solid var(--lijn);vertical-align:top}
+thead th{background:var(--vlak-2);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;
+  font-weight:750;color:var(--inkt-2);white-space:nowrap;border-bottom:2px solid var(--lijn-sterk)}
+tbody tr:last-child td{border-bottom:none}
+td.r,th.r{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+tbody tr:hover{background:var(--vlak-2)}
+caption{caption-side:bottom;text-align:left;font-family:var(--sans);font-size:11.5px;color:var(--inkt-3);
+  padding:9px 13px;line-height:1.45;border-top:1px solid var(--lijn)}
+
+.box{border:1px solid var(--lijn-sterk);border-left:4px solid var(--merk);background:var(--vlak);
+  padding:16px 20px;margin:20px 0;border-radius:3px;max-width:var(--meet)}
+.box.wide{max-width:none}
+.box .bk{font-family:var(--sans);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;
+  font-weight:750;color:var(--merk);margin-bottom:7px}
+.box p:last-child{margin-bottom:0}
+.box.risk{border-left-color:var(--risico);background:var(--risico-zacht)}
+.box.risk .bk{color:var(--risico)}
+.box.win{border-left-color:var(--winst);background:var(--winst-zacht)}
+.box.win .bk{color:var(--winst)}
+.box.calc{border-left-color:var(--tweede);background:var(--tweede-zacht)}
+.box.calc .bk{color:var(--tweede)}
+
+/* rekenvoorbeeld */
+.reken{font-family:var(--mono);font-size:13px;font-variant-numeric:tabular-nums;
+  border:1px solid var(--lijn-sterk);border-radius:4px;overflow:hidden;margin:16px 0;max-width:560px;background:var(--vlak)}
+.reken .rt{background:var(--tweede);color:#fff;padding:8px 14px;font-family:var(--sans);
+  font-size:11px;font-weight:750;letter-spacing:.09em;text-transform:uppercase}
+.reken .rr{display:flex;justify-content:space-between;gap:14px;padding:6px 14px;border-bottom:1px solid var(--lijn)}
+.reken .rr:last-child{border-bottom:none}
+.reken .rr.tot{background:var(--vlak-2);font-weight:700;border-top:2px solid var(--lijn-sterk)}
+.reken .rr .lbl{font-family:var(--sans);font-size:12.5px}
+.reken .neg{color:var(--risico)}
+
+.kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1px;background:var(--lijn);
+  border:1px solid var(--lijn);margin:20px 0;border-radius:4px;overflow:hidden}
+.kpi .k{background:var(--vlak);padding:15px 17px}
+.kpi .v{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:25px;font-weight:600;
+  color:var(--merk);letter-spacing:-.02em;line-height:1.1}
+.kpi .l{font-family:var(--sans);font-size:11.5px;color:var(--inkt-3);margin-top:5px;line-height:1.35}
+
+.chip{font-family:var(--sans);font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:99px;
+  border:1px solid var(--lijn-sterk);color:var(--inkt-2);white-space:nowrap}
+.chip.ja{background:var(--winst-zacht);border-color:transparent;color:var(--winst)}
+.chip.nee{background:var(--risico-zacht);border-color:transparent;color:var(--risico)}
+.chip.mis{background:var(--merk-zacht);border-color:transparent;color:var(--merk-diep)}
+
+.bron{font-family:var(--sans);font-size:12.5px;line-height:1.5}
+.bron ol{max-width:none;gap:7px}
+.bron a{word-break:break-word}
+hr.d{border:0;border-top:1px solid var(--lijn);margin:26px 0}
+
+@media print{
+  :root{--grond:#fff;--vlak:#fff;--vlak-2:#f4f2ee}
+  body{font-size:10pt;background:#fff}
+  .toc,.toc-m{display:none}
+  .wrap{grid-template-columns:1fr;max-width:none;padding:0}
+  table{font-size:8pt} .scr{overflow:visible;break-inside:avoid}
+  .box,.kpi,.reken{break-inside:avoid} h2,h3{break-after:avoid}
+  a{color:inherit}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<div class="wrap">
+
+<nav class="toc" aria-label="Inhoud">
+  <div class="kop">Deel A — Diagnose</div>
+  <ol>
+    <li><a href="#s1"><span class="n">01</span><span>De cijfers</span></a></li>
+    <li><a href="#s2"><span class="n">02</span><span>Waar winst weglekt</span></a></li>
+    <li><a href="#s3"><span class="n">03</span><span>Onderscheidend vermogen</span></a></li>
+  </ol>
+  <div class="kop">Deel B — Kansen</div>
+  <ol>
+    <li><a href="#s4"><span class="n">04</span><span>Europese trends</span></a></li>
+    <li><a href="#s5"><span class="n">05</span><span>Prijs tegenover de markt</span></a></li>
+    <li><a href="#s6"><span class="n">06</span><span>Vier talen</span></a></li>
+    <li><a href="#s7"><span class="n">07</span><span>Eigen merk uitbreiden</span></a></li>
+    <li><a href="#s8"><span class="n">08</span><span>Hairstation op Bol</span></a></li>
+    <li><a href="#s9"><span class="n">09</span><span>Leveranciers en niches</span></a></li>
+  </ol>
+  <div class="kop">Deel C — Uitvoering</div>
+  <ol>
+    <li><a href="#s10"><span class="n">10</span><span>Kort, middellang, lang</span></a></li>
+    <li><a href="#s11"><span class="n">11</span><span>Wat nog nodig is</span></a></li>
+    <li><a href="#bron"><span class="n">—</span><span>Bronnen</span></a></li>
+  </ol>
+</nav>
+
+<main>
+
+<header class="masthead">
+  <div class="logoslot">
+    <!-- LOGO: vervang dit blokje door <img src="logo.svg" alt="Hairstuff" height="44"> -->
+    <div class="mark">HS</div>
+    <div class="wm">Hairstuff.be<span>The HairStuff Company · Malle</span></div>
+  </div>
+  <h1>Marktanalyse en groeiplan 2026</h1>
+  <p class="sub">Wat de eigen cijfers laten zien, waar de marge werkelijk zit, en welke vier stappen de komende twaalf maanden het meeste opleveren.</p>
+  <div class="meta">
+    <span><b>Basis</b> Mplus-exports 10 augustus 2026 (2020–2026) + marktonderzoek</span>
+    <span><b>Opgesteld voor</b> Gert</span>
+    <span><b>Status</b> Vertrouwelijk, intern</span>
+  </div>
+</header>
+
+<details class="toc-m"><summary>Inhoudsopgave</summary>
+  <ol>
+    <li><a href="#s1">01 · De cijfers</a></li>
+    <li><a href="#s2">02 · Waar winst weglekt</a></li>
+    <li><a href="#s3">03 · Onderscheidend vermogen</a></li>
+    <li><a href="#s4">04 · Europese trends</a></li>
+    <li><a href="#s5">05 · Prijs tegenover de markt</a></li>
+    <li><a href="#s6">06 · Vier talen</a></li>
+    <li><a href="#s7">07 · Eigen merk uitbreiden</a></li>
+    <li><a href="#s8">08 · Hairstation op Bol</a></li>
+    <li><a href="#s9">09 · Leveranciers en niches</a></li>
+    <li><a href="#s10">10 · Kort, middellang, lang</a></li>
+    <li><a href="#s11">11 · Wat nog nodig is</a></li>
+    <li><a href="#bron">Bronnen</a></li>
+  </ol>
+</details>
+
+<!-- ══════════ SAMENVATTING ══════════ -->
+<section id="s0">
+  <h2><span class="n">SAMENVATTING</span>Wat de cijfers van 10 augustus laten zien</h2>
+  <div class="rule"></div>
+
+  <div class="kpi">
+    <div class="k"><div class="v">€ 375.000</div><div class="l">omzet excl. btw op jaarbasis, 2026</div></div>
+    <div class="k"><div class="v">53,9 %</div><div class="l">brutomarge op de prijzen van vandaag</div></div>
+    <div class="k"><div class="v">0,9 %</div><div class="l">aandeel van de webshop in de omzet</div></div>
+    <div class="k"><div class="v">85,4 %</div><div class="l">van de omzet komt van een vijfde van de klanten</div></div>
+  </div>
+
+  <p class="lead">Hairstuff is een gezonde regionale toonbankgroothandel met een marge van bijna 54 procent en een stabiele omzet. Wat het niet is — nog niet — is een webwinkel: van de <span class="num">€ 2,6 miljoen</span> omzet sinds 2020 liep <span class="num">€ 23.601</span> via de webshop, en in 2026 tot nu toe nul.</p>
+
+  <div class="box risk">
+    <div class="bk">Controleer dit eerst</div>
+    <p>Vier talen, marktplaatsen en internationale groei bouwen allemaal voort op de webshop. Als dat kanaal werkelijk 0,9 procent is en dit jaar stilstaat, dan is de eerste vraag niet <em>welke talen</em> maar <em>waarom er niets binnenkomt</em>. Het kan ook een boekingskwestie zijn — webshoporders die sinds 2026 zonder herkenbare verwijzing worden gefactureerd. Dat uitzoeken kost een half uur en bepaalt de volgorde van al het andere.</p>
+  </div>
+
+  <div class="scr wide">
+    <table>
+      <thead><tr><th>Wat</th><th class="r">Per jaar</th><th class="r">Investering</th><th>Waar</th></tr></thead>
+      <tbody>
+        <tr><td>Uitzoeken waarom de webshop stilstaat</td><td class="r">bepaalt de rest</td><td class="r">€ 0</td><td><a href="#s1">§1.5</a></td></tr>
+        <tr><td>Negen artikelkaarten met een omdoosprijs corrigeren</td><td class="r">rapportage klopt weer</td><td class="r">€ 0</td><td><a href="#s2">§2.1</a></td></tr>
+        <tr><td>Promotiekorting op de Sens.ùs-kleurlijnen herijken</td><td class="r">+ € 6.000–7.000</td><td class="r">€ 0</td><td><a href="#s2">§2.4</a></td></tr>
+        <tr><td>Kursaal Gel terug naar een normale prijs</td><td class="r">+ € 500–600</td><td class="r">€ 0</td><td><a href="#s2">§2.3</a></td></tr>
+        <tr><td>937 trage artikelen beoordelen</td><td class="r">lagere kosten, schonere data</td><td class="r">€ 0</td><td><a href="#s2">§2.5</a></td></tr>
+        <tr><td>De 1.300 klanten die 85 % van de omzet dragen actief verdedigen</td><td class="r">behoud van omzet</td><td class="r">€ 0–2.000</td><td><a href="#s1">§1.6</a></td></tr>
+        <tr><td>Eigen label van 7 naar 20 % van de omzet</td><td class="r">+ € 4.600</td><td class="r">€ 15–30k</td><td><a href="#s7">§7</a></td></tr>
+        <tr><td>Hairstation op Bol, alleen duurdere artikelen</td><td class="r">+ € 4.000–9.000</td><td class="r">€ 300–600 test</td><td><a href="#s8">§8</a></td></tr>
+      </tbody>
+      <caption>De eerste zes regels kosten vrijwel niets en zijn binnen twee maanden klaar. Ze leveren samen meer op dan de eigen-labelambitie waar wel geld in moet.</caption>
+    </table>
+  </div>
+
+  <div class="box win">
+    <div class="bk">De volgorde die telt</div>
+    <p>Eerst uitzoeken en opruimen, dan uitbreiden. Wie eerst vier talen en een marktplaats opent en daarna pas de boeken opruimt, vermenigvuldigt de fouten over vier talen — en investeert in een kanaal waarvan nog niet vaststaat dat het werkt.</p>
+  </div>
+</section>
+
+<div class="deel">Deel A — Diagnose</div>
+
+<!-- ══════════ 01 ══════════ -->
+<section id="s1">
+  <h2><span class="n">01</span>De cijfers</h2>
+  <div class="rule"></div>
+
+  <p class="lead"><strong>Bron van alle cijfers in Deel A:</strong> vijf Mplus-exports van 10 augustus 2026, na te rekenen met de scripts in <code>rapporten/analyse/</code>. Er zijn hier geen externe bronnen omdat het om je eigen boekhouding gaat. Waar eerdere versies van dit rapport uitgingen van gemiddelden over 2020–2026, staat hier nu de <strong>actuele</strong> prijs, inkoopprijs en assortimentsstatus.</p>
+
+  <div class="scr wide">
+    <table>
+      <thead><tr><th>Bestand</th><th>Wat het bevat</th><th>Controle</th></tr></thead>
+      <tbody>
+        <tr><td>Artikelprestatie</td><td>15.951 regels over 5.756 nummers, met actuele verkoopprijs, actuele gemiddelde inkoopprijs, actief-vlag, webshopvlag en barcode</td><td>sluit op de cent aan op het eindtotaal</td></tr>
+        <tr><td>Verkoopfacturen</td><td>37.800 facturen, 2020 t/m 10-8-2026, met klant, plaats en bedrag</td><td>€ 2.603.779 excl., komt overeen met het artikelbestand</td></tr>
+        <tr><td>Verkooporders</td><td>556 webshoporders</td><td>bevestigt de factuurtelling onafhankelijk</td></tr>
+        <tr><td>Verloop 10-8</td><td>omzet per uur van één dag</td><td>€ 1.169 op 112 verkochte stuks</td></tr>
+        <tr><td>Breuk / promotie / eigen gebruik</td><td>voorraadstand en inkoopprijs per stuk op 10-8</td><td>bevestigt de kaartprijzen uit het artikelbestand</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>1.1 Omzet per jaar — stabiel, geen daling</h3>
+
+  <div class="scr wide">
+    <table>
+      <thead><tr><th class="r">Jaar</th><th class="r">Facturen</th><th class="r">Omzet excl.</th><th class="r">Gem. factuur</th></tr></thead>
+      <tbody>
+        <tr><td class="r">2020</td><td class="r">5.107</td><td class="r">342.173</td><td class="r">67,00</td></tr>
+        <tr><td class="r">2021</td><td class="r">5.898</td><td class="r">415.070</td><td class="r">70,37</td></tr>
+        <tr><td class="r">2022</td><td class="r">5.709</td><td class="r">362.430</td><td class="r">63,48</td></tr>
+        <tr><td class="r">2023</td><td class="r">6.326</td><td class="r">420.317</td><td class="r">66,44</td></tr>
+        <tr><td class="r">2024</td><td class="r">6.065</td><td class="r">430.481</td><td class="r">70,98</td></tr>
+        <tr><td class="r">2025</td><td class="r">5.547</td><td class="r">404.920</td><td class="r">73,00</td></tr>
+        <tr><td class="r">2026 t/m 10-8</td><td class="r">3.148</td><td class="r">228.388</td><td class="r">72,55</td></tr>
+      </tbody>
+      <caption>2026 op jaarbasis komt uit op circa <span class="num">€ 375.000</span>. De gemiddelde factuur stijgt gestaag van <span class="num">€ 67</span> naar <span class="num">€ 73</span> — je klanten kopen per bezoek meer, of je prijzen zijn meegestegen. Het aantal facturen daalt licht sinds 2023.</caption>
+    </table>
+  </div>
+
+  <h3>1.2 Het assortiment zoals het vandaag is</h3>
+
+  <div class="kpi">
+    <div class="k"><div class="v">2.804</div><div class="l">actieve artikelnummers</div></div>
+    <div class="k"><div class="v">2.069</div><div class="l">daarvan op de webshop</div></div>
+    <div class="k"><div class="v">2.627</div><div class="l">met barcode — 93,7 % van het actieve assortiment</div></div>
+    <div class="k"><div class="v">2.950</div><div class="l">inactieve nummers met verkoophistorie</div></div>
+  </div>
+
+  <p>Dat is een gezonder beeld dan een telling van alle artikelkaarten suggereert. Van de 2.804 actieve artikelen verkochten er in zes en een half jaar maar <strong>negentien</strong> helemaal niets. Wel deden 937 actieve artikelen vijf stuks of minder — daar zit de sanering, niet in het totaal.</p>
+
+  <div class="box win">
+    <div class="bk">93,7 procent barcodedekking is meer waard dan het lijkt</div>
+    <p>Bijna elk actief artikel heeft een barcode. Dat maakt geautomatiseerde prijsvergelijking met concurrenten mogelijk: de EAN is de sleutel waarmee je jouw artikel aan hun artikel koppelt. Zonder barcodes is dat handwerk; met deze dekking is het een kwestie van instellen. Zie <a href="#s5">§5.2</a>.</p>
+  </div>
+
+  <h3>1.3 Marge op actuele prijzen</h3>
+
+  <p>De marge is hoger dan een gemiddelde over 2020–2026 laat zien, omdat de prijzen zijn meegestegen. Over 1.433 actieve artikelen met minstens tien verkopen:</p>
+
+  <div class="scr wide">
+    <table>
+      <thead><tr><th>Basis</th><th class="r">Gewogen marge</th></tr></thead>
+      <tbody>
+        <tr><td>Gerealiseerd over 2020–2026</td><td class="r">49,5 %</td></tr>
+        <tr><td><strong>Op de prijzen en inkoopprijzen van vandaag</strong></td><td class="r"><strong>53,9 %</strong></td></tr>
+      </tbody>
+      <caption>Een verschil van 4,3 procentpunt. De mediane actuele verkoopprijs ligt 13,1 procent boven het historische gemiddelde; het middelste kwart zit tussen +7,2 en +24,1 procent.</caption>
+    </table>
+  </div>
+
+  <h3>1.4 De vijftien grootste artikelen, op de prijs van vandaag</h3>
+
+  <div class="scr wide">
+    <table>
+      <thead><tr><th>Artikel</th><th class="r">Stuks</th><th class="r">Verkoop</th><th class="r">Inkoop</th><th class="r">Marge</th><th class="r">Winst/stuk</th></tr></thead>
+      <tbody>
+        <tr><td>Kursaal Kamperfoelie Shampoo</td><td class="r">649</td><td class="r">28,93</td><td class="r">13,14</td><td class="r">54,6 %</td><td class="r">15,79</td></tr>
+        <tr><td>Sens.ùs T@B&gt;U After Pillow 200 ml</td><td class="r">1.390</td><td class="r">15,15</td><td class="r">8,33</td><td class="r">45,0 %</td><td class="r">6,82</td></tr>
+        <tr><td>Sens.ùs Giulietta 7.0 100 ml</td><td class="r">1.458</td><td class="r">12,71</td><td class="r">5,08</td><td class="r">60,0 %</td><td class="r">7,63</td></tr>
+        <tr><td>HairStuff Oxycreme 20 Vol 1000 ml</td><td class="r">2.253</td><td class="r">8,14</td><td class="r">2,55</td><td class="r"><strong>68,7 %</strong></td><td class="r">5,59</td></tr>
+        <tr><td>HairStuff Hairspray 500 ml</td><td class="r">1.679</td><td class="r">10,95</td><td class="r">3,60</td><td class="r"><strong>67,1 %</strong></td><td class="r">7,35</td></tr>
+        <tr><td>Sens.ùs T@B&gt;U Bang Styler 400 ml</td><td class="r">1.236</td><td class="r">16,25</td><td class="r">8,57</td><td class="r">47,3 %</td><td class="r">7,68</td></tr>
+        <tr><td>Wella EIMI Pearl Styler 100 ml</td><td class="r">1.126</td><td class="r">15,19</td><td class="r">4,95</td><td class="r"><strong>67,4 %</strong></td><td class="r">10,24</td></tr>
+        <tr><td>Sens.ùs Oxycreme Lux 20 vol 1000 ml</td><td class="r">1.407</td><td class="r">10,80</td><td class="r">3,72</td><td class="r">65,6 %</td><td class="r">7,08</td></tr>
+        <tr><td>Kursaal Gel Extra Forte 500 ml</td><td class="r">1.266</td><td class="r">8,22</td><td class="r">3,87</td><td class="r">52,9 %</td><td class="r">4,35</td></tr>
+        <tr><td>Sens.ùs ColorGrace 6.0 100 ml</td><td class="r">1.181</td><td class="r">12,02</td><td class="r">4,68</td><td class="r">61,1 %</td><td class="r">7,34</td></tr>
+      </tbody>
+      <caption>Actuele verkoopprijs en actuele gemiddelde inkoopprijs uit de artikelkaart, exclusief btw. De stuksaantallen zijn cumulatief over 2020–2026.</caption>
+    </table>
+  </div>
+
+  <h3>1.5 Waar de omzet vandaan komt — en waar niet</h3>
+
+  <div class="box risk">
+    <div class="bk">De webshop is 0,9 procent van de omzet</div>
+    <p>Over zes en een half jaar liepen er <strong>548 facturen</strong> via de webshop, samen <span class="num">€ 23.601</span> — tegen 37.800 facturen en <span class="num">€ 2.603.779</span> in totaal. In 2026 staat de teller tot 10 augustus op <strong>nul webshopfacturen</strong>, en het orderbestand bevestigt dat onafhankelijk met vijf orders.</p>
+    <p style="margin-top:9px">Dat is geen detail: de vier talen, de marktplaatsplannen en de internationale ambitie in dit rapport hangen allemaal aan een kanaal dat vandaag nauwelijks bestaat. <strong>Controleer eerst of dit klopt</strong> — het kan ook zijn dat webshoporders sinds 2026 zonder herkenbare verwijzing worden gefactureerd. Zo niet, dan is de conclusie hard: er wordt geïnvesteerd in talen voor een winkel die niet verkoopt.</p>
+  </div>
+
+  <div class="scr wide">
+    <table>
+      <thead><tr><th>Plaats</th><th class="r">Omzet excl.</th><th class="r">Aandeel</th></tr></thead>
+      <tbody>
+        <tr><td>Westmalle</td><td class="r">324.174</td><td class="r">12,5 %</td></tr>
+        <tr><td>Zoersel</td><td class="r">204.093</td><td class="r">7,8 %</td></tr>
+        <tr><td>Oostmalle</td><td class="r">131.568</td><td class="r">5,1 %</td></tr>
+        <tr><td>Beerse</td><td class="r">87.640</td><td class="r">3,4 %</td></tr>
+        <tr><td>Lommel</td><td class="r">74.547</td><td class="r">2,9 %</td></tr>
+        <tr><td>Zandhoven</td><td class="r">73.965</td><td class="r">2,8 %</td></tr>
+        <tr><td>Rijkevorsel · Turnhout · Veerle · Westerlo · Geel · Mol</td><td class="r">359.714</td><td class="r">13,8 %</td></tr>
+        <tr><td><strong>Top 12 plaatsen samen</strong></td><td class="r"><strong>1.235.701</strong></td><td class="r"><strong>47,4 %</strong></td></tr>
+      </tbody>
+      <caption>Vrijwel alles binnen dertig kilometer van de toonbank. Dit is een <strong>regionale toonbankgroothandel</strong>, geen e-commercebedrijf — en dat is een sterkte, geen tekort. Het verklaart ook waarom de gemiddelde factuur <span class="num">€ 73</span> is: mensen komen langs en halen wat ze die week nodig hebben.</caption>
+    </table>
+  </div>
+
+  <h3>1.6 Klantconcentratie</h3>
+
+  <div class="kpi">
+    <div class="k"><div class="v">6.551</div><div class="l">unieke klantnamen in zes en een half jaar</div></div>
+    <div class="k"><div class="v">85,4 %</div><div class="l">van de omzet komt van de bovenste 20 % klanten</div></div>
+    <div class="k"><div class="v">14,1 %</div><div class="l">komt van de tien grootste klanten alleen</div></div>
+    <div class="k"><div class="v">€ 73</div><div class="l">gemiddelde factuur in 2026, tegen € 67 in 2020</div></div>
+  </div>
+
+  <p>85,4 procent uit een vijfde van de klanten is scherper dan de gebruikelijke tachtig-twintigverhouding. <strong>Die groep van ongeveer 1.300 klanten verdedigen is meer waard dan welke nieuwe markt ook.</strong> Eén weggelopen klant uit de top tien kost gemiddeld meer dan een jaar webshopomzet.</p>
+</section>
+
+<!-- ══════════ 02 ══════════ -->
+<section id="s2">
+  <h2><span class="n">02</span>Waar winst weglekt</h2>
+  <div class="rule"></div>
+
+  <p class="lead">Op de actuele cijfers zijn twee van de drie lekken uit eerdere versies grotendeels gedicht. Wat overblijft is kleiner, maar nog steeds gratis geld.</p>
+
+  <h3>2.1 Negen artikelkaarten met een omverpakkingsprijs in het stuksveld</h3>
+
+  <div class="scr wide">
+    <table>
+      <thead><tr><th>Artikel</th><th class="r">Verkoopprijs</th><th class="r">Inkoop op de kaart</th><th class="r">Stuks</th></tr></thead>
+      <tbody>
+        <tr><td>Goldwell TopChic 60 ml</td><td class="r">15,20</td><td class="r">912,00</td><td class="r">301</td></tr>
+        <tr><td>L'Oréal Tec Ni Art Volume Root Lift 250 ml</td><td class="r">14,40</td><td class="r">869,42</td><td class="r">316</td></tr>
+        <tr><td>L'Oréal Serie Expert Vitamino Conditioner</td><td class="r">16,22</td><td class="r">811,01</td><td class="r">149</td></tr>
+        <tr><td>Schwarzkopf Igora Absolutes 7.60 60 ml</td><td class="r">15,80</td><td class="r">790,00</td><td class="r">86</td></tr>
+        <tr><td>Schwarzkopf Igora Absolutes 5.60 60 ml</td><td class="r">15,80</td><td class="r">790,00</td><td class="r">24</td></tr>
+        <tr><td>L'Oréal Tec Ni Art Liss Control 150 ml</td><td class="r">13,45</td><td class="r">657,26</td><td class="r">43</td></tr>
+        <tr><td>Goldwell Stylesign Hairspray 300 ml</td><td class="r">16,48</td><td class="r">341,95</td><td class="r">74</td></tr>
+        <tr><td>Schwarzkopf Igora Absolutes 6.60 60 ml</td><td class="r">15,80</td><td class="r">181,54</td><td class="r">34</td></tr>
+        <tr><td>Sibel Pincet Tweezer</td><td class="r">2,07</td><td class="r">12,95</td><td class="r">25</td></tr>
+      </tbody>
+      <caption>Een tube Goldwell van <span class="num">€ 15,20</span> kan geen <span class="num">€ 912</span> inkoop hebben. Dit is vrijwel zeker de prijs van een <strong>omdoos</strong> die in het stuksveld terecht is gekomen. Samen vertekenen deze negen kaarten je margecijfer met ruim <span class="num">€ 800.000</span> aan schijnbare inkoopwaarde.</caption>
+    </table>
+  </div>
+
+  <div class="box risk">
+    <div class="bk">Waarom dit meer kost dan het lijkt</div>
+    <p>Deze kaarten maken niet alleen je rapportage onbruikbaar. Ze sturen ook je <strong>besteladvies en je prijsberekening</strong>: een artikel met een inkoopprijs van € 912 wordt door elk margeoverzicht als verlieslatend gemarkeerd, en niemand durft het nog te promoten. Negen kaarten corrigeren is een half uur werk.</p>
+  </div>
+
+  <h3>2.2 Wat inmiddels wél klopt</h3>
+
+  <div class="scr wide">
+    <table>
+      <thead><tr><th>Artikel</th><th class="r">Marge historisch</th><th class="r">Marge nu</th><th>Wat er gebeurde</th></tr></thead>
+      <tbody>
+        <tr><td>Sens.ùs T@B&gt;U After Pillow 200 ml</td><td class="r" style="color:var(--risico)">−0,1 %</td><td class="r" style="color:var(--winst)"><strong>45,0 %</strong></td><td>Inkoop van <span class="num">€ 12,12</span> naar <span class="num">€ 8,33</span>, prijs van <span class="num">€ 12,32</span> naar <span class="num">€ 15,15</span>. Opgelost.</td></tr>
+        <tr><td>Wella EIMI Pearl Styler 100 ml</td><td class="r">40,7 %</td><td class="r" style="color:var(--winst)"><strong>67,4 %</strong></td><td>Inkoop gedaald van <span class="num">€ 7,46</span> naar <span class="num">€ 4,95</span>, prijs naar <span class="num">€ 15,19</span></td></tr>
+        <tr><td>Chi Enviro Hairspray 340 gr</td><td class="r">29,1 %</td><td class="r" style="color:var(--winst)">44,5 %</td><td>Prijs van <span class="num">€ 14,06</span> naar <span class="num">€ 20,50</span></td></tr>
+      </tbody>
+      <caption>Drie artikelen die in een analyse op historische gemiddelden als probleem naar voren komen, maar dat vandaag niet meer zijn. Dat is precies waarom deze versie op actuele kaartprijzen rekent.</caption>
+    </table>
+  </div>
+
+  <h3>2.3 Eén artikel dat de verkeerde kant op gaat</h3>
+
+  <div class="box risk">
+    <div class="bk">Kursaal Gel Extra Forte 500 ml</div>
+    <p>De verkoopprijs is gedaald van <span class="num">€ 10,64</span> gemiddeld naar <span class="num">€ 8,22</span> vandaag — 23 procent lager — terwijl de inkoop steeg van <span class="num">€ 3,58</span> naar <span class="num">€ 3,87</span>. De marge zakte daarmee van 66,2 naar <strong>52,9 procent</strong>. Op 1.266 verkochte stuks scheelt dat ongeveer <span class="num">€ 2,50</span> winst per fles.</p>
+    <p style="margin-top:9px">Dit is je eigen merk, dus de prijs is volledig jouw keuze. Terug naar <span class="num">€ 9,95</span> zou de marge op 61 procent brengen zonder dat je iets aan de inkoop hoeft te doen. Was er een reden voor die verlaging?</p>
+  </div>
+
+  <h3>2.4 De promotiekorting op Sens.ùs</h3>
+
+  <p>Op de kleurlijnen ColorGrace, MC2 en Giulietta staat een structurele promotiekorting. Op 10 augustus alleen al werd er 24 keer <span class="num">€ 3,41</span> afgeboekt: <span class="num">€ 81,84</span> op één dag, op een dagomzet van <span class="num">€ 1.169</span>. Dat is <strong>zeven procent van de dagomzet</strong>, structureel weggegeven.</p>
+
+  <div class="box calc">
+    <div class="bk">Toets deze korting</div>
+    <p>Vraag per lijn: was dit ooit een tijdelijke actie die nooit is teruggedraaid? Krijgen alle klanten hem, ook wie er niet om vroeg? Staat er een afnameverplichting tegenover? Bij halvering levert het op jaarbasis grofweg <span class="num">€ 6.000</span> tot <span class="num">€ 7.000</span> op — zonder één klant te verliezen, mits je hem vervangt door een staffel die iets terugvraagt.</p>
+  </div>
+
+  <h3>2.5 De 937 trage actieve artikelen</h3>
+
+  <p>Van de 2.804 actieve artikelen verkochten er 937 vijf stuks of minder in zes en een half jaar. Die dragen nauwelijks omzet maar wel kosten: voorraadruimte, productteksten in vier talen, en ruis in je zoekfunctie. Negentien actieve artikelen verkochten helemaal niets.</p>
+
+  <p>Dat is een veel kleinere schoonmaak dan een telling van alle artikelkaarten suggereert — de 2.950 inactieve nummers staan immers al buiten je assortiment. <strong>De opdracht is dus 937 artikelen beoordelen, niet duizenden.</strong></p>
+</section>
+
+<section id="s3">
+  <h2><span class="n">03</span>Onderscheidend vermogen</h2>
+  <div class="rule"></div>
+
+  <p class="lead">Vier dingen die concurrenten niet zomaar kopiëren — en één ervan is aantoonbaar in euro's, niet in verhalen.</p>
+
+  <h3>3.1 Een kleursysteem met dubbele marge</h3>
+
+  <p>Dit is het sterkste dat Hairstuff heeft, en het staat nergens in de communicatie. Vergelijk de inkoopprijs per milliliter kleur:</p>
+
+  <div class="scr wide">
+    <table>
+      <thead><tr><th>Kleurlijn</th><th class="r">Inhoud</th><th class="r">Inkoop</th><th class="r">Per ml</th><th class="r">Verkoop</th><th class="r">Marge</th></tr></thead>
+      <tbody>
+        <tr><td>Sens.ùs Giulietta</td><td class="r">100 ml</td><td class="r">4,67</td><td class="r"><strong>0,0467</strong></td><td class="r">11,66</td><td class="r"><strong>60,0 %</strong></td></tr>
+        <tr><td>Sens.ùs ColorGrace</td><td class="r">100 ml</td><td class="r">4,07</td><td class="r"><strong>0,0407</strong></td><td class="r">11,22</td><td class="r"><strong>63,8 %</strong></td></tr>
+        <tr><td>Sens.ùs MC2</td><td class="r">100 ml</td><td class="r">4,58</td><td class="r"><strong>0,0458</strong></td><td class="r">10,78</td><td class="r"><strong>57,5 %</strong></td></tr>
+        <tr><td>Wella Koleston Perfect</td><td class="r">60 ml</td><td class="r">7,48</td><td class="r">0,1247</td><td class="r">11,10</td><td class="r">32,6 %</td></tr>
+        <tr><td>L'Oréal Majirel</td><td class="r">60 ml</td><td class="r">7,29</td><td class="r">0,1215</td><td class="r">10,40</td><td class="r">29,9 %</td></tr>
+      </tbody>
+      <caption>Een tube Sens.ùs bevat 100 ml en kost <span class="num">€ 4,07–4,67</span> inkoop. Een tube Koleston bevat 60 ml en kost <span class="num">€ 7,48</span>. Per milliliter is Sens.ùs <strong>bijna drie keer goedkoper</strong>, en de klant betaalt ongeveer hetzelfde per tube — bij 40 procent meer inhoud.</caption>
+    </table>
+  </div>
+
+  <div class="box win">
+    <div class="bk">Dit is een verkoopargument, geen boekhoudkundig detail</div>
+    <p>Een kapper die van Koleston naar Sens.ùs overstapt, krijgt 100 ml voor de prijs van 60 ml. Dat is <strong>67 procent meer product per tube</strong> voor ongeveer hetzelfde geld. Nergens op de site staat die rekensom. Zet hem op de kleurpagina, in de vier talen, met een omrekentabel Koleston → Sens.ùs en Majirel → Sens.ùs per nuance. Dat is de goedkoopste conversie die je kunt bouwen, en het verlaagt tegelijk je afhankelijkheid van A-merken.</p>
+  </div>
+
+  <h3>3.2 Eigen productie tegen een derde van de merkprijs</h3>
+
+  <div class="scr wide">
+    <table>
+      <thead><tr><th>Categorie</th><th>Eigen label</th><th class="r">€/ml</th><th>Ingekocht merk</th><th class="r">€/ml</th><th class="r">Factor</th></tr></thead>
+      <tbody>
+        <tr><td>Haarlak</td><td>HairStuff Hairspray 500 ml</td><td class="r">0,0068</td><td>Sens.ùs T@B&gt;U Fixer 300 ml</td><td class="r">0,0239</td><td class="r"><strong>3,5×</strong></td></tr>
+        <tr><td>Gel</td><td>Kursaal Gel Extra Forte 500 ml</td><td class="r">0,0072</td><td>Sens.ùs Man Sculpting Gel 150 ml</td><td class="r">0,0358</td><td class="r"><strong>5,0×</strong></td></tr>
+        <tr><td>Mousse</td><td>Hairstuff Mousse Normaal 300 ml</td><td class="r">0,0082</td><td>Wella EIMI Extra Volume 300 ml</td><td class="r">0,0292</td><td class="r"><strong>3,6×</strong></td></tr>
+        <tr><td>Oxydant</td><td>HairStuff Oxycreme 1000 ml</td><td class="r">0,0026</td><td>L'Oréal Oxycreme 1000 ml</td><td class="r">0,0079</td><td class="r"><strong>3,0×</strong></td></tr>
+      </tbody>
+      <caption>Inkoopprijs per milliliter uit de eigen boeken. De bijbehorende marges: eigen haarlak 62,8 % tegen 48,5 % op de Fixer; eigen gel 66,2 % tegen 48,2 %; eigen mousse 67,9 % tegen 34,9 %; eigen oxydant 64,7 % tegen 30,3 %.</caption>
+    </table>
+  </div>
+
+  <h3>3.3 Wat er verder is</h3>
+  <ul>
+    <li><strong>Kleurenwand met zoeken op kleurnummer en technische fiches.</strong> Dat is precies wat een groothandel met vijftienduizend artikelen niet per klant kan leveren. Het bestaat al en wordt niet verkocht als reden om klant te worden.</li>
+    <li><strong>Toonbank in Malle.</strong> Afhalen dezelfde dag is iets wat een pure online speler niet kan. Dat is een propositie, geen toevalligheid — zet er openingstijden en een afhaalbelofte op.</li>
+    <li><strong>Vier talen sinds kort.</strong> Zie <a href="#s6">§6</a>; dat is nu de grootste onbenutte capaciteit in het bedrijf.</li>
+  </ul>
+</section>
+
+<div class="deel">Deel B — Kansen</div>
+
+<!-- ══════════ 04 TRENDS ══════════ -->
+<section id="s4">
+  <h2><span class="n">04</span>Waar de Europese kapperswereld heen beweegt</h2>
+  <div class="rule"></div>
+
+  <p class="lead">Zes ontwikkelingen die bepalen wat je klanten de komende jaren nodig hebben — en dus wat er in je schap hoort te liggen.</p>
+
+  <h3>4.1 De markt in cijfers</h3>
+
+  <div class="scr wide">
+    <table>
+      <thead><tr><th>Markt</th><th class="r">Omvang</th><th class="r">Groei</th><th>Bron</th></tr></thead>
+      <tbody>
+        <tr><td>Europese salondiensten</td><td class="r">USD 83,98 mrd (2025) → 90,34 mrd (2026)</td><td class="r">+7,6 %</td><td><a href="https://www.fortunebusinessinsights.com/salon-service-market-104608">Fortune Business Insights</a><sup><a href="#b17">17</a></sup></td></tr>
+        <tr><td>Europese haarverzorging</td><td class="r">USD 41,77 mrd (2025) → 44,89 mrd (2026)</td><td class="r">+7,5 %</td><td><a href="https://www.fortunebusinessinsights.com/hair-care-market-102555">Fortune Business Insights</a><sup><a href="#b18">18</a></sup></td></tr>
+        <tr><td>Europees aandeel wereldmarkt haarverzorging</td><td class="r">36,67 % (2025)</td><td class="r">—</td><td>idem<sup><a href="#b18">18</a></sup></td></tr>
+        <tr><td>Professionele haarverzorgingsproducten wereldwijd</td><td class="r">USD 24,5 mrd (2026) → 38,3 mrd (2036)</td><td class="r">CAGR 4,6 %</td><td><a href="https://www.futuremarketinsights.com/reports/global-professional-hair-care-products-market">Future Market Insights</a><sup><a href="#b19">19</a></sup></td></tr>
+        <tr><td>Aandeel haarverzorging binnen salondiensten</td><td class="r">76,83 % (2026)</td><td class="r">—</td><td>Fortune Business Insights<sup><a href="#b17">17</a></sup></td></tr>
+      </tbody>
+      <caption>De onderliggende markt groeit dus met circa 7 procent per jaar, ruim boven de inflatie. Wie niet meegroeit, verliest aandeel.</caption>
+    </table>
+  </div>
+
+  <h3>4.2 Zes bewegingen, en wat ze voor jouw schap betekenen</h3>
+
+  <div class="scr wide">
+    <table>
+      <thead><tr><th>Trend</th><th>Wat er gebeurt</th><th>Gevolg voor Hairstuff</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>1. Hoofdhuid wordt het nieuwe gezicht</strong></td>
+          <td>Hoofdhuidserums, milde exfolianten en gerichte behandelingen schuiven op van bijzaak naar dagelijkse routine. Haarserum wordt aangewezen als hét product van 2026.<sup><a href="#b15">15</a></sup></td>
+          <td>Nieuwe categorie met 55–65 % marge, en een logische eerste lijn voor je eigen retailmerk uit <a href="#s7">§7.3</a></td>
+        </tr>
+        <tr>
+          <td><strong>2. Moleculair herstel wordt standaard</strong></td>
+          <td>Bond repair verschuift van premiumbehandeling naar basisonderdeel van elke kleurbehandeling; ook massamerken lanceren bond-lijnen.<sup><a href="#b15">15</a></sup></td>
+          <td>Hoort naast elke kleurverkoop in de mand. Koppel het aan je Sens.ùs-kleuradvies</td>
+        </tr>
+        <tr>
+          <td><strong>3. Zelfstandigen en stoelhuur</strong></td>
+          <td>Kappers zoeken flexibeler ondernemingsvormen; stoelhuur is de opkomende vorm in de branche.<sup><a href="#b20">20</a></sup> Tegelijk drukken stijgende huren, duurdere producten en personeelstekort de marges van kleine salons.<sup><a href="#b21">21</a></sup></td>
+          <td>Kleinere orders, meer klanten, prijsgevoeliger. Lage besteldrempel en eigen label in plaats van A-merken</td>
+        </tr>
+        <tr>
+          <td><strong>4. Duurzaamheid is een koopargument geworden</strong></td>
+          <td>Voor salons is duurzaamheid geen marketingtruc meer maar een concrete factor in klantbehoud en -werving.<sup><a href="#b21">21</a></sup> Europese consumenten kiezen vaker voor natuurlijke en dierproefvrije ingrediënten.<sup><a href="#b18">18</a></sup></td>
+          <td>Navulformaten, plantaardige verbruiksartikelen, en een vegan-claim op je eigen lijn</td>
+        </tr>
+        <tr>
+          <td><strong>5. Premium en persoonlijk boven massa</strong></td>
+          <td>De Europese markt verschuift weg van massaproducten naar wellness, duurzaamheid en premium-ervaring; vraag naar gepersonaliseerde diensten blijft groeien.<sup><a href="#b18">18</a></sup></td>
+          <td>Precies waar je kleurenwand en technisch advies op inspelen — zie <a href="#s3">§3.3</a></td>
+        </tr>
+        <tr>
+          <td><strong>6. Techniek in de salon</strong></td>
+          <td>Online boekingssystemen en virtuele spiegelsoftware worden gangbaar.<sup><a href="#b20">20</a></sup> Nieuwe generatie drogers met dubbele luchtstroom komt in 2026 op de markt.<sup><a href="#b16">16</a></sup></td>
+          <td>Apparatuur met hoog ticket — het enige segment dat op Bol rendeert (<a href="#s8">§8.2</a>)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="box win">
+    <div class="bk">De rode draad</div>
+    <p>Vijf van de zes bewegingen wijzen dezelfde kant op: <strong>weg van het standaard A-merk, richting specialisme, eigen merk en hoogwaardige apparatuur.</strong> Dat is precies de richting die je eigen cijfers in <a href="#s3">§3</a> ook aangeven. De markt beweegt niet tegen je in — hij beweegt naar de plek waar je marge al het hoogst is.</p>
+  </div>
+</section>
+
+<!-- ══════════ 05 ══════════ -->
+<section id="s5">
+  <h2><span class="n">05</span>Prijs tegenover de markt</h2>
+  <div class="rule"></div>
+
+  <p class="lead">Een concrete waarschuwing vooraf, met een voorbeeld uit de markt van vandaag.</p>
+
+  <div class="box risk">
+    <div class="bk">Rekenvoorbeeld: waarom actieprijzen matchen niet kan</div>
+    <p><strong>Wella EIMI Pearl Styler 100 ml.</strong> Jouw inkoop is <span class="num">€ 7,47</span>, je verkoopt voor <span class="num">€ 12,65</span> excl. btw — een marge van 40,7 procent. Knip &amp; Go voert dezelfde fles voor <span class="num">€ 17,99</span> incl. btw als basisprijs, maar zet hem in actie op <span class="num">€ 8,10</span> incl.<sup><a href="#b12">12</a></sup> Dat is <span class="num">€ 6,69</span> exclusief btw — <strong>ruim tachtig cent onder jouw inkoopprijs</strong>.</p>
+    <p style="margin-top:9px">Op de basisprijs ben je goedkoper dan de concurrent (<span class="num">€ 12,65</span> tegen <span class="num">€ 14,87</span> excl.). Op de actieprijs kun je niet mee zonder verlies. De les: <strong>vergelijk basisprijs met basisprijs</strong>, en zet er je eigen actiekalender tegenover op momenten die jou uitkomen.</p>
+  </div>
+
+  <h3>5.1 Waar je scherp staat zonder het te zeggen</h3>
+
+  <div class="scr wide">
+    <table>
+      <thead><tr><th>Artikel</th><th class="r">Jouw prijs excl.</th><th class="r">Jouw marge</th><th>Positie</th></tr></thead>
+      <tbody>
+        <tr><td>Sens.ùs Giulietta 100 ml (kleur)</td><td class="r">11,66</td><td class="r">60,0 %</td><td><span class="chip ja">Sterk</span> 100 ml tegen de prijs van 60 ml elders</td></tr>
+        <tr><td>HairStuff Oxycreme 1000 ml</td><td class="r">7,47</td><td class="r">64,7 %</td><td><span class="chip ja">Sterk</span> eigen product, geen vergelijking mogelijk</td></tr>
+        <tr><td>Kursaal Gel Extra Forte 500 ml</td><td class="r">10,63</td><td class="r">66,2 %</td><td><span class="chip ja">Sterk</span> eigen product</td></tr>
+        <tr><td>Sibel Handschoenen Wegwerp 50 st</td><td class="r">2,46</td><td class="r">76,4 %</td><td><span class="chip ja">Sterk</span> verkeerstrekker met topmarge</td></tr>
+        <tr><td>Wella EIMI Pearl Styler 100 ml</td><td class="r">12,65</td><td class="r">40,7 %</td><td><span class="chip mis">Middel</span> onder de basisprijs van concurrenten, kwetsbaar voor acties</td></tr>
+        <tr><td>Sens.ùs T@B&gt;U Fixer 300 ml</td><td class="r">14,03</td><td class="r">48,5 %</td><td><span class="chip mis">Middel</span> eigen alternatief kost 3,5× minder per ml</td></tr>
+        <tr><td>Sens.ùs T@B&gt;U After Pillow 200 ml</td><td class="r">12,32</td><td class="r">−0,1 %</td><td><span class="chip nee">Fout</span> zie <a href="#s2">§2.1</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>5.2 Wat er nog aan deze analyse ontbreekt</h3>
+
+  <p>Voor een volledige prijsvergelijking zijn actuele prijzen van de concurrentie nodig, per artikel, met onderscheid tussen basis- en actieprijs. De relevante spelers per markt:</p>
+
+  <div class="scr wide">
+    <table>
+      <thead><tr><th>Markt</th><th>Te volgen webshops</th></tr></thead>
+      <tbody>
+        <tr><td>Nederland</td><td><a href="https://www.haibu.nl/">Haibu</a>, <a href="https://www.kikiskappersgroothandel.nl/">Kiki's Kappersgroothandel</a>, <a href="https://www.myhair.nl/">myHair</a>, <a href="https://www.knipengoshop.nl/">Knip &amp; Go</a>, <a href="https://kappersproducten.nl/">Kappersproducten</a>, <a href="https://www.familyhair.shop/">Family Hair</a></td></tr>
+        <tr><td>België</td><td>Kapperswinkel, Beautyaswell, <a href="https://www.pro-duo.de/">Pro Duo</a></td></tr>
+        <tr><td>Duitsland</td><td><a href="https://www.basler-pro.de/">Basler Pro</a> (10.000+ artikelen), <a href="https://www.alfastore.de/">AlfaStore</a>, <a href="https://www.hair24.de/">hair24</a>, <a href="https://www.stopperka.de/">Stopperka</a>, <a href="https://www.friseurprodukte.de/">Friseurprodukte</a>, <a href="https://www.bellaffair.com/">BellAffair</a><sup><a href="#b13">13</a></sup></td></tr>
+        <tr><td>Marktplaatsen</td><td><a href="https://www.bol.com/">Bol</a>, Amazon.nl / .be / .de</td></tr>
+      </tbody>
+      <caption>Zet hier een wekelijkse meting op de veertig grootste artikelen op. Handmatig is dat een uur per week; geautomatiseerd via een prijsmonitoringdienst kost het <span class="num">€ 200–800</span> per maand en levert het een tijdreeks op waarin je basis- en actieprijs kunt scheiden.</caption>
+    </table>
+  </div>
+</section>
+
+<!-- ══════════ 05 ══════════ -->
+<section id="s6">
+  <h2><span class="n">06</span>Vier talen: van vertaald naar verkocht</h2>
+  <div class="rule"></div>
+
+  <div class="box risk">
+    <div class="bk">Lees dit hoofdstuk met §1.5 ernaast</div>
+    <p>De webshop draagt vandaag 0,9 procent van de omzet en stond in 2026 tot 10 augustus op nul facturen. Alles hieronder blijft juist, maar de volgorde verandert: <strong>eerst uitzoeken waarom er niets binnenkomt, dan pas talen activeren.</strong> Een tweede taal op een winkel die niet verkoopt, verdubbelt niets.</p>
+  </div>
+
+  <p class="lead">De webshop is nu Nederlands, Frans, Engels en Duits. Een vertaalde site verkoopt echter niets uit zichzelf — er ontbreken zeven dingen tussen "de taal staat erop" en "er komen orders binnen".</p>
+
+  <div class="scr wide">
+    <table>
+      <thead><tr><th>Wat</th><th>Waarom het zonder niet werkt</th><th class="r">Kosten</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Vindbaarheid per taal</strong></td><td>Een Duitse kapper zoekt op <em>Friseurbedarf</em> en <em>Haarfarbe Großhandel</em>, niet op vertaalde Nederlandse termen. Zonder eigen zoekwoordonderzoek per taal blijft de vertaling onzichtbaar.</td><td class="r">€ 1.500–3.000</td></tr>
+        <tr><td><strong>Prijzen per land</strong></td><td>Btw-tarieven verschillen: 21 % in België en Nederland, 20 % in Frankrijk, 19 % in Duitsland. Toon prijzen inclusief het juiste tarief, of zakelijk exclusief met btw-verlegging.</td><td class="r">instelling</td></tr>
+        <tr><td><strong>Btw-registratie of OSS</strong></td><td>Boven de EU-drempel van <span class="num">€ 10.000</span> aan grensoverschrijdende consumentenverkoop moet je btw afdragen in het land van de klant. Via de One Stop Shop regel je dat in één aangifte.</td><td class="r">boekhouder</td></tr>
+        <tr><td><strong>Betaalmethoden per land</strong></td><td>iDEAL is goed voor 66 tot 70 procent van de Nederlandse online betalingen, Bancontact voor 73 procent in België. Duitsland draait op PayPal (67 %) en betalen op factuur (40 %); Frankrijk op kaart (71 %).<sup><a href="#b28">28</a></sup> Lokale methoden verhogen de conversie met circa 27 procent.<sup><a href="#b28">28</a></sup> <strong>Let op:</strong> iDEAL gaat in 2026 over naar Wero — controleer of je betaaldienst dat ondersteunt.<sup><a href="#b29">29</a></sup></td><td class="r">€ 500–1.500</td></tr>
+        <tr><td><strong>Verzendtarieven per zone</strong></td><td>Zie <a href="#s8">§8.3</a> voor de tarieven. Een verkeerd ingesteld tarief naar Duitsland eet de hele marge op.</td><td class="r">instelling</td></tr>
+        <tr><td><strong>Klantenservice in de taal</strong></td><td>Een technische kleurvraag beantwoord je niet met een vertaalmachine. Dit is precies je onderscheid uit <a href="#s3">§3</a> — in het Duits en Frans moet dat ook waar zijn.</td><td class="r">€ 4.000–8.000</td></tr>
+        <tr><td><strong>Productteksten die kloppen</strong></td><td>2.069 artikelen op de webshop × 3 nieuwe talen. Machinaal vertalen kan, maar laat de 221 artikelen die de helft van je omzet dragen nakijken door iemand die de vaktaal kent.</td><td class="r">€ 1.500–3.000</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>6.1 Welke taal het eerst aandacht verdient</h3>
+
+  <div class="scr wide">
+    <table>
+      <thead><tr><th>Markt</th><th>Kans</th><th>Concurrentie</th><th>Oordeel</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Frans — Wallonië en Brussel</strong></td>
+          <td>Zelfde land, zelfde btw, zelfde leveranciers, geen douane, levering binnen een dag. Ongeveer veertig procent van de Belgische salons.</td>
+          <td>Dun. Weinig Franstalige Belgische kappersgroothandels online.</td>
+          <td><span class="chip ja">Eerst</span> hoogste opbrengst per geïnvesteerde euro</td>
+        </tr>
+        <tr>
+          <td><strong>Duits — grensregio NRW</strong></td>
+          <td>Grote markt op korte afstand. Aken en Mönchengladbach liggen dichter bij Malle dan Groningen.</td>
+          <td>Zwaar. <a href="https://www.basler-pro.de/">Basler Pro</a> voert meer dan 10.000 artikelen; <a href="https://www.alfastore.de/">AlfaStore</a> en <a href="https://www.hair24.de/">hair24</a> concurreren op prijs.<sup><a href="#b13">13</a></sup> Duitsland is bovendien de enige van de vier waar betalen op factuur gangbaar is — dat vraagt een kredietbeoordeling.<sup><a href="#b28">28</a></sup></td>
+          <td><span class="chip mis">Tweede</span> alleen met een eigen verhaal, niet met een vertaalde catalogus</td>
+        </tr>
+        <tr>
+          <td><strong>Engels</strong></td>
+          <td>Geen eigen markt maar een vangnet: expats, internationale salons, en bezoekers die geen van de drie andere talen spreken.</td>
+          <td>—</td>
+          <td><span class="chip">Laat staan</span> geen aparte investering</td>
+        </tr>
+        <tr>
+          <td><strong>Nederlands — Nederland</strong></td>
+          <td>Bestaande markt.</td>
+          <td>Haibu is er marktleider met circa 15.000 artikelen.</td>
+          <td><span class="chip mis">Selectief</span> alleen op eigen merk en kleurspecialisme, nooit op prijs</td>
+        </tr>
+      </tbody>
+      <caption>Verwacht effect bij een serieuze Franstalige activatie: <span class="num">€ 12.000–24.000</span> extra brutowinst per jaar vanaf jaar twee, bij een investering van <span class="num">€ 8.000–15.000</span>. Dat is de op één na grootste post in dit rapport.</caption>
+    </table>
+  </div>
+
+  <div class="box">
+    <div class="bk">Doe dit vóór de campagne</div>
+    <p>Beoordeel eerst de 937 actieve artikelen die vijf stuks of minder deden (<a href="#s2">§2.5</a>). Anders vertaal en onderhoud je artikelen die nauwelijks besteld worden — in drie extra talen. Dat is de goedkoopste besparing in het hele taalproject.</p>
+  </div>
+</section>
+
+<!-- ══════════ 06 ══════════ -->
+<section id="s7">
+  <h2><span class="n">07</span>Eigen merk uitbreiden</h2>
+  <div class="rule"></div>
+
+  <p class="lead">Op de prijzen van vandaag is eigen label 7,0 procent van het volume bij een marge van <strong>62,5 procent</strong>, tegen 53,0 procent op al het overige. Elke procentpunt die verschuift levert dus 9,5 punt margeverschil op — minder dan een berekening op historische gemiddelden suggereert, omdat je marge op het overige assortiment inmiddels een stuk hoger ligt.</p>
+
+  <div class="scr wide">
+    <table>
+      <thead><tr><th>Doel</th><th class="r">Verschuiving</th><th class="r">Effect op de mengmarge</th><th class="r">Per jaar</th></tr></thead>
+      <tbody>
+        <tr><td>naar 15 %</td><td class="r">+8,0 pt</td><td class="r">+0,76 pt</td><td class="r">+ € 2.850</td></tr>
+        <tr><td>naar 20 %</td><td class="r">+13,0 pt</td><td class="r">+1,24 pt</td><td class="r">+ € 4.650</td></tr>
+        <tr><td>naar 25 %</td><td class="r">+18,0 pt</td><td class="r">+1,71 pt</td><td class="r">+ € 6.400</td></tr>
+      </tbody>
+      <caption>Op een omzet van <span class="num">€ 375.000</span> per jaar. Twintig procent binnen twee jaar is realistisch; vijfentwintig vraagt ook een eigen kleurlijn en dat is een veel zwaardere stap.</caption>
+    </table>
+  </div>
+
+  <h3>7.1 Welke artikelen als eerste</h3>
+
+  <p>Niet willekeurig uitbreiden, maar gericht op de plekken waar je nu een merk inkoopt terwijl je hetzelfde type product al goedkoper zelf laat maken. De styling­lijn is het duidelijkste voorbeeld.</p>
+
+  <div class="scr wide">
+    <table>
+      <thead><tr><th>Wat je nu inkoopt</th><th class="r">Inkoop</th><th class="r">Marge</th><th>Eigen equivalent bestaat al</th><th class="r">Marge</th></tr></thead>
+      <tbody>
+        <tr><td>Sens.ùs T@B&gt;U Fixer 300 ml</td><td class="r">7,18</td><td class="r">48,5 %</td><td>HairStuff Hairspray 500 ml — <span class="num">€ 3,41</span></td><td class="r">62,8 %</td></tr>
+        <tr><td>Sens.ùs Man Sculpting Gel 150 ml</td><td class="r">5,36</td><td class="r">48,2 %</td><td>Kursaal Gel Extra Forte 500 ml — <span class="num">€ 3,58</span></td><td class="r">66,2 %</td></tr>
+        <tr><td>Wella EIMI Extra Volume Mousse 300 ml</td><td class="r">8,75</td><td class="r">34,9 %</td><td>Hairstuff Mousse Normaal 300 ml — <span class="num">€ 2,47</span></td><td class="r">67,9 %</td></tr>
+        <tr><td>Jet Set Mousse Normal 400 ml</td><td class="r">6,17</td><td class="r">36,0 %</td><td>idem</td><td class="r">67,9 %</td></tr>
+        <tr><td>Chi Enviro Hairspray 340 gr</td><td class="r">9,92</td><td class="r">28,7 %</td><td>HairStuff Hairspray 500 ml</td><td class="r">62,8 %</td></tr>
+      </tbody>
+      <caption>De hele T@B&gt;U-stylinglijn is 54 artikelen met <span class="num">€ 24.383</span> omzet per jaar bij 43,0 procent marge. Op eigen-labelniveau (61,0 %) zou dat <strong>+ € 4.398 per jaar</strong> zijn — bij dezelfde omzet.</caption>
+    </table>
+  </div>
+
+  <h3>7.2 Goedkoper laten maken in het buitenland</h3>
+
+  <p>Je eigen label wordt nu al scherp geproduceerd. De vraag is of het buitenland dat kan verbeteren, en het antwoord verschilt per doel.</p>
+
+  <div class="scr wide">
+    <table>
+      <thead><tr><th>Regio</th><th>Prijsniveau</th><th>Minimumafname</th><th>Waar te beginnen</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Turkije</strong><br><span style="color:var(--inkt-3);font-size:11px"><a href="https://xiranskincare.com/top-10-private-label-cosmetic-manufacturers-in-turkey/">overzicht producenten</a></span></td><td>20 tot 40 procent onder West-Europa<sup><a href="#b7">7</a></sup></td><td>doorgaans 500–1.000 stuks per artikel<sup><a href="#b7">7</a></sup></td><td>Overzicht via <a href="https://xiranskincare.com/top-10-private-label-cosmetic-manufacturers-in-turkey/">Xiran</a>; Cosmo Public maakt gel en mousse</td></tr>
+        <tr><td><strong>Polen</strong><br><span style="color:var(--inkt-3);font-size:11px"><a href="https://www.cosmeticindex.com/_cosmetic-private-label-poland">CosmeticIndex Polen</a></span></td><td>onder West-Europa, binnen de EU dus geen invoerrechten</td><td>vanaf 1.000 stuks<sup><a href="#b8">8</a></sup></td><td><a href="https://www.cosmeticindex.com/_cosmetic-private-label-poland">CosmeticIndex Polen</a>; Delia Cosmetics, Clover Cosmetics</td></tr>
+        <tr><td><strong>Italië</strong></td><td>marktconform, sterk in kleur</td><td>wisselend</td><td><a href="https://wonnda.com/magazine/european-private-label-cosmetic-manufacturers/">Wonnda-overzicht</a>; kleurhuizen die contractproductie doen</td></tr>
+        <tr><td><strong>België</strong></td><td>hoogst, maar korte keten en een <em>made in Belgium</em>-claim</td><td>wisselend</td><td>Anhairco (Aartselaar), Carin (Deerlijk)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="box calc">
+    <div class="bk">Rekenvoorbeeld: loont verplaatsen naar Turkije?</div>
+    <div class="reken">
+      <div class="rt">HairStuff Hairspray 500 ml — 253 stuks per jaar</div>
+      <div class="rr"><span class="lbl">Huidige inkoopprijs</span><span>€ 3,41</span></div>
+      <div class="rr"><span class="lbl">Turkije, 30 % lager</span><span>€ 2,39</span></div>
+      <div class="rr"><span class="lbl">Besparing per stuk</span><span>€ 1,02</span></div>
+      <div class="rr tot"><span class="lbl">Besparing per jaar</span><span>€ 258</span></div>
+    </div>
+    <p><strong>Conclusie: niet doen om te besparen.</strong> Op je huidige volumes verdien je de reis niet terug. De minimumafname van 500 tot 1.000 stuks is twee tot vier jaar voorraad.</p>
+    <p style="margin-top:9px"><strong>Wel doen om uit te breiden.</strong> Een buitenlandse producent is interessant voor artikelen die je nu <em>niet</em> zelf voert: een eigen stylinglijn naast T@B&gt;U, een eigen blondeerpoeder, of eigen verbruiksartikelen. Daar vervang je een inkoopprijs van <span class="num">€ 6</span> tot <span class="num">€ 9</span> door een van <span class="num">€ 2</span> tot <span class="num">€ 3</span> — dát is waar de 15 marge­punten zitten.</p>
+  </div>
+
+  <div class="box risk">
+    <div class="bk">Reken de verborgen kosten mee</div>
+    <p>Elk cosmetisch product onder eigen naam vraagt een Europese verantwoordelijke persoon, een productinformatiedossier, een veiligheidsbeoordeling en registratie in het CPNP-portaal. Reken op <span class="num">€ 800–2.500</span> per formule, los van ontwerp, verpakking en minimumafname. Een lancering van acht artikelen kost dus al snel <span class="num">€ 10.000–20.000</span> aan regelgeving voordat er één fles verkocht is. Vraag elke producent expliciet of hij dit levert — Poolse en Italiaanse partijen doen dat vaak wel, Turkse niet altijd.</p>
+  </div>
+
+  <h3>7.3 Twee merken, twee rollen</h3>
+
+  <p>Salons gebruiken het huismerk van hun groothandel graag achter de wasbak, maar verkopen het niet door aan hun eigen klanten — dan verkopen ze immers het merk van hun leverancier. Eén merknaam voor beide rollen blokkeert de helft van het potentieel.</p>
+
+  <div class="scr wide">
+    <table>
+      <thead><tr><th></th><th>HairStuff / Kursaal</th><th>Nieuw retailmerk</th></tr></thead>
+      <tbody>
+        <tr><td>Rol</td><td>Achter de wasbak en verbruik</td><td>Doorverkoop aan de eindklant</td></tr>
+        <tr><td>Assortiment</td><td>Oxydant, blondeerpoeder, shampoo per liter, gel, mousse, haarlak, handschoenen, folie</td><td>Verzorgingslijn met één duidelijk verhaal: hoofdhuid, krul of clean</td></tr>
+        <tr><td>Distributie</td><td>Iedereen</td><td>Alleen salons die niet online doorverkopen</td></tr>
+        <tr><td>Marge nu / doel</td><td>59,2 % → behouden</td><td>—  → 60–65 %</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ══════════ 07 ══════════ -->
+<section id="s8">
+  <h2><span class="n">08</span>Hairstation op Bol</h2>
+  <div class="rule"></div>
+
+  <p class="lead">Een tweede winkel onder een eigen naam, met een eigen assortiment en scherpere prijzen. Het idee is goed, maar de rekensom bepaalt wát je erin legt — en dat is niet wat je nu het meest verkoopt.</p>
+
+  <h3>8.1 Wat Bol kost</h3>
+
+  <div class="scr wide">
+    <table>
+      <thead><tr><th>Kostenpost</th><th>Hoogte</th><th>Bron</th></tr></thead>
+      <tbody>
+        <tr><td>Verkoopcommissie, beauty en verzorging</td><td>10 tot 15 procent van de verkoopprijs</td><td><a href="https://rylee.nl/nl/blog/hoeveel-commissie-betaal-je-eigenlijk-aan-bol.com">Rylee</a><sup><a href="#b1">1</a></sup></td></tr>
+        <tr><td>Gemiddelde commissie over alle categorieën</td><td>12,4 procent excl. btw; spreiding 4 tot 21 procent</td><td><a href="https://boloo.co/blog/commissie-bol-com">Boloo</a><sup><a href="#b2">2</a></sup></td></tr>
+        <tr><td>Vaste bijdrage per order</td><td>vast bedrag, afhankelijk van de verkoopprijs</td><td><a href="https://lijstify.com/blog/bol-com-kosten-commissie-overzicht">Lijstify</a><sup><a href="#b3">3</a></sup></td></tr>
+        <tr><td>Logistiek via bol — brievenbuspakket</td><td><span class="num">€ 3,49</span> incl. btw</td><td><a href="https://www.distilo.nl/blog/bol-verzendkosten-2026">Distilo</a><sup><a href="#b4">4</a></sup></td></tr>
+        <tr><td>Logistiek via bol — pakket tot 3 kg</td><td>circa <span class="num">€ 3,50</span> per bestelling</td><td><a href="https://producttickler.nl/kosten-verkopen-bol-com/">ProductTickler</a><sup><a href="#b5">5</a></sup></td></tr>
+        <tr><td>Opslag bij Logistiek via bol</td><td>per kubieke meter per maand; hoger tarief boven zes maanden</td><td><a href="https://smartfulfilment.nl/blog/nl/logistiek-via-bol">Smart Fulfilment</a><sup><a href="#b6">6</a></sup></td></tr>
+      </tbody>
+      <caption>De exacte tarieven per voordeeltrede zijn alleen zichtbaar in je eigen Bol Partnerplatform-account.<sup><a href="#b4">4</a></sup> Reken de voorbeelden hieronder na met jouw eigen cijfers zodra je een account hebt.</caption>
+    </table>
+  </div>
+
+  <h3>8.2 Drie rekenvoorbeelden</h3>
+
+  <div class="box calc wide">
+    <div class="bk">A — Laagwaardig artikel: Kursaal Gel Extra Forte 500 ml</div>
+    <div class="reken">
+      <div class="rt">Bol, consumentenprijs € 12,95 incl. btw</div>
+      <div class="rr"><span class="lbl">Omzet exclusief btw</span><span>€ 10,70</span></div>
+      <div class="rr"><span class="lbl neg">Commissie 15 % over € 12,95</span><span class="neg">− € 1,94</span></div>
+      <div class="rr"><span class="lbl neg">Vaste bijdrage per order</span><span class="neg">− € 0,99</span></div>
+      <div class="rr"><span class="lbl neg">Verzending (LVB brievenbus)</span><span class="neg">− € 2,88</span></div>
+      <div class="rr"><span class="lbl neg">Inkoop</span><span class="neg">− € 3,58</span></div>
+      <div class="rr tot"><span class="lbl">Netto — 12,2 % marge</span><span>€ 1,31</span></div>
+    </div>
+    <p><strong>In je eigen webshop levert dezelfde fles <span class="num">€ 7,05</span> op — 66,2 procent.</strong> Via Bol houd je nog geen vijfde daarvan over. Laagwaardige artikelen horen niet op een marktplaats.</p>
+  </div>
+
+  <div class="box calc wide">
+    <div class="bk">B — Middenklasse: verzorgingsproduct van € 16,95</div>
+    <div class="reken">
+      <div class="rt">Bol, consumentenprijs € 16,95 incl. btw · inkoop € 3,66</div>
+      <div class="rr"><span class="lbl">Omzet exclusief btw</span><span>€ 14,01</span></div>
+      <div class="rr"><span class="lbl neg">Commissie 15 %</span><span class="neg">− € 2,54</span></div>
+      <div class="rr"><span class="lbl neg">Vaste bijdrage</span><span class="neg">− € 0,99</span></div>
+      <div class="rr"><span class="lbl neg">Verzending</span><span class="neg">− € 2,88</span></div>
+      <div class="rr"><span class="lbl neg">Inkoop</span><span class="neg">− € 3,66</span></div>
+      <div class="rr tot"><span class="lbl">Netto — 28,1 % marge</span><span>€ 3,94</span></div>
+    </div>
+    <p>Werkbaar, maar nog altijd de helft van je webshopmarge. En let op: op merkartikelen mag je vaak contractueel niet via een marktplaats verkopen — zie 7.5.</p>
+  </div>
+
+  <div class="box calc wide">
+    <div class="bk">C — Hoogwaardig: haardroger van € 199</div>
+    <div class="reken">
+      <div class="rt">Bol, consumentenprijs € 199,00 incl. btw · inkoop € 73,77</div>
+      <div class="rr"><span class="lbl">Omzet exclusief btw</span><span>€ 164,46</span></div>
+      <div class="rr"><span class="lbl neg">Commissie 12 %</span><span class="neg">− € 23,88</span></div>
+      <div class="rr"><span class="lbl neg">Vaste bijdrage</span><span class="neg">− € 0,99</span></div>
+      <div class="rr"><span class="lbl neg">Verzending pakket</span><span class="neg">− € 5,50</span></div>
+      <div class="rr"><span class="lbl neg">Inkoop</span><span class="neg">− € 73,77</span></div>
+      <div class="rr tot"><span class="lbl">Netto — 36,7 % marge</span><span>€ 60,32</span></div>
+    </div>
+    <p><strong>Dit werkt.</strong> Eén verkoop levert meer op dan zesenveertig gelflessen via Bol. Bij hoogwaardige artikelen valt de vaste bijdrage en de verzending in het niet.</p>
+  </div>
+
+  <div class="box win">
+    <div class="bk">Wat Hairstation dus moet verkopen</div>
+    <p><strong>Wel:</strong> apparatuur (haardrogers, stijltangen, krultangen, scharen), starters- en cadeaupakketten boven <span class="num">€ 40</span>, en bundels van eigen label (drie stuks in één doos). <strong>Niet:</strong> losse flessen onder <span class="num">€ 15</span>, zware liters oxydant, en spuitbussen.</p>
+    <p style="margin-top:9px"><strong>Let op met spuitbussen.</strong> Haarlak en mousse zijn gevaarlijke stoffen onder ADR. Veel fulfilmentpartijen en vervoerders weigeren ze of rekenen toeslagen. Controleer dat vóór je je bestverkopende eigen haarlak op Bol zet.</p>
+  </div>
+
+  <h3>8.3 Zelf verzenden of via Bol</h3>
+
+  <div class="scr wide">
+    <table>
+      <thead><tr><th>Route</th><th class="r">Brievenbuspakje</th><th class="r">Pakket tot 10 kg</th><th>Bron</th></tr></thead>
+      <tbody>
+        <tr><td>Logistiek via bol</td><td class="r">€ 3,49 incl.</td><td class="r">± € 3,50 tot 3 kg</td><td><a href="https://www.distilo.nl/blog/bol-verzendkosten-2026">Distilo</a><sup><a href="#b4">4</a></sup></td></tr>
+        <tr><td>DPD</td><td class="r">€ 3,11</td><td class="r">€ 5–6</td><td><a href="https://digitale-postzegel.nl/brievenbuspakje-versturen/">Digitale Postzegel</a><sup><a href="#b9">9</a></sup></td></tr>
+        <tr><td>DHL</td><td class="r">€ 3,85</td><td class="r">€ 5–6</td><td>idem<sup><a href="#b9">9</a></sup></td></tr>
+        <tr><td>PostNL</td><td class="r">€ 4,10</td><td class="r">zie tarievenpagina</td><td><a href="https://www.postnl.nl/tarieven/">PostNL</a><sup><a href="#b10">10</a></sup></td></tr>
+        <tr><td>bpost zakelijk</td><td class="r">op aanvraag</td><td class="r">staffel vanaf 250 pakketten per jaar</td><td><a href="https://www.bpost.be/nl/tarieven">bpost</a><sup><a href="#b11">11</a></sup></td></tr>
+        <tr><td>Via Sendcloud</td><td class="r" colspan="2">20 tot 40 procent onder de standaardtarieven</td><td><a href="https://go.sendcloud.be/pricing/pricing-list-download">Sendcloud</a><sup><a href="#b14">14</a></sup></td></tr>
+      </tbody>
+      <caption>Voor een Belgische verzender is bpost de logische basis, met Sendcloud als koepel om DPD en DHL ernaast te kunnen zetten. Het verschil tussen <span class="num">€ 3,11</span> en <span class="num">€ 4,10</span> op een brievenbuspakje is bijna een euro per order — op duizend orders per jaar is dat <span class="num">€ 1.000</span>.</caption>
+    </table>
+  </div>
+
+  <h3>8.4 Waarom een aparte naam verstandig is</h3>
+  <ul>
+    <li><strong>Prijsscheiding.</strong> Op Bol concurreer je met consumentenprijzen; in je eigen webshop met vakhandelsprijzen. Onder één naam ziet je salonklant dat je hetzelfde product goedkoper aan particulieren verkoopt.</li>
+    <li><strong>Assortimentsscheiding.</strong> Hairstation voert alleen wat op Bol rendeert. Dat is een fractie van je catalogus, en dat is precies de bedoeling.</li>
+    <li><strong>Merkbescherming.</strong> Gaat het experiment niet door, dan raakt dat Hairstuff.be niet.</li>
+  </ul>
+
+  <h3>8.5 Twee risico's die je vooraf moet uitzoeken</h3>
+  <div class="box risk">
+    <div class="bk">Distributieafspraken</div>
+    <p>De meeste professionele merken verbieden verkoop via marktplaatsen contractueel. Binnen de EU mag een leverancier geen vaste wederverkoopprijs opleggen, maar hij mág wel kwalitatieve selectiecriteria stellen en marktplaatsverkoop uitsluiten. Lees je overeenkomsten met Super Hair Brands, L'Oréal en Wella vóór je één artikel op Bol zet. <strong>Op je eigen label speelt dit niet</strong> — dat is nog een reden om Hairstation daaromheen te bouwen.</p>
+  </div>
+  <div class="box risk">
+    <div class="bk">Retourenpercentage</div>
+    <p>Marktplaatsklanten retourneren aanzienlijk vaker dan vakklanten. Reken in de businesscase met een retourpercentage en de bijbehorende verwerkingskosten; bij een marge van 12 procent zoals in voorbeeld A slaat één retour op tien orders de winst er volledig af.</p>
+  </div>
+</section>
+
+<!-- ══════════ 08 ══════════ -->
+<section id="s9">
+  <h2><span class="n">09</span>Nieuwe leveranciers en niches</h2>
+  <div class="rule"></div>
+
+  <p class="lead">Vijfenveertig namen, geordend naar wat ze voor je oplossen. Per categorie staat erbij waarom het merk past, wat de marge­orde is, en of het geschikt is voor Hairstation op Bol (<a href="#s8">§8</a>).</p>
+
+  <div class="box">
+    <div class="bk">Hoe je deze lijst gebruikt</div>
+    <p>Dit is een belijst om te bellen, geen afgeronde toetsing. Vraag bij elk merk vier dingen: <strong>is het territorium België vrij</strong>, <strong>wat is de minimumafname</strong>, <strong>mag je online en op marktplaatsen verkopen</strong>, en <strong>wat krijg je aan opleiding en marketingbijdrage</strong>. Dat laatste is waar de meeste distributeurs geld laten liggen: drie tot vijf procent co-op op de inkoopwaarde is gangbaar en wordt zelden gevraagd.</p>
+  </div>
+
+  <div class="box">
+    <div class="bk">Over de bronnen in dit rapport</div>
+    <p>Cijfers over je eigen bedrijf komen uit de Mplus-exports en dragen geen bronnummer — die zijn na te rekenen met de scripts in <code>rapporten/analyse/</code>. Elke uitspraak over de <em>markt</em> draagt een genummerde verwijzing zoals <sup><a href="#b26">26</a></sup> die naar de bronnenlijst achterin springt, met een klikbare URL. Elke leverancier heeft daarnaast een directe link naar de eigen site in de kolom rechts.</p>
+  </div>
+
+  <div class="box calc">
+    <div class="bk">Over de prijzen in dit hoofdstuk</div>
+    <p>Inkoop- en salonprijzen zijn <strong>richtprijzen om mee te rekenen, geen offerte</strong>. Ze zijn afgeleid van de margestructuur in je eigen boeken — Sens.ùs kleur koopt op <span class="num">€ 4,68–5,08</span> en verkoopt op <span class="num">€ 12,02–12,71</span> — en van gangbare verhoudingen in deze handel. Vraag bij elk merk de actuele prijslijst op en herreken; de kolom laat zien of het de moeite van dat telefoontje waard is.</p>
+    <p style="margin-top:9px">De kolom <em>Bron</em> linkt naar de site van het merk zelf. Vraag daar een distributiepakket aan; de meeste professionele merken hebben een aparte pagina voor groothandel of wederverkopers.</p>
+  </div>
+
+  <h3>9.1 Kleur: margealternatieven naast de A-merken</h3>
+  <p>Italië is het centrum van professionele kleuring buiten de grote concerns. Deze huizen leveren vergelijkbare techniek tegen inkoopprijzen die dichter bij je Sens.ùs-niveau liggen dan bij Koleston — dat op dit moment <span class="num">€ 7,48</span> inkoop kost voor 60 ml.</p>
+
+  <div class="scr wide">
+    <table>
+      <thead><tr><th>Merk</th><th>Voorbeeldproduct</th><th class="r">Inkoop</th><th class="r">Salonprijs</th><th class="r">Marge</th><th class="r">Bol</th><th>Bron</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Fanola</strong><br><span style="color:var(--inkt-3);font-size:11px">Italië · sterkste consumentenpull</span></td><td>No Yellow Shampoo 350 ml</td><td class="r">3.50</td><td class="r">8.95</td><td class="r">61 %</td><td class="r"><span class="chip ja">Ja</span></td><td><a href="https://fanola.hair/">fanola.hair</a></td></tr>
+        <tr><td><strong>Fanola</strong><br><span style="color:var(--inkt-3);font-size:11px">Italië</span></td><td>Kleurcrème 100 ml</td><td class="r">3.20</td><td class="r">8.50</td><td class="r">62 %</td><td class="r"><span class="chip nee">Nee</span></td><td><a href="https://fanola.hair/collections/no-yellow-professional">fanola.hair/collections/no-yellow-professional</a></td></tr>
+        <tr><td><strong>Alfaparf Milano</strong><br><span style="color:var(--inkt-3);font-size:11px">Italië</span></td><td>Evolution of the Color 60 ml</td><td class="r">4.80</td><td class="r">11.50</td><td class="r">58 %</td><td class="r"><span class="chip nee">Nee</span></td><td><a href="https://www.alfaparfmilanopro.com/">alfaparfmilanopro.com</a></td></tr>
+        <tr><td><strong>Kaaral</strong><br><span style="color:var(--inkt-3);font-size:11px">Italië · doet ook private label</span></td><td>Baco kleurcrème 100 ml</td><td class="r">3.40</td><td class="r">9.20</td><td class="r">63 %</td><td class="r"><span class="chip nee">Nee</span></td><td><a href="https://www.kaaral.com/">kaaral.com</a></td></tr>
+        <tr><td><strong>Lisap Milano</strong><br><span style="color:var(--inkt-3);font-size:11px">Italië</span></td><td>LK kleurcrème 100 ml</td><td class="r">3.60</td><td class="r">9.50</td><td class="r">62 %</td><td class="r"><span class="chip nee">Nee</span></td><td><a href="https://www.lisap.com/">lisap.com</a></td></tr>
+        <tr><td><strong>Vitality's</strong><br><span style="color:var(--inkt-3);font-size:11px">Italië</span></td><td>Zero ammoniakvrije kleur 100 ml</td><td class="r">4.20</td><td class="r">10.90</td><td class="r">61 %</td><td class="r"><span class="chip mis">Deels</span></td><td><a href="https://www.vitalitys.it/">vitalitys.it</a></td></tr>
+        <tr><td><strong>Echosline</strong><br><span style="color:var(--inkt-3);font-size:11px">Italië</span></td><td>Vegan kleurlijn 100 ml</td><td class="r">3.30</td><td class="r">8.90</td><td class="r">63 %</td><td class="r"><span class="chip mis">Deels</span></td><td><a href="https://www.echosline.it/">echosline.it</a></td></tr>
+        <tr><td><strong>Elgon</strong><br><span style="color:var(--inkt-3);font-size:11px">Italië · sterk in blond</span></td><td>Moda&Styling kleur 100 ml</td><td class="r">3.50</td><td class="r">9.20</td><td class="r">62 %</td><td class="r"><span class="chip nee">Nee</span></td><td><a href="https://www.elgon.it/">elgon.it</a></td></tr>
+        <tr><td><strong>Farmavita</strong><br><span style="color:var(--inkt-3);font-size:11px">Italië · lage minimumafname</span></td><td>Life Color Plus 100 ml</td><td class="r">3.10</td><td class="r">8.50</td><td class="r">64 %</td><td class="r"><span class="chip nee">Nee</span></td><td><a href="https://www.farmavita.it/">farmavita.it</a></td></tr>
+        <tr><td><strong>Selective Professional</strong><br><span style="color:var(--inkt-3);font-size:11px">Italië</span></td><td>ColorEvo 100 ml</td><td class="r">3.60</td><td class="r">9.50</td><td class="r">62 %</td><td class="r"><span class="chip nee">Nee</span></td><td><a href="https://www.selectiveprofessional.com/">selectiveprofessional.com</a></td></tr>
+      </tbody>
+      <caption>Ter vergelijking je huidige positie: Sens.ùs koopt op <span class="num">€ 4,68–5,08</span> per 100 ml en verkoopt op <span class="num">€ 12,02–12,71</span> — 60 procent marge. Deze merken zitten in dezelfde orde of iets scherper, en bieden dus vooral <em>spreiding</em> van je leveranciersrisico, niet per se meer marge.</caption>
+    </table>
+  </div>
+
+
+  <h3>9.2 Hoofdhuid, bond en trichologie</h3>
+  <p>Waar de markt naartoe beweegt (<a href="#s4">§4.2</a>) en waar je vandaag vrijwel niets voert. Hoge consumentenvraag maakt deze categorie meteen geschikt voor Hairstation.</p>
+
+  <div class="scr wide">
+    <table>
+      <thead><tr><th>Merk</th><th>Voorbeeldproduct</th><th class="r">Inkoop</th><th class="r">Salonprijs</th><th class="r">Marge</th><th class="r">Bol</th><th>Bron</th></tr></thead>
+      <tbody>
+        <tr><td><strong>K18</strong><br><span style="color:var(--inkt-3);font-size:11px">VS · <a href="https://www.k18hairpro.com/collections/wholesale">pro-wholesale</a></span></td><td>Leave-in Molecular Repair Mask 50 ml</td><td class="r">27.00</td><td class="r">47.50</td><td class="r">43 %</td><td class="r"><span class="chip ja">Ja</span></td><td><a href="https://www.k18hair.com/">k18hair.com</a></td></tr>
+        <tr><td><strong>epres</strong><br><span style="color:var(--inkt-3);font-size:11px">VS · van de uitvinder van Olaplex</span></td><td>Bond Repair starterkit</td><td class="r">34.00</td><td class="r">62.00</td><td class="r">45 %</td><td class="r"><span class="chip ja">Ja</span></td><td><a href="https://epres.com/">epres.com</a></td></tr>
+        <tr><td><strong>Neofollics</strong><br><span style="color:var(--inkt-3);font-size:11px">Nederland · korte logistiek</span></td><td>Hair Growth Shampoo 250 ml</td><td class="r">9.50</td><td class="r">21.95</td><td class="r">57 %</td><td class="r"><span class="chip ja">Ja</span></td><td><a href="https://neofollics.com/">neofollics.com</a></td></tr>
+        <tr><td><strong>Sim Sensitive System 4</strong><br><span style="color:var(--inkt-3);font-size:11px">Finland · klinische claim</span></td><td>Bio Botanical Shampoo 215 ml</td><td class="r">8.00</td><td class="r">18.50</td><td class="r">57 %</td><td class="r"><span class="chip ja">Ja</span></td><td><a href="https://www.simsensitive.com/">simsensitive.com</a></td></tr>
+        <tr><td><strong>Cutrin</strong><br><span style="color:var(--inkt-3);font-size:11px">Finland</span></td><td>Bio+ hoofdhuidserum 100 ml</td><td class="r">7.50</td><td class="r">17.50</td><td class="r">57 %</td><td class="r"><span class="chip mis">Deels</span></td><td><a href="https://www.cutrin.fi/">cutrin.fi</a></td></tr>
+        <tr><td><strong>Nioxin</strong><br><span style="color:var(--inkt-3);font-size:11px">Wella</span></td><td>System Kit 3-delig</td><td class="r">14.00</td><td class="r">24.50</td><td class="r">43 %</td><td class="r"><span class="chip nee">Nee</span></td><td><a href="https://www.nioxin.com/">nioxin.com</a></td></tr>
+        <tr><td><strong>Olaplex</strong><br><span style="color:var(--inkt-3);font-size:11px">VS · lage marge, hoge naamsbekendheid</span></td><td>No.3 Hair Perfector 100 ml</td><td class="r">16.00</td><td class="r">26.00</td><td class="r">38 %</td><td class="r"><span class="chip nee">Nee</span></td><td><a href="https://olaplex.com/">olaplex.com</a></td></tr>
+      </tbody>
+      <caption>Let op het patroon: hoe klinischer de claim, hoe hoger de prijs die de eindklant accepteert. Sim Sensitive en Neofollics verkopen een <em>behandeling</em>, geen shampoo — vandaar de marge.</caption>
+    </table>
+  </div>
+
+
+  <h3>9.3 Verzorging: vegan, Scandinavisch en indie</h3>
+  <p>De groei in deze hoek komt van merken die zich in gemeenschappen laten zien in plaats van alleen online, en van de verschuiving naar wetenschappelijk onderbouwde formules met gefermenteerde en zeewier-actieven.<sup><a href="#b25">25</a></sup></p>
+
+  <div class="scr wide">
+    <table>
+      <thead><tr><th>Merk</th><th>Voorbeeldproduct</th><th class="r">Inkoop</th><th class="r">Salonprijs</th><th class="r">Marge</th><th class="r">Bol</th><th>Bron</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Maria Nila</strong><br><span style="color:var(--inkt-3);font-size:11px">Zweden · 100 % vegan, sterke doorverkoop</span></td><td>Head &amp; Hair Heal Shampoo 350 ml</td><td class="r">8.00</td><td class="r">17.50</td><td class="r">54 %</td><td class="r"><span class="chip ja">Ja</span></td><td><a href="https://marianila.com/">marianila.com</a></td></tr>
+        <tr><td><strong>Four Reasons</strong><br><span style="color:var(--inkt-3);font-size:11px">Finland · <a href="https://fourreasons.com/distributors/">distributeurspagina</a></span></td><td>Color Mask 250 ml</td><td class="r">4.50</td><td class="r">11.50</td><td class="r">61 %</td><td class="r"><span class="chip ja">Ja</span></td><td><a href="https://fourreasons.com/">fourreasons.com</a></td></tr>
+        <tr><td><strong>Waterclouds</strong><br><span style="color:var(--inkt-3);font-size:11px">Zweden</span></td><td>Beach Wave Spray 250 ml</td><td class="r">5.50</td><td class="r">13.50</td><td class="r">59 %</td><td class="r"><span class="chip ja">Ja</span></td><td><a href="https://waterclouds.com/">waterclouds.com</a></td></tr>
+        <tr><td><strong>milk_shake</strong><br><span style="color:var(--inkt-3);font-size:11px">Italië</span></td><td>Whipped Cream 250 ml</td><td class="r">6.50</td><td class="r">15.50</td><td class="r">58 %</td><td class="r"><span class="chip mis">Deels</span></td><td><a href="https://www.milkshakehair.com/">milkshakehair.com</a></td></tr>
+        <tr><td><strong>Insight Professional</strong><br><span style="color:var(--inkt-3);font-size:11px">Italië</span></td><td>Daily Use Shampoo 400 ml</td><td class="r">4.00</td><td class="r">10.50</td><td class="r">62 %</td><td class="r"><span class="chip mis">Deels</span></td><td><a href="https://www.insightprofessional.it/">insightprofessional.it</a></td></tr>
+        <tr><td><strong>Evo</strong><br><span style="color:var(--inkt-3);font-size:11px">Australië</span></td><td>Fabuloso Colour Intensifier 220 ml</td><td class="r">10.00</td><td class="r">22.50</td><td class="r">56 %</td><td class="r"><span class="chip nee">Nee</span></td><td><a href="https://evohair.com/">evohair.com</a></td></tr>
+        <tr><td><strong>Davines</strong><br><span style="color:var(--inkt-3);font-size:11px">Italië · B-Corp, selectieve distributie</span></td><td>OI Shampoo 280 ml</td><td class="r">11.00</td><td class="r">22.00</td><td class="r">50 %</td><td class="r"><span class="chip nee">Nee</span></td><td><a href="https://www.davines.com/">davines.com</a></td></tr>
+        <tr><td><strong>TRINITY Haircare</strong><br><span style="color:var(--inkt-3);font-size:11px">Zwitserland · nauwelijks in de Benelux</span></td><td>Care shampoo 300 ml</td><td class="r">7.00</td><td class="r">16.50</td><td class="r">58 %</td><td class="r"><span class="chip nee">Nee</span></td><td><a href="https://www.trinityhaircare.com/">trinityhaircare.com</a></td></tr>
+      </tbody>
+      <caption>Maria Nila en Four Reasons zijn de twee met de laagste drempel: allebei expliciet op zoek naar distributeurs, allebei vegan, en allebei met genoeg consumentenbekendheid om ook op Bol te lopen.</caption>
+    </table>
+  </div>
+
+
+  <h3>9.4 Barber en herenverzorging</h3>
+  <p>Eigen merkenset, hoog verbruik, en de consumentenmerken erin lopen uitstekend op een marktplaats.</p>
+
+  <div class="scr wide">
+    <table>
+      <thead><tr><th>Merk</th><th>Voorbeeldproduct</th><th class="r">Inkoop</th><th class="r">Salonprijs</th><th class="r">Marge</th><th class="r">Bol</th><th>Bron</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Reuzel</strong><br><span style="color:var(--inkt-3);font-size:11px">Nederland · <a href="https://www.reuzel.com/pages/wholesale">wholesale-aanvraag</a></span></td><td>Pink Pomade 113 g</td><td class="r">8.00</td><td class="r">16.95</td><td class="r">53 %</td><td class="r"><span class="chip ja">Ja</span></td><td><a href="https://www.reuzel.com/">reuzel.com</a></td></tr>
+        <tr><td><strong>Uppercut Deluxe</strong><br><span style="color:var(--inkt-3);font-size:11px">Australië</span></td><td>Featherweight 70 g</td><td class="r">7.50</td><td class="r">15.95</td><td class="r">53 %</td><td class="r"><span class="chip ja">Ja</span></td><td><a href="https://uppercutdeluxe.com/">uppercutdeluxe.com</a></td></tr>
+        <tr><td><strong>Proraso</strong><br><span style="color:var(--inkt-3);font-size:11px">Italië · hoge omloop</span></td><td>Scheercrème 150 ml</td><td class="r">4.00</td><td class="r">8.95</td><td class="r">55 %</td><td class="r"><span class="chip ja">Ja</span></td><td><a href="https://proraso.com/">proraso.com</a></td></tr>
+        <tr><td><strong>Morfose</strong><br><span style="color:var(--inkt-3);font-size:11px">Turkije · scherpste inkoop van de lijst</span></td><td>Ossion styling wax 150 ml</td><td class="r">1.80</td><td class="r">4.95</td><td class="r">64 %</td><td class="r"><span class="chip ja">Ja</span></td><td><a href="https://www.morfose.com/">morfose.com</a></td></tr>
+        <tr><td><strong>The Bluebeards Revenge</strong><br><span style="color:var(--inkt-3);font-size:11px">VK</span></td><td>Baardolie 50 ml</td><td class="r">6.00</td><td class="r">14.50</td><td class="r">59 %</td><td class="r"><span class="chip ja">Ja</span></td><td><a href="https://bluebeards-revenge.co.uk/">bluebeards-revenge.co.uk</a></td></tr>
+        <tr><td><strong>Captain Fawcett</strong><br><span style="color:var(--inkt-3);font-size:11px">VK · cadeausegment</span></td><td>Baardolie 50 ml</td><td class="r">12.00</td><td class="r">26.50</td><td class="r">55 %</td><td class="r"><span class="chip ja">Ja</span></td><td><a href="https://captainfawcett.com/">captainfawcett.com</a></td></tr>
+        <tr><td><strong>American Crew</strong><br><span style="color:var(--inkt-3);font-size:11px">VS</span></td><td>Fiber 85 g</td><td class="r">7.00</td><td class="r">13.95</td><td class="r">50 %</td><td class="r"><span class="chip nee">Nee</span></td><td><a href="https://www.americancrew.com/">americancrew.com</a></td></tr>
+      </tbody>
+      <caption>Morfose is het rekenvoorbeeld: <span class="num">€ 1,80</span> inkoop tegen <span class="num">€ 4,95</span> salonprijs is 64 procent — hoger dan vrijwel alles wat je nu voert, op een artikel met hoge omloop.</caption>
+    </table>
+  </div>
+
+
+  <h3>9.5 Getextureerd en krullend haar</h3>
+
+  <div class="box win">
+    <div class="bk">De meest onderbediende markt op fietsafstand</div>
+    <p>Antwerpen heeft een grote Afro-Caribische en Noord-Afrikaanse gemeenschap, en er is weinig <em>professioneel</em> aanbod voor kappers die dit haartype behandelen. Er zit al een Belgische groothandel in dit segment — <a href="https://sherrys.be/">Sherry's Cosmetics</a> — wat bewijst dat de markt bestaat, maar die bedient vooral retail en niet de professionele kant met techniek en kleuradvies.<sup><a href="#b24">24</a></sup></p>
+  </div>
+
+  <div class="scr wide">
+    <table>
+      <thead><tr><th>Merk</th><th>Voorbeeldproduct</th><th class="r">Inkoop</th><th class="r">Salonprijs</th><th class="r">Marge</th><th class="r">Bol</th><th>Bron</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Avlon / KeraCare</strong><br><span style="color:var(--inkt-3);font-size:11px">VS · meest groothandelklaar</span></td><td>KeraCare Humecto Crème 425 g</td><td class="r">7.50</td><td class="r">17.50</td><td class="r">57 %</td><td class="r"><span class="chip ja">Ja</span></td><td><a href="https://www.avlon.com/">avlon.com</a></td></tr>
+        <tr><td><strong>Mizani</strong><br><span style="color:var(--inkt-3);font-size:11px">L'Oréal</span></td><td>25 Miracle Milk 150 ml</td><td class="r">6.50</td><td class="r">14.50</td><td class="r">55 %</td><td class="r"><span class="chip nee">Nee</span></td><td><a href="https://www.mizani.com/">mizani.com</a></td></tr>
+        <tr><td><strong>Curlsmith</strong><br><span style="color:var(--inkt-3);font-size:11px">VK</span></td><td>Hydro Crème Soufflé 237 ml</td><td class="r">9.00</td><td class="r">19.95</td><td class="r">55 %</td><td class="r"><span class="chip ja">Ja</span></td><td><a href="https://curlsmith.com/">curlsmith.com</a></td></tr>
+        <tr><td><strong>Design Essentials</strong><br><span style="color:var(--inkt-3);font-size:11px">VS</span></td><td>Almond &amp; Avocado leave-in 237 ml</td><td class="r">6.00</td><td class="r">14.95</td><td class="r">60 %</td><td class="r"><span class="chip ja">Ja</span></td><td><a href="https://designessentials.com/">designessentials.com</a></td></tr>
+        <tr><td><strong>Cantu</strong><br><span style="color:var(--inkt-3);font-size:11px">VS · verkeerstrekker</span></td><td>Shea Butter Leave-In 340 g</td><td class="r">3.00</td><td class="r">6.95</td><td class="r">57 %</td><td class="r"><span class="chip ja">Ja</span></td><td><a href="https://www.cantubeauty.com/">cantubeauty.com</a></td></tr>
+        <tr><td><strong>PAK Cosmetic Center</strong><br><span style="color:var(--inkt-3);font-size:11px">VK · distributeur</span></td><td>ingang tot tientallen merken tegelijk</td><td class="r">0.01</td><td class="r">0.02</td><td class="r">50 %</td><td class="r"><span class="chip mis">Deels</span></td><td><a href="https://pakswholesale.com/">pakswholesale.com</a></td></tr>
+      </tbody>
+      <caption>De laatste regel is een distributeur, geen merk — daar koop je meerdere merken tegelijk in, wat de instap fors verlaagt. Prijzen bij die regel zijn niet van toepassing.</caption>
+    </table>
+  </div>
+
+
+  <h3>9.6 Apparatuur en head spa — hier zit het Bol-geld</h3>
+  <p>Hoogwaardige artikelen zijn het enige segment dat op een marktplaats rendeert (<a href="#s8">§8.2</a>).</p>
+
+  <div class="scr wide">
+    <table>
+      <thead><tr><th>Merk</th><th>Voorbeeldproduct</th><th class="r">Inkoop</th><th class="r">Salonprijs</th><th class="r">Marge</th><th class="r">Bol</th><th>Bron</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Medirelax</strong><br><span style="color:var(--inkt-3);font-size:11px">EU · levering 1–3 werkdagen<sup><a href="#b22">22</a></sup></span></td><td>Hoofdhuidanalyse-apparaat</td><td class="r">280.00</td><td class="r">549.00</td><td class="r">49 %</td><td class="r"><span class="chip ja">Ja</span></td><td><a href="https://medirelaxa.com/en/product/scalp-analysis-device/">medirelaxa.com/en/product/scalp-analysis-device</a></td></tr>
+        <tr><td><strong>Gamma &amp; Bross</strong><br><span style="color:var(--inkt-3);font-size:11px">Italië · complete head-spa-uitrusting<sup><a href="#b23">23</a></sup></span></td><td>Ultrasone stoomunit</td><td class="r">180.00</td><td class="r">399.00</td><td class="r">55 %</td><td class="r"><span class="chip mis">Deels</span></td><td><a href="https://www.gammabross.com/en/head-spa">gammabross.com/en/head-spa</a></td></tr>
+        <tr><td><strong>Laifen</strong><br><span style="color:var(--inkt-3);font-size:11px">China</span></td><td>Swift hogesnelheidsföhn</td><td class="r">65.00</td><td class="r">129.00</td><td class="r">50 %</td><td class="r"><span class="chip ja">Ja</span></td><td><a href="https://www.laifentech.com/">laifentech.com</a></td></tr>
+        <tr><td><strong>Parlux</strong><br><span style="color:var(--inkt-3);font-size:11px">Italië</span></td><td>Alyon föhn</td><td class="r">75.00</td><td class="r">159.00</td><td class="r">53 %</td><td class="r"><span class="chip ja">Ja</span></td><td><a href="https://www.parlux.it/">parlux.it</a></td></tr>
+        <tr><td><strong>JRL</strong><br><span style="color:var(--inkt-3);font-size:11px">VS</span></td><td>FF2020 tondeuse</td><td class="r">95.00</td><td class="r">189.00</td><td class="r">50 %</td><td class="r"><span class="chip ja">Ja</span></td><td><a href="https://jrlusa.com/">jrlusa.com</a></td></tr>
+        <tr><td><strong>Kasho</strong><br><span style="color:var(--inkt-3);font-size:11px">Japan · advies maakt het verschil</span></td><td>Design Master schaar 5,5"</td><td class="r">180.00</td><td class="r">349.00</td><td class="r">48 %</td><td class="r"><span class="chip mis">Deels</span></td><td><a href="https://www.kasho.com/">kasho.com</a></td></tr>
+        <tr><td><strong>Jaguar</strong><br><span style="color:var(--inkt-3);font-size:11px">Duitsland</span></td><td>Silver Line schaar 5,5"</td><td class="r">48.00</td><td class="r">98.00</td><td class="r">51 %</td><td class="r"><span class="chip ja">Ja</span></td><td><a href="https://www.jaguar-solingen.com/">jaguar-solingen.com</a></td></tr>
+        <tr><td><strong>Kiepe</strong><br><span style="color:var(--inkt-3);font-size:11px">Italië</span></td><td>Razor Line schaar</td><td class="r">35.00</td><td class="r">74.00</td><td class="r">53 %</td><td class="r"><span class="chip ja">Ja</span></td><td><a href="https://www.kiepe.it/">kiepe.it</a></td></tr>
+      </tbody>
+      <caption>Deze categorie draagt de hoogste winst per verkoop van het hele rapport — zie de rangschikking in 9.8.</caption>
+    </table>
+  </div>
+
+
+  <h3>9.7 Duurzaam, verbruik en eigen productie</h3>
+
+  <div class="scr wide">
+    <table>
+      <thead><tr><th>Merk</th><th>Voorbeeldproduct</th><th class="r">Inkoop</th><th class="r">Salonprijs</th><th class="r">Marge</th><th class="r">Bol</th><th>Bron</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Scrummi</strong><br><span style="color:var(--inkt-3);font-size:11px">VK</span></td><td>Plantaardige handdoeken 50 st</td><td class="r">9.00</td><td class="r">18.50</td><td class="r">51 %</td><td class="r"><span class="chip nee">Nee</span></td><td><a href="https://scrummi.com/">scrummi.com</a></td></tr>
+        <tr><td><strong>WeCare4Hair</strong><br><span style="color:var(--inkt-3);font-size:11px">België · in België gemaakt</span></td><td>Bio-Capes afbreekbare kapmantels</td><td class="r">12.00</td><td class="r">24.50</td><td class="r">51 %</td><td class="r"><span class="chip nee">Nee</span></td><td><a href="https://wecare4hair.com/">wecare4hair.com</a></td></tr>
+        <tr><td><strong>Olivia Garden</strong><br><span style="color:var(--inkt-3);font-size:11px">België</span></td><td>Fingerbrush borstel</td><td class="r">5.50</td><td class="r">12.95</td><td class="r">58 %</td><td class="r"><span class="chip ja">Ja</span></td><td><a href="https://www.oliviagarden.com/">oliviagarden.com</a></td></tr>
+        <tr><td><strong>Anhairco</strong><br><span style="color:var(--inkt-3);font-size:11px">België · Aartselaar, 25 km</span></td><td>contractproductie eigen label</td><td class="r">0.01</td><td class="r">0.02</td><td class="r">50 %</td><td class="r"><span class="chip ja">Ja</span></td><td><a href="https://www.anhairco.be/">anhairco.be</a></td></tr>
+        <tr><td><strong>Carin Cosmetics</strong><br><span style="color:var(--inkt-3);font-size:11px">België · Deerlijk</span></td><td>contractproductie eigen label</td><td class="r">0.01</td><td class="r">0.02</td><td class="r">50 %</td><td class="r"><span class="chip ja">Ja</span></td><td><a href="https://www.carin.be/">carin.be</a></td></tr>
+        <tr><td><strong>Delia Cosmetics</strong><br><span style="color:var(--inkt-3);font-size:11px">Polen · EU, geen invoerrechten<sup><a href="#b8">8</a></sup></span></td><td>private label vanaf 1.000 stuks</td><td class="r">0.01</td><td class="r">0.02</td><td class="r">50 %</td><td class="r"><span class="chip ja">Ja</span></td><td><a href="https://delia.pl/">delia.pl</a></td></tr>
+        <tr><td><strong>Sinelco</strong><br><span style="color:var(--inkt-3);font-size:11px">België · niet voor merken, wel voor je inkoopprijs</span></td><td>inkoopkanaal basisassortiment</td><td class="r">0.01</td><td class="r">0.02</td><td class="r">50 %</td><td class="r"><span class="chip nee">Nee</span></td><td><a href="https://www.sinelco.com/">sinelco.com</a></td></tr>
+      </tbody>
+      <caption>Bij de contractproducenten en het inkoopkanaal zijn prijzen niet van toepassing: die hangen volledig af van formule, formaat en afname. Vraag daar een offerte op basis van je eigen bestverkopende artikelen — zie <a href="#s7">§7.2</a>.</caption>
+    </table>
+  </div>
+
+
+  <h3>9.8 Waarom duurdere niches op Bol werken en goedkope niet</h3>
+
+  <p>De vaste kosten per Bol-order — commissie, vaste bijdrage en verzending — zijn grotendeels <em>onafhankelijk van de prijs</em>. Op een fles van twaalf euro vreten ze de marge op; op een apparaat van vierhonderd euro vallen ze weg. Daarom hoort in Hairstation het duurdere, complexere en specialistische deel van je aanbod.</p>
+
+  <p>De laatste kolom is het cijfer dat telt: <strong>hoeveel verkopen je nodig hebt voor duizend euro brutowinst</strong>.</p>
+
+  <div class="box">
+    <div class="bk">Waarom juist deze niches</div>
+    <p>De keuze is niet willekeurig. De wereldwijde head-spa-markt gaat van circa <span class="num">USD 1,5 mrd</span> in 2025 naar <span class="num">USD 2,8 mrd</span> in 2033, een groei van ongeveer 8,5 procent per jaar.<sup><a href="#b26">26</a></sup> De bredere hoofdhuidverzorging groeit van <span class="num">USD 15,81 mrd</span> in 2026 naar <span class="num">USD 25,88 mrd</span> in 2033.<sup><a href="#b27">27</a></sup> Haarsupplementen groeien nog harder: van <span class="num">USD 1,49 mrd</span> in 2025 naar <span class="num">USD 3,71 mrd</span> in 2034, ruim tien procent per jaar.<sup><a href="#b30">30</a></sup> En extensions gaan van <span class="num">USD 8,6 mrd</span> in 2026 naar <span class="num">USD 15,4 mrd</span> in 2033, met de Benelux als snelst groeiende Europese deelmarkt.<sup><a href="#b31">31</a></sup></p>
+    <p style="margin-top:9px">Ter vergelijking: de Europese haarverzorgingsmarkt als geheel groeit met circa 7 procent.<sup><a href="#b18">18</a></sup> Deze vier niches groeien dus sneller dan de markt waarin je nu zit.</p>
+  </div>
+
+  <div class="scr wide">
+    <table>
+      <thead><tr>
+        <th>Nicheproduct</th><th class="r">Inkoop</th><th class="r">Bol incl.</th>
+        <th class="r">Commissie</th><th class="r">Verzending</th><th class="r">Netto</th><th class="r">Marge</th>
+        <th class="r">Verkopen voor € 1.000</th>
+      </tr></thead>
+      <tbody>
+        <tr><td><strong>Complete head spa-set</strong><sup><a href="#b26">26</a></sup></td><td class="r">650,00</td><td class="r">1.299,00</td><td class="r">155,88</td><td class="r">15,00</td><td class="r"><strong>251,68</strong></td><td class="r">23,4 %</td><td class="r"><strong>4</strong></td></tr>
+        <tr><td>Hoofdhuidcamera met software<sup><a href="#b22">22</a></sup></td><td class="r">280,00</td><td class="r">599,00</td><td class="r">71,88</td><td class="r">7,50</td><td class="r"><strong>134,67</strong></td><td class="r">27,2 %</td><td class="r"><strong>8</strong></td></tr>
+        <tr><td>LED-hoofdhuidkap</td><td class="r">220,00</td><td class="r">499,00</td><td class="r">59,88</td><td class="r">7,50</td><td class="r"><strong>124,03</strong></td><td class="r">30,1 %</td><td class="r"><strong>9</strong></td></tr>
+        <tr><td>Infrarood kleurversneller</td><td class="r">260,00</td><td class="r">549,00</td><td class="r">65,88</td><td class="r">12,00</td><td class="r"><strong>114,85</strong></td><td class="r">25,3 %</td><td class="r"><strong>9</strong></td></tr>
+        <tr><td>Premium schaar (Japans)</td><td class="r">180,00</td><td class="r">389,00</td><td class="r">46,68</td><td class="r">3,50</td><td class="r"><strong>90,32</strong></td><td class="r">28,1 %</td><td class="r"><strong>12</strong></td></tr>
+        <tr><td>Head spa stoomunit<sup><a href="#b23">23</a></sup></td><td class="r">180,00</td><td class="r">399,00</td><td class="r">47,88</td><td class="r">12,00</td><td class="r"><strong>88,88</strong></td><td class="r">27,0 %</td><td class="r"><strong>12</strong></td></tr>
+        <tr><td>Ultrasoon haarverzorgingsapparaat</td><td class="r">120,00</td><td class="r">279,00</td><td class="r">33,48</td><td class="r">5,50</td><td class="r"><strong>70,61</strong></td><td class="r">30,6 %</td><td class="r"><strong>15</strong></td></tr>
+        <tr><td>Extensions starterset<sup><a href="#b31">31</a></sup></td><td class="r">150,00</td><td class="r">329,00</td><td class="r">49,35</td><td class="r">7,50</td><td class="r"><strong>64,06</strong></td><td class="r">23,6 %</td><td class="r"><strong>16</strong></td></tr>
+        <tr><td>Head spa massage-apparaat</td><td class="r">45,00</td><td class="r">149,00</td><td class="r">17,88</td><td class="r">5,50</td><td class="r"><strong>53,77</strong></td><td class="r"><strong>43,7 %</strong></td><td class="r"><strong>19</strong></td></tr>
+        <tr><td>Multistyler-set</td><td class="r">85,00</td><td class="r">189,00</td><td class="r">22,68</td><td class="r">5,50</td><td class="r">42,03</td><td class="r">26,9 %</td><td class="r">24</td></tr>
+        <tr><td>Barbermachine (JRL-klasse)</td><td class="r">95,00</td><td class="r">199,00</td><td class="r">23,88</td><td class="r">5,50</td><td class="r">39,09</td><td class="r">23,8 %</td><td class="r">26</td></tr>
+        <tr><td>Professionele föhn (Parlux-klasse)</td><td class="r">75,00</td><td class="r">169,00</td><td class="r">20,28</td><td class="r">5,50</td><td class="r">37,90</td><td class="r">27,1 %</td><td class="r">27</td></tr>
+        <tr><td>Hogesnelheidsföhn (Laifen-klasse)<sup><a href="#b16">16</a></sup></td><td class="r">65,00</td><td class="r">149,00</td><td class="r">17,88</td><td class="r">5,50</td><td class="r">33,77</td><td class="r">27,4 %</td><td class="r">30</td></tr>
+        <tr><td>Trichologie-kuur, 3 maanden</td><td class="r">65,00</td><td class="r">149,00</td><td class="r">22,35</td><td class="r">2,88</td><td class="r">31,92</td><td class="r">25,9 %</td><td class="r">32</td></tr>
+        <tr><td>Bond-repair set (2 delen)</td><td class="r">22,00</td><td class="r">59,95</td><td class="r">8,99</td><td class="r">3,50</td><td class="r">14,06</td><td class="r">28,4 %</td><td class="r">72</td></tr>
+        <tr><td>Krulset (3 producten)</td><td class="r">14,00</td><td class="r">44,95</td><td class="r">6,74</td><td class="r">3,50</td><td class="r">11,92</td><td class="r">32,1 %</td><td class="r">84</td></tr>
+        <tr><td>Hoofdhuidserum 100 ml<sup><a href="#b15">15</a></sup></td><td class="r">6,50</td><td class="r">29,95</td><td class="r">4,49</td><td class="r">2,88</td><td class="r">9,89</td><td class="r">40,0 %</td><td class="r">102</td></tr>
+        <tr><td>Haarsupplement 60 capsules<sup><a href="#b30">30</a></sup></td><td class="r">7,00</td><td class="r">24,95</td><td class="r">3,74</td><td class="r">2,88</td><td class="r">6,01</td><td class="r">29,1 %</td><td class="r">167</td></tr>
+        <tr style="background:var(--risico-zacht)"><td><strong>Gelfles 500 ml — ter vergelijking</strong></td><td class="r">3,58</td><td class="r">12,95</td><td class="r">1,94</td><td class="r">2,88</td><td class="r" style="color:var(--risico)"><strong>1,31</strong></td><td class="r" style="color:var(--risico)">12,2 %</td><td class="r" style="color:var(--risico)"><strong>763</strong></td></tr>
+      </tbody>
+      <caption>Modelberekening met 12 % commissie op apparatuur en 15 % op verzorging, <span class="num">€ 0,99</span> vaste bijdrage per order, verzending naar gewicht, en 21 % btw. Inkoopprijzen zijn marktconforme aannames voor artikelen die je nog niet voert — geen gemeten kostprijs. Reken na met een echte offerte en de formule uit <a href="#s8">§8.2</a>.</caption>
+    </table>
+  </div>
+
+  <div class="box win">
+    <div class="bk">Het verschil in één zin</div>
+    <p><strong>Vier head-spa-sets leveren evenveel brutowinst op als 763 gelflessen.</strong> Vier verkopen zijn te doen; 763 gelflessen via Bol zijn dat niet — dat zou meer zijn dan je in je eigen webshop verkoopt, tegen een vijfde van de marge. Zo bekeken is Hairstation geen tweede winkel voor je bestaande assortiment, maar een <em>ander soort winkel</em>: weinig artikelen, hoge prijs, veel uitleg.</p>
+  </div>
+
+  <div class="box calc">
+    <div class="bk">Wat dit betekent voor het opzetten</div>
+    <p>Je hebt geen twintig artikelen nodig om te beginnen, en al helemaal geen tweeduizend. <strong>Vijf tot tien duurdere artikelen volstaan.</strong> Dat maakt de test ook goedkoop: kies wat je al op voorraad hebt of wat je op bestelling kunt laten leveren, en je hoeft niets vooruit te kopen.</p>
+    <p style="margin-top:9px">Let ook op de aard van de koper: iemand die een hoofdhuidcamera van <span class="num">€ 599</span> koopt op Bol is vrijwel altijd een <em>vakman</em>, geen consument. Dat is een zakelijke koper op een consumentenplatform — weinig concurrentie, en de kans dat hij daarna ook je verbruiksartikelen bij je bestelt is reëel. <strong>Hairstation kan zo een wervingskanaal voor Hairstuff.be worden</strong>, niet alleen een verkoopkanaal.</p>
+  </div>
+
+  <h4>Drie productgroepen die zich bij uitstek lenen</h4>
+  <div class="scr wide">
+    <table>
+      <thead><tr><th>Groep</th><th>Waarom juist deze</th><th>Leverancier uit dit hoofdstuk</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Head spa en hoofdhuiddiagnostiek</strong></td><td>Nieuw, duur, uitleg nodig, en er is nog nauwelijks aanbod in het Nederlandstalige gebied. Hoogste bedrag per verkoop van de hele lijst</td><td>Medirelax, Gamma &amp; Bross (<a href="#s9">§9.6</a>)</td></tr>
+        <tr><td><strong>Premium knipgereedschap</strong></td><td>Japanse scharen zijn licht, onbreekbaar in verzending, en kopers zoeken gericht op merk en maat. Advies maakt het verschil — precies jouw sterkte</td><td>Kasho, Mizutani, Joewell (<a href="#s9">§9.6</a>)</td></tr>
+        <tr><td><strong>Elektrische styling</strong></td><td>Hoge zoekvraag bij consumenten, herkenbare merken, en het segment groeit door de nieuwe generatie drogers</td><td>Laifen, JRL, Parlux, Gamma+ (<a href="#s9">§9.6</a>)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>9.9 Drieëndertig concepten die verder gaan dan een merk erbij</h3>
+
+  <p>Een leverancier toevoegen is de makkelijkste zet en meteen de minst onderscheidende — je concurrent kan hetzelfde merk morgen ook voeren. Hieronder staat wat dat niet kan. Gegroepeerd naar wat je ermee verandert: je aanbod, je klantenkring, je binding, of je zichtbaarheid.</p>
+
+  <h4>A · Verpakken en bundelen — hetzelfde product, meer marge</h4>
+  <div class="scr wide">
+    <table>
+      <thead><tr><th>Concept</th><th>Wat het is</th><th>Waarom het werkt</th></tr></thead>
+      <tbody>
+        <tr><td><strong>1 · Overstapkit Koleston → Sens.ùs</strong></td><td>Omrekentabel per nuance, proefpakket van tien tubes tegen kostprijs, half uur technische begeleiding</td><td>Je sterkste argument (<a href="#s3">§3.1</a>) als product. Elke overstapper tilt je marge op zijn kleurverbruik van 30 naar 60 procent</td></tr>
+        <tr><td><strong>2 · Starterspakket voor stoelhuurders</strong><sup><a href="#b20">20</a></sup></td><td>Eén doos met kleur, oxydant, blondeer, folie, kwasten, kapmantel en handschoenen</td><td>Stoelhuur is de opkomende ondernemingsvorm in de branche<sup><a href="#b20">20</a></sup> en kleine salons staan onder margedruk door hogere huren en personeelstekort.<sup><a href="#b21">21</a></sup> Wie zijn eerste doos bij jou koopt, bestelt jaren door. De mix bepaalt de marge, niet de korting</td></tr>
+        <tr><td><strong>3 · Kleurcorrectie-box</strong></td><td>Kleurverwijderaar, toner, oxydant, handschoenen en een stappenkaart in één doos</td><td>Losse artikelen van <span class="num">€ 8</span> worden een doos van <span class="num">€ 45</span> — precies wat Bol nodig heeft. En het versterkt je positie als de plek waar je terechtkunt als het misgaat</td></tr>
+        <tr><td><strong>4 · Blondpakket</strong></td><td>Blondeerpoeder, ontwikkelaar, bondversterker, folie en een techniekkaart</td><td>Blond is de meest foutgevoelige behandeling. Een compleet pakket met instructie verkoopt zichzelf en bindt de kapper aan jouw blondeersysteem</td></tr>
+        <tr><td><strong>5 · Seizoenskits</strong></td><td>Zomer: UV-bescherming en zoutwaterherstel. Winter: intensief herstel en hoofdhuid</td><td>Geeft je twee natuurlijke verkoopmomenten per jaar zonder korting te geven, en het is een reden om klanten te bellen</td></tr>
+        <tr><td><strong>6 · Reisformaten en proefflacons</strong></td><td>Kleine formaten van je eigen lijn, als staal of als kassaproduct</td><td>Salons verkopen te weinig door. Een klein formaat is een lage drempel voor de eindklant en een gratis proefronde voor jouw merk</td></tr>
+        <tr><td><strong>7 · Outletkanaal voor dode voorraad</strong></td><td>De 937 traagste actieve artikelen doorlichten en wat voorraad heeft afprijzen op een outletpagina of via Hairstation</td><td>Nu staat dat kapitaal stil. Zelfs tegen halve prijs is dat geld terug, plus ruimte in het magazijn en een schonere catalogus</td></tr>
+        <tr><td><strong>8 · Gepersonaliseerd salontextiel</strong></td><td>Kapmantels, schorten en handdoeken met de naam van de salon erop geborduurd</td><td>Geen prijsvergelijking mogelijk, hoge marge, en de salon draagt letterlijk jouw levering uit</td></tr>
+        <tr><td><strong>9 · White label voor de salon zelf</strong></td><td>Jouw eigen-labelproducten onder het merk van de salon, vanaf een lage afname</td><td>De sterkste binding die er is: een salon die zijn eigen naam op jouw fles heeft staan, wisselt niet van leverancier. Je bestaande producent maakt het toch al</td></tr>
+        <tr><td><strong>10 · Head spa in een doos</strong><sup><a href="#b26">26</a></sup></td><td>Apparaat, stomer, hoofdhuidcamera, productlijn, opleidingsvideo en een marketingpakket</td><td>Combineert eenmalig hoog ticket met terugkerende productomzet én bindt de salon aan jouw lijn — het enige concept dat alle drie tegelijk doet</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h4>B · Nieuwe klantgroepen — dezelfde zaak, meer afnemers</h4>
+  <div class="scr wide">
+    <table>
+      <thead><tr><th>Concept</th><th>Wat het is</th><th>Waarom het werkt</th></tr></thead>
+      <tbody>
+        <tr><td><strong>11 · Barbershops als eigen segment</strong></td><td>Eigen landingspagina, eigen merkenset, eigen nieuwsbrief</td><td>Barbers kopen anders: hogere frequentie, meer verbruik, sterke merkloyaliteit. Ze voelen zich zelden aangesproken door een kappersgroothandel</td></tr>
+        <tr><td><strong>12 · Kappersopleidingen</strong><sup><a href="#b21">21</a></sup></td><td>Gesubsidieerde studentenkits, scholenkorting, gastlessen kleurtechniek bij Syntra, CVO's en het beroepsonderwijs in de provincie</td><td>De hoogste levenslange klantwaarde in dit hele rapport. Wie op jouw kleurenkaart leert werken, doet dat twintig jaar</td></tr>
+        <tr><td><strong>13 · Thuis- en mobiele kappers</strong><sup><a href="#b20">20</a></sup></td><td>Lage besteldrempel, kleine verpakkingen, abonnement op verbruik</td><td>Verreweg de grootste en snelst groeiende groep. Ze kopen eigen label liever dan A-merken, precies waar jouw marge zit</td></tr>
+        <tr><td><strong>14 · Woonzorgcentra en thuiszorgkappers</strong></td><td>Raamovereenkomsten, vaste leverrondes, eenvoudige bestelformulieren</td><td>Stabiel, contractmatig, ongevoelig voor online prijsvergelijking. Weinig concurrentie omdat het onsexy is</td></tr>
+        <tr><td><strong>15 · Nagelsalons en schoonheidssalons</strong><sup><a href="#b32">32</a></sup></td><td>Aangrenzend assortiment via je bestaande Sibel-relatie</td><td>In het Brussels Gewest verdrievoudigde het aantal nagelsalons tussen 2017 en 2026, van 40 naar 122<sup><a href="#b32">32</a></sup> — een lage instapdrempel betekent voortdurend nieuwe ondernemers die een leverancier zoeken</td></tr>
+        <tr><td><strong>16 · Hotels, spa's en wellness</strong></td><td>Eigen label in grootverpakking als back-bar en amenities</td><td>Bulkafname op precies de producten waar jouw marge het hoogst is, en de eindklant ziet het etiket nooit</td></tr>
+        <tr><td><strong>17 · Film, theater en televisie</strong></td><td>Specialistische kleur, haarwerk en snelle levering</td><td>Klein in volume, hoog in marge, en uitstekend voor je naam. Deze klanten praten over waar ze inkopen</td></tr>
+        <tr><td><strong>18 · Medisch haarwerk en oncologie</strong></td><td>Haarwerken bij haarverlies door behandeling, met tegemoetkoming vanuit de ziekteverzekering</td><td>Stabiel, hoge marge, en de vereiste kennis en ziekenhuisrelaties houden concurrentie buiten</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h4>C · Diensten die klanten vasthouden</h4>
+  <div class="scr wide">
+    <table>
+      <thead><tr><th>Concept</th><th>Wat het is</th><th>Waarom het werkt</th></tr></thead>
+      <tbody>
+        <tr><td><strong>19 · Kleurformuledossier per klant</strong></td><td>Jij bewaart de formules die een salon voor haar klanten gebruikt, opvraagbaar in de webshop</td><td>De sterkste overstapdrempel die je kunt bouwen. Een salon die haar formulehistorie bij jou heeft staan, gaat niet weg voor twintig cent per tube</td></tr>
+        <tr><td><strong>20 · Technische kleurhotline</strong></td><td>Vast nummer of WhatsApp voor kleurvragen en correcties, binnen het uur antwoord</td><td>Dit is je onderscheid uit <a href="#s3">§3.3</a>, maar dan expliciet en meetbaar. Een groothandel met 15.000 artikelen kan dit niet per klant</td></tr>
+        <tr><td><strong>21 · Voorraadbeheer op locatie</strong></td><td>Jij komt langs, telt hun kast en vult aan — eventueel in consignatie</td><td>De klant hoeft niet meer te bestellen, dus vergelijkt hij ook niet meer. Werkt alleen bij je grootste klanten, en juist daar zit je omzet</td></tr>
+        <tr><td><strong>22 · Salon-audit</strong></td><td>Een uur meekijken naar verbruik, voorraad en doorverkoop, met een schriftelijk advies</td><td>Verkoopt zichzelf omdat het gratis lijkt, en levert jou de data waarmee je hun assortiment kunt sturen</td></tr>
+        <tr><td><strong>23 · Doorverkoop-coaching</strong><sup><a href="#b18">18</a></sup></td><td>Salons leren hun eigen klanten producten te verkopen: schap, prijskaartjes, gespreksopeningen</td><td>Europese consumenten kiezen vaker voor salonwaardige verzorging thuis<sup><a href="#b18">18</a></sup> — een salon die meer doorverkoopt, bestelt meer bij jou. Je verkoopt geen product maar hun omzet</td></tr>
+        <tr><td><strong>24 · Betaalde workshops</strong><sup><a href="#b18">18</a></sup></td><td>Avondworkshops kleurtechniek, blond en hoofdhuid in de eigen zaak</td><td>De Europese markt verschuift naar wellness, premium-ervaring en gepersonaliseerde diensten.<sup><a href="#b18">18</a></sup> Deelnemers kopen tijdens en na afloop, en je kennisvoorsprong wordt zichtbaar</td></tr>
+        <tr><td><strong>25 · Abonnement op verbruiksartikelen</strong><sup><a href="#b33">33</a></sup></td><td>Vaste maandlevering van handschoenen, folie, handdoeken en oxydant, aangepast aan verbruik</td><td>Groothandels met een B2B-bestelportaal rapporteren doorgaans 25 procent tijdwinst en 15 tot 30 procent omzetgroei; loyaliteitsprogramma's halen hun doel bij minimaal 5 tot 10 procent groei per jaar.<sup><a href="#b33">33</a></sup></td></tr>
+        <tr><td><strong>26 · Scharenslijp- en reparatieservice</strong></td><td>Inleveren aan de toonbank, jij regelt het bij je bestaande slijppartner</td><td>Je voert die leverancier al. Elke ingeleverde schaar is een bezoek aan je toonbank, en wie langskomt koopt iets mee</td></tr>
+        <tr><td><strong>27 · Apparatuurverhuur en inruil</strong></td><td>Head spa-apparaat of stijltang per week verhuren; oude tondeuses inruilen tegen korting</td><td>Neemt de drempel weg bij een aankoop van honderden euro's. Verhuur die overgaat in verkoop is de makkelijkste apparatuurverkoop die er is</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h4>D · Kanalen en zichtbaarheid</h4>
+  <div class="scr wide">
+    <table>
+      <thead><tr><th>Concept</th><th>Wat het is</th><th>Waarom het werkt</th></tr></thead>
+      <tbody>
+        <tr><td><strong>28 · Hairstation als testkanaal</strong></td><td>Nieuwe niches eerst op Bol proberen voordat je schapruimte en salonrelaties inzet</td><td>Je meet echte vraag met echte euro's zonder je vakhandelspositie te riskeren. Werkt het niet, dan merkt geen salonklant het</td></tr>
+        <tr><td><strong>29 · Amazon.de naast Bol</strong><sup><a href="#b13">13</a></sup></td><td>De Duitstalige productteksten heb je nu toch al staan</td><td>Marginale extra inspanning op werk dat al gedaan is. Alleen eigen label, want A-merken sluiten marktplaatsen contractueel uit</td></tr>
+        <tr><td><strong>30 · Bezorgronde in de Kempen</strong></td><td>Vaste dag, vaste route, vaste klanten binnen 30 km</td><td>Het enige logistieke voordeel dat online schaal niet kan kopiëren. Persoonlijk contact is bovendien je beste verkoopkanaal</td></tr>
+        <tr><td><strong>31 · Afhaalkluis buiten openingstijden</strong></td><td>Bestellen tot laat, ophalen wanneer het uitkomt — ook 's avonds en op zondag</td><td>Kappers werken als jij dicht bent. Lage investering, en het maakt je toonbank 24 uur per dag bruikbaar</td></tr>
+        <tr><td><strong>32 · Bestellen via WhatsApp</strong></td><td>Een foto van een lege fles is genoeg om te bestellen</td><td>De laagste drempel die bestaat, en precies hoe thuiskappers werken. Bovendien houd je zo het gesprek open</td></tr>
+        <tr><td><strong>33 · Kleurenwand als contentmachine</strong></td><td>Korte video's met formules, correcties en voor-na — in vier talen</td><td>Je hebt de kennis en de 531 nuances al. Dit is waar je op zoekopdrachten wint die Haibu niet kan bedienen (<a href="#s5">§5.2</a>)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="box win">
+    <div class="bk">Als je er drie moet kiezen</div>
+    <p><strong>Concept 1</strong> omdat het je grootste margeverschil activeert met bestaande producten. <strong>Concept 19</strong> omdat een formuledossier de enige overstapdrempel is die niet met prijs te verslaan valt. En <strong>concept 12</strong> omdat een kappersschool jarenlang klanten blijft afleveren voor een investering van vrijwel niets.</p>
+  </div>
+
+  <h3>9.10 Klaarstaande data voor de Artikelbank</h3>
+
+  <p>Alle leveranciers en producten uit dit hoofdstuk staan ook als importbestand klaar, ingedeeld per categorie, zodat ze rechtstreeks in de online Artikelbank geladen kunnen worden.</p>
+
+  <div class="scr wide">
+    <table>
+      <thead><tr><th>Bestand</th><th class="r">Regels</th><th>Inhoud</th></tr></thead>
+      <tbody>
+        <tr><td><code>artikelbank-nieuwe-leveranciers.csv</code></td><td class="r">54</td><td>Alles in één bestand, gesorteerd op categorie</td></tr>
+        <tr><td><code>artikelbank/01-kleur.csv</code></td><td class="r">10</td><td>Fanola, Alfaparf, Kaaral, Lisap, Vitality's, Echosline, Elgon, Farmavita, Selective</td></tr>
+        <tr><td><code>artikelbank/02-scalp-en-bond.csv</code></td><td class="r">7</td><td>K18, epres, Neofollics, Sim System 4, Cutrin, Nioxin, Olaplex</td></tr>
+        <tr><td><code>artikelbank/03-verzorging.csv</code></td><td class="r">8</td><td>Maria Nila, Four Reasons, Waterclouds, milk_shake, Insight, Evo, Davines, TRINITY</td></tr>
+        <tr><td><code>artikelbank/04-barber.csv</code></td><td class="r">7</td><td>Reuzel, Uppercut Deluxe, Proraso, Morfose, Bluebeards, Captain Fawcett, American Crew</td></tr>
+        <tr><td><code>artikelbank/05-getextureerd-haar.csv</code></td><td class="r">7</td><td>Avlon KeraCare, Mizani, Curlsmith, Design Essentials, Cantu, PAK, Sherry's</td></tr>
+        <tr><td><code>artikelbank/06-apparatuur.csv</code></td><td class="r">8</td><td>Medirelax, Gamma &amp; Bross, Laifen, Parlux, JRL, Kasho, Jaguar, Kiepe</td></tr>
+        <tr><td><code>artikelbank/07-verbruik-en-duurzaam.csv</code></td><td class="r">3</td><td>Scrummi, WeCare4Hair, Olivia Garden</td></tr>
+        <tr><td><code>artikelbank/08-private-label.csv</code></td><td class="r">3</td><td>Anhairco, Carin, Delia — contractproductie</td></tr>
+        <tr><td><code>artikelbank/09-inkoopkanaal.csv</code></td><td class="r">1</td><td>Sinelco</td></tr>
+      </tbody>
+      <caption>Puntkomma als scheidingsteken, UTF-8 met BOM, komma als decimaalteken — het formaat dat Mplus en Excel in het Nederlandstalige gebied verwachten. Kolommen: categorie, leverancier, land, website, voorbeeldproduct, inhoud, indicatieve inkoop, indicatieve salonprijs, marge, Bol-geschikt, opmerking.</caption>
+    </table>
+  </div>
+
+  <div class="box risk">
+    <div class="bk">Voor het importeren</div>
+    <p>De prijzen in deze bestanden zijn <strong>richtprijzen</strong>, geen offertes. Laad ze in als <em>concept</em> of in een aparte leverancierscategorie, en overschrijf ze zodra de echte prijslijst binnen is. Zet ze niet meteen actief op de webshop: dan staan er artikelen online die je nog niet kunt leveren.</p>
+  </div>
+
+  <h3>9.10 Wat het kost als het misgaat</h3>
+
+  <p>Geen van deze concepten vraagt een sprong. Hieronder per idee de <strong>kleinste zinvolle test</strong>, wat die kost, wat je kwijt bent als het niets wordt, en wanneer je uitsluitsel hebt. Gerangschikt van goedkoop naar duur.</p>
+
+  <div class="scr wide">
+    <table>
+      <thead><tr><th class="r">Nr</th><th>Kleinste test</th><th class="r">Kosten</th><th>Verlies als het misgaat</th><th class="r">Uitsluitsel</th></tr></thead>
+      <tbody>
+        <tr><td class="r">2</td><td>Vijf starterspakketten samenstellen uit bestaande voorraad</td><td class="r">€ 0</td><td>Niets — het is herverpakken van wat je al hebt</td><td class="r">6 weken</td></tr>
+        <tr><td class="r">32</td><td>WhatsApp-bestelnummer aanzetten en aan twintig klanten doorgeven</td><td class="r">€ 0</td><td>Niets</td><td class="r">3 weken</td></tr>
+        <tr><td class="r">22</td><td>Bij drie vaste klanten een uur meekijken en een advies op papier zetten</td><td class="r">€ 0</td><td>Drie uur van jezelf</td><td class="r">4 weken</td></tr>
+        <tr><td class="r">7</td><td>Honderd trage artikelen doorlichten op resterende voorraad</td><td class="r">€ 0</td><td>Niets — je vindt geld of je vindt het niet</td><td class="r">2 weken</td></tr>
+        <tr><td class="r">24</td><td>Eén avondworkshop, acht deelnemers, eigen zaak</td><td class="r">€ 150</td><td>Een avond van jezelf</td><td class="r">direct</td></tr>
+        <tr><td class="r">3 · 4 · 5</td><td>Twintig bundelboxen samenstellen uit bestaande voorraad</td><td class="r">€ 150–300</td><td>Verpakking; de inhoud gaat gewoon terug het schap in</td><td class="r">6 weken</td></tr>
+        <tr><td class="r">1</td><td>Tien Koleston-klanten bellen met de rekensom en een proefpakket</td><td class="r">€ 250</td><td>Tien proefpakketten tegen kostprijs. Je klant blijft klant</td><td class="r">4 weken</td></tr>
+        <tr><td class="r">31</td><td>Eén afhaalkluis of een afgesloten kast met code</td><td class="r">€ 250–600</td><td>Een kast met restwaarde</td><td class="r">2 maanden</td></tr>
+        <tr><td class="r">28</td><td>Twintig hoogwaardige artikelen op Bol uit bestaande voorraad</td><td class="r">€ 300–600</td><td>Alleen tijd en accountkosten. Voorraad blijft van jou</td><td class="r">6 weken</td></tr>
+        <tr><td class="r">33</td><td>Tien korte kleurvideo's opnemen met wat er al in huis is</td><td class="r">€ 300</td><td>Een dag filmen</td><td class="r">3 maanden</td></tr>
+        <tr><td class="r">12</td><td>Eén school benaderen met een studentenkit-voorstel</td><td class="r">€ 300–800</td><td>Een aantal kits tegen kostprijs</td><td class="r">1 schooljaar</td></tr>
+        <tr><td class="r">8</td><td>Vijftig geborduurde kapmantels met de naam van drie salons</td><td class="r">€ 350–600</td><td>Beperkt; het is een order op naam, dus vooraf verkocht</td><td class="r">6 weken</td></tr>
+        <tr><td class="r">26</td><td>Slijpservice aankondigen aan de toonbank met je bestaande partner</td><td class="r">€ 0–200</td><td>Een bord</td><td class="r">2 maanden</td></tr>
+        <tr><td class="r">6</td><td>Reisformaten van drie eigen producten laten vullen</td><td class="r">€ 400–800</td><td>Voorraad die als staal alsnog nut heeft</td><td class="r">2 maanden</td></tr>
+        <tr><td class="r">5</td><td>Nieuw kleurmerk: één lijn, één kleurenkaart, twintig tubes</td><td class="r">€ 300–500</td><td>Voorraad die je zelf verkoopt of teruggeeft binnen de proefperiode</td><td class="r">2 maanden</td></tr>
+        <tr><td class="r">11</td><td>Barberlijn: één ankermerk, tien artikelen, vijf barbers in de regio</td><td class="r">€ 500–900</td><td>Deze merken hebben consumentenvraag, dus restvoorraad loopt weg</td><td class="r">6 weken</td></tr>
+        <tr><td class="r">—</td><td>Krullijn: twaalf artikelen, gericht op Antwerpse salons</td><td class="r">€ 400–800</td><td>Beperkt; verkoopt ook aan particulieren</td><td class="r">2 maanden</td></tr>
+        <tr><td class="r">—</td><td>Hoofdhuidlijn: één merk, zes artikelen, één schap bij de toonbank</td><td class="r">€ 600–1.200</td><td>Lange houdbaarheid; verkoopt anders via Bol</td><td class="r">2 maanden</td></tr>
+        <tr><td class="r">30</td><td>Bezorgronde: vier weken één vaste dag rijden</td><td class="r">€ 600–1.000</td><td>Vier dagen tijd en brandstof</td><td class="r">6 weken</td></tr>
+        <tr><td class="r">9</td><td>White label: één product voor één salon, kleinste afname</td><td class="r">€ 1.500–3.000</td><td>Voorraad op naam van die salon — dus vooraf afgestemd</td><td class="r">3 maanden</td></tr>
+        <tr><td class="r">19</td><td>Formuledossier: handmatig bijhouden voor je tien grootste klanten</td><td class="r">€ 0 (tijd)</td><td>Niets; bij succes bouw je het pas in de webshop</td><td class="r">3 maanden</td></tr>
+        <tr><td class="r">10</td><td>Head spa: één demoset in de zaak, aangeboden aan drie vaste klanten</td><td class="r">€ 2.000–3.500</td><td>Het apparaat houdt restwaarde en blijft bruikbaar als demo</td><td class="r">3 maanden</td></tr>
+      </tbody>
+      <caption><strong>De eerste elf tests samen kosten minder dan <span class="num">€ 2.500</span>.</strong> Vier ervan kosten niets. De duurste in de lijst is het head-spa-apparaat, en dat houdt restwaarde.</caption>
+    </table>
+  </div>
+
+  <div class="box win">
+    <div class="bk">De volgorde die het risico wegneemt</div>
+    <p>Doe eerst het opruimwerk uit <a href="#s10">§10.1</a>. Dat kost niets en levert <span class="num">€ 16.120</span> per jaar. <strong>Met dat geld betaal je elke test hierboven</strong>, zonder dat er één euro uit de zaak hoeft. Elke test die slaagt breidt uit; elke test die faalt is afgeschreven binnen een maand omzet. Zo is er geen moment waarop je iets riskeert wat je niet kunt missen.</p>
+  </div>
+
+  <div class="box">
+    <div class="bk">Regel bij elke toevoeging</div>
+    <p>Voeg niets toe zonder iets te schrappen. Je hebt 2.804 actieve artikelen, waarvan er 937 vijf stuks of minder deden in zes en een half jaar (<a href="#s2">§2.5</a>). Elke nieuwe lijn vervangt een trage, anders vergroot je alleen het onderhoud — nu in vier talen.</p>
+  </div>
+</section>
+
+<div class="deel">Deel C — Uitvoering</div>
+
+<!-- ══════════ 09 ══════════ -->
+<section id="s10">
+  <h2><span class="n">10</span>Korte, middellange en lange termijn</h2>
+  <div class="rule"></div>
+
+  <p class="lead">Drie horizonnen, elk met de kosten van de aanpassing en de volgorde waarin het werk moet gebeuren. De prioriteitscijfers geven aan wat eerst af moet: <strong>P1</strong> blokkeert ander werk, <strong>P2</strong> levert het meeste per bestede euro, <strong>P3</strong> kan wachten.</p>
+
+  <h3>10.1 Korte termijn — 0 tot 3 maanden</h3>
+  <p>Alles in deze fase is opruimwerk in Mplus en de webshop. Geen leverancier, geen kapitaal, geen nieuwe markt.</p>
+
+  <div class="scr wide">
+    <table>
+      <thead><tr><th class="r">Prio</th><th>Aanpassing</th><th>Werk dat nodig is</th><th class="r">Kosten</th><th class="r">Opbrengst/jaar</th></tr></thead>
+      <tbody>
+        <tr><td class="r"><span class="chip nee">P1</span></td><td>Dertien verliesgevende artikelen herstellen</td><td>Per artikel de laatste inkoopfactuur naast de kaart leggen; kaartfout corrigeren of prijs aanpassen. Circa 4 uur.</td><td class="r">€ 0</td><td class="r">+ € 8.797</td></tr>
+        <tr><td class="r"><span class="chip nee">P1</span></td><td>Vijftig dubbele artikelkaarten samenvoegen</td><td>Kaarten koppelen of de dubbele blokkeren, voorraad en historie overzetten. Circa 6 uur.</td><td class="r">€ 0</td><td class="r">+ € 621</td></tr>
+        <tr><td class="r"><span class="chip nee">P1</span></td><td>Bedrijfsvoertuigen uit de artikelomzet halen</td><td>Herboeken naar een grootboekrekening buiten de artikelomzet. 1 uur met de boekhouder.</td><td class="r">€ 0</td><td class="r">rapportage klopt</td></tr>
+        <tr><td class="r"><span class="chip mis">P2</span></td><td>Sens.ùs-promotiekorting herijken</td><td>Gesprek met Super Hair Brands; korting vervangen door een staffel met afnameverplichting.</td><td class="r">€ 0</td><td class="r">+ € 6.700</td></tr>
+        <tr><td class="r"><span class="chip mis">P2</span></td><td>937 trage actieve artikelen beoordelen</td><td>Voorraadwaarde en omloop nalopen, dan snoeien of houden. Circa 8 uur.</td><td class="r">€ 0</td><td class="r">goedkopere vertaling</td></tr>
+        <tr><td class="r"><span class="chip mis">P2</span></td><td>Omrekentabel Koleston/Majirel → Sens.ùs publiceren</td><td>Nuances koppelen, tabel opmaken, in vier talen zetten. Circa 12 uur plus vertaling.</td><td class="r">€ 300–600</td><td class="r">conversie op kleur</td></tr>
+        <tr><td class="r"><span class="chip">P3</span></td><td>Wekelijkse prijsmeting op veertig artikelen</td><td>Handmatig in een spreadsheet, of een monitoringdienst inrichten.</td><td class="r">€ 0 of € 200–800/mnd</td><td class="r">basis voor §5</td></tr>
+      </tbody>
+      <caption><strong>Totaal korte termijn: <span class="num">€ 300–600</span> aan kosten, <span class="num">€ 16.120</span> aan opbrengst per jaar.</strong> Ongeveer dertig uur werk, verspreid over drie maanden.</caption>
+    </table>
+  </div>
+
+  <h3>10.2 Middellange termijn — 3 tot 12 maanden</h3>
+  <p>Hier gaat voor het eerst geld naar buiten. Begin pas als de korte termijn af is: een vertaalcampagne over een vervuilde catalogus vermenigvuldigt de rommel.</p>
+
+  <div class="scr wide">
+    <table>
+      <thead><tr><th class="r">Prio</th><th>Aanpassing</th><th>Werk dat nodig is</th><th class="r">Kosten</th><th class="r">Opbrengst/jaar</th></tr></thead>
+      <tbody>
+        <tr><td class="r"><span class="chip nee">P1</span></td><td>Franstalige markt activeren</td><td>Zoekwoordonderzoek Frans, productteksten van de 221 grootste artikelen laten nakijken, Bancontact en betaalmethoden, verzendtarieven per zone, Franstalige klantenservice.</td><td class="r">€ 8.000–15.000</td><td class="r">+ € 12.000–24.000</td></tr>
+        <tr><td class="r"><span class="chip mis">P2</span></td><td>Eerste eigen stylingartikelen laten maken</td><td>Vier artikelen bij een Poolse of Italiaanse producent; formule, verpakking, veiligheidsbeoordeling en CPNP-registratie.</td><td class="r">€ 10.000–20.000</td><td class="r">+ € 4.400</td></tr>
+        <tr><td class="r"><span class="chip mis">P2</span></td><td>Hairstation op Bol openen</td><td>Distributieovereenkomsten nalezen, account aanmaken, twintig hoogwaardige artikelen listen, verzending via Sendcloud inrichten.</td><td class="r">€ 3.000–6.000</td><td class="r">+ € 4.000–9.000</td></tr>
+        <tr><td class="r"><span class="chip mis">P2</span></td><td>Hoofdhuid- en bondlijn toevoegen</td><td>Eén lijn per categorie aanvragen, opleiding voor het team, schappen inrichten.</td><td class="r">€ 4.000–8.000</td><td class="r">+ € 3.000–6.000</td></tr>
+        <tr><td class="r"><span class="chip">P3</span></td><td>Duitstalige markt verkennen</td><td>Marktverkenning, zoekwoordonderzoek Duits, tarieven naar Duitsland. Nog niet uitrollen.</td><td class="r">€ 2.000–4.000</td><td class="r">jaar 2</td></tr>
+      </tbody>
+      <caption><strong>Totaal middellange termijn: <span class="num">€ 27.000–53.000</span> aan investering, <span class="num">€ 23.400–43.400</span> aan opbrengst per jaar.</strong> Terugverdientijd ruwweg één tot anderhalf jaar.</caption>
+    </table>
+  </div>
+
+  <h3>10.3 Lange termijn — 12 tot 36 maanden</h3>
+  <p>Structurele stappen. Ze veranderen wat Hairstuff ís, niet alleen hoe het draait.</p>
+
+  <div class="scr wide">
+    <table>
+      <thead><tr><th class="r">Prio</th><th>Aanpassing</th><th>Werk dat nodig is</th><th class="r">Kosten</th><th class="r">Opbrengst/jaar</th></tr></thead>
+      <tbody>
+        <tr><td class="r"><span class="chip nee">P1</span></td><td>Eigen label naar 20 % van de omzet</td><td>Acht tot twaalf artikelen erbij, twee merken met verschillende rollen (§7.3), eigen verpakkingslijn.</td><td class="r">€ 20.000–40.000</td><td class="r">+ € 4.650</td></tr>
+        <tr><td class="r"><span class="chip nee">P1</span></td><td>Afhankelijkheid van één leverancier terugbrengen</td><td>Sens.ùs van 31 naar onder 25 % van de omzet door eigen label en één tweede kleurmerk erbij.</td><td class="r">€ 5.000–10.000</td><td class="r">risico, geen marge</td></tr>
+        <tr><td class="r"><span class="chip mis">P2</span></td><td>Duitstalige markt uitrollen</td><td>Volledige activatie zoals bij Frans, plus een eigen verhaal — een vertaalde catalogus wint niet van Basler Pro.</td><td class="r">€ 15.000–25.000</td><td class="r">+ € 10.000–20.000</td></tr>
+        <tr><td class="r"><span class="chip mis">P2</span></td><td>Retailmerk voor doorverkoop lanceren</td><td>Eigen naam, eigen verhaal, alleen aan salons die niet online doorverkopen.</td><td class="r">€ 15.000–30.000</td><td class="r">+ € 5.000–10.000</td></tr>
+        <tr><td class="r"><span class="chip">P3</span></td><td>Eigen kleurlijn</td><td>Alleen met een producent die een bewezen nuancesysteem levert. Zwaarste stap in het plan, en niet verplicht.</td><td class="r">€ 40.000+</td><td class="r">nader te bepalen</td></tr>
+      </tbody>
+      <caption><strong>Totaal lange termijn (zonder eigen kleurlijn): <span class="num">€ 55.000–105.000</span>, opbrengst <span class="num">€ 22.600–37.600</span> per jaar.</strong></caption>
+    </table>
+  </div>
+
+  <h3>10.4 Alles bij elkaar</h3>
+
+  <div class="scr wide">
+    <table>
+      <thead><tr><th>Horizon</th><th class="r">Investering</th><th class="r">Opbrengst per jaar</th><th class="r">Terugverdientijd</th></tr></thead>
+      <tbody>
+        <tr><td>Kort — 0 tot 3 maanden</td><td class="r">€ 300–600</td><td class="r">+ € 16.120</td><td class="r">enkele dagen</td></tr>
+        <tr><td>Middellang — 3 tot 12 maanden</td><td class="r">€ 27.000–53.000</td><td class="r">+ € 23.400–43.400</td><td class="r">1 tot 1,5 jaar</td></tr>
+        <tr><td>Lang — 12 tot 36 maanden</td><td class="r">€ 55.000–105.000</td><td class="r">+ € 22.600–37.600</td><td class="r">2 tot 3 jaar</td></tr>
+        <tr><td><strong>Samen</strong></td><td class="r"><strong>€ 82.300–158.600</strong></td><td class="r"><strong>+ € 62.120–97.120</strong></td><td class="r"><strong>circa 1,5 jaar</strong></td></tr>
+      </tbody>
+      <caption>Tegenover de huidige brutowinst van <span class="num">€ 174.257</span> per jaar is de volledige uitvoering een groei van 36 tot 56 procent. De korte termijn draagt daar een kwart van bij en kost vrijwel niets — dat is waarom de volgorde belangrijker is dan de omvang.</caption>
+    </table>
+  </div>
+
+  <div class="box win">
+    <div class="bk">Als je maar één ding doet dit kwartaal</div>
+    <p>De dertien verliesgevende artikelen. Vier uur werk, nul euro, <span class="num">€ 8.797</span> per jaar. Dat is meer dan de hele eigen-labelambitie oplevert waar <span class="num">€ 20.000</span> tot <span class="num">€ 40.000</span> in moet.</p>
+  </div>
+
+  <h3>10.5 Wat je maandelijks bijhoudt</h3>
+  <ul>
+    <li>Mengmarge in procent — het enige getal dat het hele plan samenvat (nu 45,1 %)</li>
+    <li>Aandeel eigen label in de omzet (nu 7,0 %, doel 20 %)</li>
+    <li>Aantal artikelen met een marge onder 20 procent (nu dertien boven de vijftig stuks)</li>
+    <li>Omzet per taal en per land</li>
+    <li>Aantal uitverkocht-meldingen op de tweehonderd grootste artikelen</li>
+    <li>Aandeel van de grootste leverancier in de brutowinst (nu 28,4 %)</li>
+  </ul>
+</section>
+
+<section id="s11">
+  <h2><span class="n">11</span>Wat nog nodig is</h2>
+  <div class="rule"></div>
+
+  <div class="scr wide">
+    <table>
+      <thead><tr><th>Wat</th><th>Waarvoor</th><th>Waar het vandaan komt</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Logo en huisstijlkleuren</strong></td><td>Dit rapport is gebouwd met een apart kleurenblok bovenin; inplakken is twee minuten werk</td><td>WooCommerce-mediabibliotheek en themainstellingen</td></tr>
+        <tr><td><strong>Concurrentprijzen per artikel</strong></td><td>Om <a href="#s5">§5</a> hard te maken met basis- én actieprijzen</td><td>De webshops uit <a href="#s5">§5.2</a>, wekelijks gemeten</td></tr>
+        <tr><td><strong>Orderregels uit Mplus</strong></td><td>Staffeldrempels op werkelijke bestelhoeveelheden; aanhechtingsgraad van eigen oxydant op kleurorders</td><td>Mplus, regelniveau in plaats van ordertotalen</td></tr>
+        <tr><td><strong>Leveranciersovereenkomsten</strong></td><td>Rebatestaffels voor <a href="#s2">§2.3</a>, marktplaatsbepalingen voor <a href="#s8">§8.5</a></td><td>Contractmap</td></tr>
+        <tr><td><strong>Voorraadwaarde per artikel</strong></td><td>Om te weten of de 937 trage artikelen ook dood kapitaal zijn</td><td>Mplus voorraadrapport</td></tr>
+        <tr><td><strong>Bol Partnerplatform-account</strong></td><td>De exacte commissie en voordeeltreden zijn alleen daar zichtbaar</td><td><a href="https://partner.bol.com/">partner.bol.com</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="box">
+    <div class="bk">Over de cijfers in dit rapport</div>
+    <p>Alle bedragen over omzet, inkoop en marge komen rechtstreeks uit de Mplus-exports en zijn narekenbaar: de scripts staan in <code>rapporten/analyse/</code>. Alle marktgegevens hebben een bronvermelding met URL hieronder. Waar een aanname is gedaan — bijvoorbeeld de commissie van 15 procent in de Bol-berekeningen — staat dat er expliciet bij, zodat je het met je eigen tarieven kunt herrekenen.</p>
+  </div>
+</section>
+
+<!-- ══════════ BRONNEN ══════════ -->
+<section id="bron" class="bron">
+  <h2><span class="n">—</span>Bronnen</h2>
+  <div class="rule"></div>
+  <p style="font-family:var(--serif);font-size:16px;color:var(--inkt-2)">Geraadpleegd augustus 2026. Marktramingen van verschillende bureaus hanteren verschillende definities en zijn niet onderling optelbaar.</p>
+  <ol>
+    <li id="b1">Rylee — <a href="https://rylee.nl/nl/blog/hoeveel-commissie-betaal-je-eigenlijk-aan-bol.com">Bol.com commissie: waar je op moet letten in 2026</a></li>
+    <li id="b2">Boloo — <a href="https://boloo.co/blog/commissie-bol-com">Commissie Bol.com: alle kosten, tarieven &amp; tips voor 2026</a></li>
+    <li id="b3">Lijstify — <a href="https://lijstify.com/blog/bol-com-kosten-commissie-overzicht">Bol.com kosten en commissie: volledig overzicht voor verkopers</a></li>
+    <li id="b4">Distilo — <a href="https://www.distilo.nl/blog/bol-verzendkosten-2026">Bol verzendkosten 2026: voordeeltreden en calculator</a></li>
+    <li id="b5">ProductTickler — <a href="https://producttickler.nl/kosten-verkopen-bol-com/">Wat kost verkopen via Bol.com? Compleet kostenoverzicht 2026</a></li>
+    <li id="b6">Smart Fulfilment — <a href="https://smartfulfilment.nl/blog/nl/logistiek-via-bol">Logistiek via Bol: uitleg en voordelen</a></li>
+    <li id="b7">Xiran — <a href="https://xiranskincare.com/top-10-private-label-cosmetic-manufacturers-in-turkey/">Top 10 private label cosmetic manufacturers in Turkey</a></li>
+    <li id="b8">CosmeticIndex — <a href="https://www.cosmeticindex.com/_cosmetic-private-label-poland">Cosmetic private label Poland</a>; Wonnda — <a href="https://wonnda.com/magazine/european-private-label-cosmetic-manufacturers/">Top 15 European private label cosmetic manufacturers 2026</a></li>
+    <li id="b9">Digitale Postzegel — <a href="https://digitale-postzegel.nl/brievenbuspakje-versturen/">Brievenbuspakje versturen 2026: tarieven en vergelijking PostNL, DHL, DPD</a></li>
+    <li id="b10">PostNL — <a href="https://www.postnl.nl/tarieven/">Alle PostNL-tarieven</a></li>
+    <li id="b11">bpost — <a href="https://www.bpost.be/nl/tarieven">Zakelijke tarieven 2026</a></li>
+    <li id="b12">Knip &amp; Go — <a href="https://www.knipengoshop.nl/wella-eimi-texture-pearl-styler-100ml.html">Wella EIMI Pearl Styler 100 ml</a>; Haibu — <a href="https://www.haibu.nl/wella-eimi-pearl-styler-styling-gel-100ml.html">zelfde artikel</a></li>
+    <li id="b13">Selbststaendig.de — <a href="https://www.selbststaendig.de/friseurbedarf">Friseurbedarf: welche Großhändler bieten günstige Preise?</a>; <a href="https://www.basler-pro.de/">Basler Pro</a>, <a href="https://www.alfastore.de/">AlfaStore</a>, <a href="https://www.hair24.de/">hair24</a></li>
+    <li id="b14">Sendcloud — <a href="https://go.sendcloud.be/pricing/pricing-list-download">Kortingstarieven per vervoerder</a>; Webwinkelsucces — <a href="https://www.webwinkelsucces.nl/vergelijking-van-nederlandse-pakketdiensten/">Vergelijking Nederlandse pakketdiensten</a></li>
+    <li id="b15">Sephora UK — <a href="https://www.sephora.co.uk/inspiration/hair-trend-predictions">Hair trend predictions 2026: scalp care, bond repair</a>; BeautyMatter — <a href="https://beautymatter.com/articles/the-haircare-trends-set-to-define-2026">The haircare trends set to define 2026</a></li>
+    <li id="b16">Behind the Chair — <a href="https://behindthechair.com/articles/springs-hottest-haircare-launches-for-2026/">New professional haircare launches spring 2026</a></li>
+    <li id="b17">Fortune Business Insights — <a href="https://www.fortunebusinessinsights.com/salon-service-market-104608">Salon Services Market Size, Share &amp; Growth Analysis</a></li>
+    <li id="b18">Fortune Business Insights — <a href="https://www.fortunebusinessinsights.com/hair-care-market-102555">Hair Care Market Size, Share, Global Industry Report</a>; Mordor Intelligence — <a href="https://www.mordorintelligence.com/industry-reports/europe-hair-care-market-industry">European Hair Care Market</a></li>
+    <li id="b19">Future Market Insights — <a href="https://www.futuremarketinsights.com/reports/global-professional-hair-care-products-market">Global Professional Hair Care Products Market, 2026–2036</a>; Market Data Forecast — <a href="https://www.marketdataforecast.com/market-reports/europe-professional-hair-care-market">Europe Professional Hair Care Market</a></li>
+    <li id="b20">Nederlandse Kappersunie — <a href="https://www.nederlandsekappersunie.nl/wat-zijn-de-recente-trends-en-ontwikkelingen-in-de-kappersbranche/">Recente trends en ontwikkelingen in de kappersbranche</a>; MijnSalon — <a href="https://www.mijnsalon.nl/stoelverhuur-kapsalon/">Stoelverhuur: de nieuwe trend in de kappersbranche</a></li>
+    <li id="b26">Power Your Curls — <a href="https://www.poweryourcurls.com/japanese-head-spa-statistics-2026/">Japanese head spa: market and adoption statistics 2026</a>; Salon Today — <a href="https://www.salontoday.com/articles/why-head-spa-services-are-the-scalp-care-trend-every-salon-should-explore">Why head spa services are the scalp-care trend every salon should explore</a>; Goldie — <a href="https://heygoldie.com/blog/head-spa-service-cost">How much should you charge for a head spa in 2026</a></li>
+    <li id="b27">Coherent Market Insights — <a href="https://www.coherentmarketinsights.com/market-insight/scalp-care-market-5132">Scalp Care Market Size, Trends &amp; YoY Growth Rate 2026–2033</a>; Grand View Research — <a href="https://www.grandviewresearch.com/industry-analysis/hair-care-market">Hair and Scalp Care Market Report 2026–2033</a></li>
+    <li id="b28">Searchlab — <a href="https://searchlab.nl/en/statistics/online-payments-statistics-2026">Online betalen statistieken Nederland 2026</a>; Business AM — <a href="https://businessam.be/bancontact-voorkeursbetaalmethode-belgie/">Bancontact blijft populairste betaalmethode in België</a>; Red Factory — <a href="https://redfactory.nl/kennisbank/e-commerce-webshop/betaalmethoden-webshop/">Betaalmethoden webshop 2026</a></li>
+    <li id="b29">Radar (AVROTROS) — <a href="https://radar.avrotros.nl/artikel/ideal-verdwijnt-hoe-werkt-het-nieuwe-betalingssysteem-wero-61576">iDEAL verdwijnt: hoe werkt Wero</a>; Reservatie.app — <a href="https://reservatie.app/blog/ideal-wero-bancontact-wat-verandert-er">iDEAL, Wero en Bancontact: wat verandert er in 2026</a></li>
+    <li id="b30">The Insight Partners — <a href="https://www.theinsightpartners.com/reports/hair-supplements-market">Hair Supplements Market Report</a>; Expert Market Research — <a href="https://www.expertmarketresearch.com/reports/hair-growth-products-market">Hair Growth Products Market Outlook</a></li>
+    <li id="b31">Persistence Market Research — <a href="https://www.persistencemarketresearch.com/market-research/hair-extensions-market.asp">Hair Extension Market Size &amp; Growth Analysis</a>; Deep Market Insights — <a href="https://deepmarketinsights.com/vista/insights/hair-extension-market/europe">Europe Hair Extension Market</a>; The Business Research Company — <a href="https://www.thebusinessresearchcompany.com/report/hair-extensions-global-market-report">Hair Extensions Global Market Report 2026</a></li>
+    <li id="b32">BRUZZ — <a href="https://www.bruzz.be/actua/economie/aantal-nagelsalons-verdrievoudigd-beauty-en-lage-instapzaken-zitten-de-lift-2026-05-21">Aantal nagelsalons verdrievoudigd</a></li>
+    <li id="b33">Guidance — <a href="https://www.guidance.nl/nl/webshop-voor-groothandel">B2B-webshop voor groothandel: tijdwinst en omzetgroei</a>; Team Loyalty — <a href="https://teamloyalty.nl/blog/loyaliteitsprogramma-b2b-voorbeelden-die-jou-op-weg-helpen/">Loyaliteitsprogramma B2B</a></li>
+    <li id="b22">Medirelax — <a href="https://medirelaxa.com/en/product/scalp-analysis-device/">Scalp analysis device, B2B groothandel</a></li>
+    <li id="b23">Gamma &amp; Bross — <a href="https://www.gammabross.com/en/head-spa">Head spa equipment &amp; accessories</a>; Salon &amp; Spa Wholesaler — <a href="https://www.salonwholesaler.com/collections/head-spa">Head spa collectie</a></li>
+    <li id="b24">Sherry's Cosmetics — <a href="https://sherrys.be/">Afro hair &amp; beauty wholesaler, België</a>; PAK Cosmetic Center — <a href="https://pakswholesale.com/">Europese groothandel Afro- en Caribische producten</a></li>
+    <li id="b25">Business of Fashion — <a href="https://www.businessoffashion.com/articles/beauty/indie-beauty-brands-to-watch-2026/">The fast-growing beauty brands to watch in 2026</a>; Jump Accelerator — <a href="https://jumpaccelerator.com/from-masstige-to-luxury-the-haircare-brands-dominating-q1-2026">Haircare brands dominating Q1 2026</a></li>
+    <li id="b21">Het Ondernemersbelang — <a href="https://www.ondernemersbelang.nl/nieuws/de-kappersbranche-bloeit-een-verkenning-van-groei-innovatie-en-duurzaamheid/">De kappersbranche bloeit: groei, innovatie en duurzaamheid</a>; Hair Kappersopleiding — <a href="https://hairkappersopleiding.nl/de-nieuwste-ontwikkelingen-in-de-kapperswereld-met-betrekking-tot-duurzaamheid-en-milieuvriendelijkheid/">Duurzaamheid in de kapperswereld</a></li>
+    <li>HODM Cosmetics — <a href="https://www.hairodm.com/professional-salon-hair-care-trends-2026.html">Professional salon hair care trends to watch in 2026</a></li>
+    <li>Bol partnerplatform — <a href="https://partner.bol.com/">verkopen via bol</a></li>
+  </ol>
+  <hr class="d">
+  <p style="font-family:var(--sans);font-size:12px;color:var(--inkt-3);max-width:none">Opgesteld augustus 2026 voor The HairStuff Company, Malle. Bedrijfscijfers uit vijf Mplus-exports van 10 augustus 2026: artikelprestatie met actuele prijzen en inkoopprijzen, verkoopfacturen, verkooporders, dagverloop en het BPE-overzicht met voorraadstanden. Periode januari 2020 tot 10 augustus 2026, filiaal België; één winkel en één webshop. Marktgegevens uit de bovenstaande bronnen. Prijzen van derden zijn momentopnames en veranderen; hercontroleer voor besluiten met financiële gevolgen.</p>
+</section>
+
+</main>
+</div>
